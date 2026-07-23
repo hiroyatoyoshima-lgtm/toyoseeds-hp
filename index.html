@@ -85,6 +85,7 @@
   .work-card{position:relative;overflow:hidden}
   .work-visual{position:relative;height:232px;box-sizing:border-box;margin-bottom:20px;border:1px solid #E3EAE1;border-radius:12px;overflow:hidden;background:#F3F6F1}
   .work-visual>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .work-visual--desktop>img{object-fit:cover;object-position:left top}
   .phone-stage{display:flex;align-items:center;justify-content:center;gap:13px;padding:12px 16px;background:radial-gradient(circle at 50% 20%,#FFFFFF 0,#F0F5EE 58%,#E7EFE4 100%)}
   .phone-frame{position:relative;width:min(40%,112px);height:204px;box-sizing:border-box;padding:3px;border:1px solid #202633;border-radius:19px;background:#202633;box-shadow:0 12px 24px rgba(30,39,97,.2),inset 0 0 0 1px rgba(255,255,255,.18);transform:rotate(-2.5deg);transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
   .phone-frame:nth-child(2){transform:rotate(2.5deg) translateY(4px)}
@@ -241,8 +242,8 @@
     <p style="margin:0 0 48px;font-size:16px;line-height:2.1;color:#5A6180;max-width:42em">飾らずに、実際に動いているもの・ご一緒している相手だけを載せています。</p>
     <div class="works-grid">
       <div class="work-card" style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
-        <div class="work-visual">
-          <img src="./assets/dashboard.webp" alt="Minpaku OSの実画面（売上分析）" loading="lazy" style="object-position:left top">
+        <div class="work-visual work-visual--desktop">
+          <img src="./assets/dashboard.webp" alt="Minpaku OSの実画面（売上分析）" loading="lazy">
         </div>
         <p style="margin:0 0 8px;font-size:18px;font-weight:800;color:var(--c-primary)">Minpaku OS</p>
         <p style="margin:0;font-size:14px;line-height:2;color:#5A6180">予約サイト（Beds24）のAPIからデータを取り込み、稼働率・ADR・売上を毎朝確認。AIエージェントが数字を監視して価格戦略を提案し、行政へ毎月提出する宿泊税の書類も予約データから自動生成。自社の宿泊運営を毎日これで回しています。</p>
@@ -260,8 +261,8 @@
         <p style="margin:0;font-size:14px;line-height:2;color:#5A6180">店のQRを読むと「今この店に誰がいるか」が見える、お客さん用ページ&ldquo;here&rdquo;。初回に名前とひとことを登録するだけで自動チェックインされ、その場の出会いが生まれます。裏側では来店ログから全店舗の売上・客数・営業利益までを一元管理しています。</p>
       </div>
       <div class="work-card" style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
-        <div class="work-visual">
-          <img src="./assets/athlens.webp" alt="ATHLENSの画面（選手の今が、ひと目でわかる）" loading="lazy" style="object-fit:contain;object-position:left top;background:#fff">
+        <div class="work-visual work-visual--desktop">
+          <img src="./assets/athlens.webp" alt="ATHLENSの画面（選手の今が、ひと目でわかる）" loading="lazy">
         </div>
         <p style="margin:0 0 8px;font-size:18px;font-weight:800;color:var(--c-primary)">ATHLENS <span style="margin-left:6px;font-size:10.5px;font-weight:800;letter-spacing:.08em;color:var(--c-accent-ink);background:var(--c-tag-bg);border-radius:999px;padding:3px 9px;vertical-align:middle">開発中</span></p>
         <p style="margin:0;font-size:14px;line-height:2;color:#5A6180">「選手の今が、ひと目でわかる。」スポーツチーム向けのパフォーマンス管理システム。トラッキングデータと負荷・ウェルネス・体組成・ケガ対応をひとつの画面に集め、コンディションの変化を検知して&ldquo;今日見るべき選手&rdquo;を知らせます。</p>
