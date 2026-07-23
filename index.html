@@ -21,7 +21,22 @@
   @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,40px) scale(1.06)}}
   @keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,60px)}}
   @keyframes revealIn{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+  @keyframes clientMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
   .reveal-in{animation:revealIn .9s cubic-bezier(.22,.8,.3,1) both}
+  .client-marquee{overflow:hidden;padding:10px 0 22px;mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+  .client-track{display:flex;width:max-content;animation:clientMarquee 30s linear infinite;will-change:transform}
+  .client-group{display:flex;gap:20px;padding-right:20px}
+  .client-logo{width:248px;height:112px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;position:relative;background:#fff;border:1px solid #E3EAE1;border-radius:16px;padding:20px 26px;box-shadow:0 8px 24px rgba(30,39,97,.055);transition:transform .25s,box-shadow .25s,border-color .25s}
+  .client-logo:hover{transform:translateY(-4px);border-color:#BCD9BF;box-shadow:0 14px 34px rgba(30,39,97,.11)}
+  .client-logo img{display:block;max-width:180px;max-height:68px;width:auto;height:auto;object-fit:contain}
+  .client-logo--square img{max-width:76px;max-height:76px}
+  .client-logo__badge{position:absolute;right:11px;bottom:9px;font-size:9px;font-weight:800;letter-spacing:.1em;color:#7A819B}
+  @media(max-width:700px){
+    .client-marquee{margin-inline:-28px;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+    .client-logo{width:210px;height:100px;padding:18px 22px}
+    .client-logo img{max-width:158px;max-height:58px}
+    .client-logo--square img{max-width:66px;max-height:66px}
+  }
 </style>
 </helmet>
 
@@ -147,10 +162,10 @@
       </div>
       <div style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <div style="position:relative;height:190px;border-radius:12px;overflow:hidden;margin-bottom:20px;border:1px solid #E3EAE1">
-          <img src="./assets/tsunagaru.webp" alt="つながる場アプリの実画面（今日のおすすめ連絡先）" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top">
+          <img src="./assets/tsunagaru.webp" alt="つながるBARアプリの実画面（売上ダッシュボード・デモデータ）" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top">
         </div>
-        <p style="margin:0 0 8px;font-size:18px;font-weight:800;color:var(--c-primary)">つながる場アプリ</p>
-        <p style="margin:0;font-size:14px;line-height:2;color:#5A6180">飲食店の顧客フォローを支えるAIアプリ。来店記録をもとに、毎朝AIが「今日のおすすめ連絡先」とその人向けの文面を作ってLINEへ届けます。現場の入力は「来店したら名前をポチ」だけ。多機能な顧客管理ではなく、毎朝の一手に絞りました。</p>
+        <p style="margin:0 0 8px;font-size:18px;font-weight:800;color:var(--c-primary)">つながるBARアプリ</p>
+        <p style="margin:0;font-size:14px;line-height:2;color:#5A6180">飲食店の売上管理アプリ。来店客をスマホで1件ずつ登録するだけで、全店舗の売上・客数・客単価・営業利益までを一元ダッシュボードに。写真付きの顧客台帳や、QRを読むと「今この店にいる人」が見えるお客さん用ページ&ldquo;here&rdquo;も備えています。</p>
       </div>
       <div style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <div style="position:relative;height:190px;border-radius:12px;overflow:hidden;margin-bottom:20px;border:1px solid #E3EAE1">
@@ -160,41 +175,43 @@
         <p style="margin:0;font-size:14px;line-height:2;color:#5A6180">「選手の今が、ひと目でわかる。」スポーツチーム向けのパフォーマンス管理システム。トラッキングデータと負荷・ウェルネス・体組成・ケガ対応をひとつの画面に集め、コンディションの変化を検知して&ldquo;今日見るべき選手&rdquo;を知らせます。</p>
       </div>
     </div>
-    <p style="margin:64px 0 20px;font-size:13px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Clients — 得意先</p>
-    <div style="display:flex;flex-wrap:wrap;gap:20px">
-      <div style="flex:1 1 300px;display:flex;align-items:center;gap:18px;background:#F7F8FB;border:1px solid #E3EAE1;border-radius:16px;padding:22px 26px;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-4px);box-shadow:0 14px 34px rgba(30,39,97,.10)">
-        <div style="width:52px;height:52px;flex:0 0 auto;border-radius:50%;background:var(--c-tag-bg);display:flex;align-items:center;justify-content:center">
-          <svg viewBox="0 0 44 44" width="30" height="30" fill="none" stroke="var(--c-accent-ink)" stroke-width="2.5">
-            <g>
-              <circle cx="22" cy="22" r="12"/>
-              <line x1="10" y1="22" x2="34" y2="22"/>
-              <line x1="22" y1="10" x2="22" y2="34"/>
-              <path d="M13.5,13.5 Q22,22 13.5,30.5"/>
-              <path d="M30.5,13.5 Q22,22 30.5,30.5"/>
-              <animateTransform attributeName="transform" type="translate" values="0 0;0 -4;0 0" dur="1.3s" repeatCount="indefinite"/>
-            </g>
-          </svg>
+    <div style="display:flex;align-items:end;justify-content:space-between;gap:24px;margin:64px 0 18px">
+      <div>
+        <p style="margin:0 0 8px;font-size:13px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Clients — 得意先</p>
+        <p style="margin:0;font-size:14px;color:#5A6180">ご一緒している企業・プロジェクト</p>
+      </div>
+      <p style="margin:0;font-size:11px;color:#8A91A7">※ SAMPLE表記はイメージロゴです</p>
+    </div>
+    <div class="client-marquee" aria-label="クライアントロゴ">
+      <div class="client-track">
+        <div class="client-group">
+          <a class="client-logo client-logo--square" href="https://www.storks.jp/" target="_blank" rel="noopener" aria-label="神戸ストークス公式サイト">
+            <img src="./assets/client-logos/kobe-storks.png" alt="神戸ストークス" loading="lazy">
+          </a>
+          <a class="client-logo client-logo--square" href="https://tsunagarueat.com/" target="_blank" rel="noopener" aria-label="つながるEAT公式サイト">
+            <img src="./assets/client-logos/tsunagaru-eat.png" alt="つながるEAT" loading="lazy">
+          </a>
+          <div class="client-logo">
+            <img src="./assets/client-logos/fictional-harbour-link.png" alt="HARBOUR LINK（イメージロゴ）" loading="lazy">
+            <span class="client-logo__badge">SAMPLE</span>
+          </div>
+          <div class="client-logo">
+            <img src="./assets/client-logos/fictional-mori-works.png" alt="MORI WORKS（イメージロゴ）" loading="lazy">
+            <span class="client-logo__badge">SAMPLE</span>
+          </div>
+          <div class="client-logo">
+            <img src="./assets/client-logos/fictional-nesta-field.png" alt="NESTA FIELD（イメージロゴ）" loading="lazy">
+            <span class="client-logo__badge">SAMPLE</span>
+          </div>
         </div>
-        <div>
-          <p style="margin:0;font-size:17px;font-weight:800;color:var(--c-primary)">神戸ストークス</p>
-          <p style="margin:3px 0 0;font-size:13px;color:#5A6180">STORKS Performance Hub — 選手パフォーマンス分析基盤</p>
+        <div class="client-group" aria-hidden="true">
+          <div class="client-logo client-logo--square"><img src="./assets/client-logos/kobe-storks.png" alt=""></div>
+          <div class="client-logo client-logo--square"><img src="./assets/client-logos/tsunagaru-eat.png" alt=""></div>
+          <div class="client-logo"><img src="./assets/client-logos/fictional-harbour-link.png" alt=""><span class="client-logo__badge">SAMPLE</span></div>
+          <div class="client-logo"><img src="./assets/client-logos/fictional-mori-works.png" alt=""><span class="client-logo__badge">SAMPLE</span></div>
+          <div class="client-logo"><img src="./assets/client-logos/fictional-nesta-field.png" alt=""><span class="client-logo__badge">SAMPLE</span></div>
         </div>
       </div>
-      <a href="https://tsunagarueat.com/" target="_blank" rel="noopener" style="flex:1 1 300px;display:flex;align-items:center;gap:18px;background:#F7F8FB;border:1px solid #E3EAE1;border-radius:16px;padding:22px 26px;color:inherit;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-4px);box-shadow:0 14px 34px rgba(30,39,97,.10)">
-        <div style="width:52px;height:52px;flex:0 0 auto;border-radius:50%;background:var(--c-tag-bg);display:flex;align-items:center;justify-content:center">
-          <svg viewBox="0 0 44 44" width="30" height="30" fill="none" stroke="var(--c-accent-ink)" stroke-width="2.5">
-            <g>
-              <circle cx="17" cy="22" r="9"/>
-              <circle cx="27" cy="22" r="9"/>
-              <animateTransform attributeName="transform" type="rotate" values="0 22 22;7 22 22;0 22 22;-7 22 22;0 22 22" dur="4s" repeatCount="indefinite"/>
-            </g>
-          </svg>
-        </div>
-        <div>
-          <p style="margin:0;font-size:17px;font-weight:800;color:var(--c-primary)">つながるEAT ↗</p>
-          <p style="margin:3px 0 0;font-size:13px;color:#5A6180">コミュニティ・場づくりの運営支援</p>
-        </div>
-      </a>
     </div>
   </div>
 </section>
@@ -204,7 +221,7 @@
   <div data-reveal="" style="position:relative;max-width:1120px;margin:0 auto">
     <p style="margin:0 0 12px;font-size:13px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Strength</p>
     <h2 style="margin:0 0 24px;font-size:clamp(26px,3vw,38px);font-weight:800;line-height:1.6;text-wrap:pretty;color:var(--c-primary)">自分たちが毎日使うアプリやサービス・仕組みを、<br data-om-id="81c82e9b:65">自分たちで作ってきた会社です。</h2>
-    <p style="margin:0 0 64px;font-size:16px;line-height:2.2;color:#5A6180;max-width:44em">宿の予約管理も、売上ダッシュボードも、まず自社の現場のために開発し、毎日使い、磨き続けています。だから机上の提案ではなく、「現場で本当に回る」システムをお届けできます。その証拠に、自社運営の宿はすべてAirbnb「ゲストチョイス」を獲得しています。</p>
+    <p style="margin:0 0 64px;font-size:16px;line-height:2.2;color:#5A6180;max-width:44em">宿の予約管理も、売上ダッシュボードも、まず自社の現場のために開発し、毎日使い、磨き続けています。だから机上の提案ではなく、「現場で本当に回る」システムをお届けできます。</p>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
       <div style="background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:28px 28px 32px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <p style="margin:0 0 10px;font-size:18px;font-weight:800;color:var(--c-primary)">現場に入り込む</p>
@@ -330,8 +347,28 @@ class Component extends DCLogic {
     this._observeReveals = () => document.querySelectorAll('[data-reveal]:not(.reveal-in)').forEach(el => this._io.observe(el));
     setTimeout(this._observeReveals, 400);
     setTimeout(this._observeReveals, 1500);
+    // CSS animation can be disabled by OS/browser motion settings, so drive the
+    // client logo lane directly to guarantee the requested continuous movement.
+    this._logoOffset = 0;
+    this._logoLastFrame = performance.now();
+    this._moveClientLogos = (now) => {
+      const track = document.querySelector('.client-track');
+      const firstGroup = track?.querySelector('.client-group');
+      if (track && firstGroup && firstGroup.offsetWidth > 0) {
+        const elapsed = Math.min(now - this._logoLastFrame, 50);
+        this._logoOffset = (this._logoOffset + elapsed * 0.045) % firstGroup.offsetWidth;
+        track.style.animation = 'none';
+        track.style.transform = `translate3d(${-this._logoOffset}px,0,0)`;
+      }
+      this._logoLastFrame = now;
+      this._logoFrame = requestAnimationFrame(this._moveClientLogos);
+    };
+    this._logoFrame = requestAnimationFrame(this._moveClientLogos);
   }
-  componentWillUnmount() { if (this._io) this._io.disconnect(); }
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._logoFrame) cancelAnimationFrame(this._logoFrame);
+  }
   componentDidUpdate() { this._applyPalette(); }
   renderVals() {
     const count = this.props.newsCount ?? 4;
