@@ -22,13 +22,30 @@
   @keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,60px)}}
   @keyframes revealIn{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
   @keyframes clientMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes worksAurora{from{opacity:.38;transform:scale(.9) translate3d(-2%,2%,0)}to{opacity:.78;transform:scale(1.12) translate3d(2%,-2%,0)}}
+  @keyframes worksScan{0%,12%{left:-28%;opacity:0}22%{opacity:1}68%{opacity:.65}82%,100%{left:118%;opacity:0}}
+  @keyframes worksCardEnter{from{opacity:0;transform:translateY(34px) scale(.975);filter:blur(3px)}to{opacity:1;transform:none;filter:blur(0)}}
+  @keyframes logoDrift{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-7px) scale(1.025)}}
   .reveal-in{animation:revealIn .9s cubic-bezier(.22,.8,.3,1) both}
+  .works-section{position:relative;overflow:hidden;isolation:isolate;background-image:linear-gradient(rgba(67,160,71,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(67,160,71,.028) 1px,transparent 1px);background-size:52px 52px}
+  .works-motion-layer{position:absolute;inset:0;z-index:-1;pointer-events:none;transform:translate3d(var(--works-x,0),var(--works-y,0),0);transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+  .works-aurora{position:absolute;width:640px;height:640px;right:-160px;top:15%;border-radius:50%;background:radial-gradient(circle,rgba(67,160,71,.16),rgba(191,227,255,.08) 42%,transparent 70%);filter:blur(34px);animation:worksAurora 6.5s ease-in-out infinite alternate}
+  .works-scan{position:absolute;top:0;bottom:0;left:-28%;width:20%;background:linear-gradient(90deg,transparent,rgba(67,160,71,.025),rgba(67,160,71,.09),transparent);transform:skewX(-16deg);animation:worksScan 9s cubic-bezier(.4,0,.2,1) infinite}
+  .work-card{position:relative;overflow:hidden}
+  .work-card:after{content:"";position:absolute;width:170px;height:170px;left:-110px;top:-120px;border-radius:50%;background:rgba(67,160,71,.14);filter:blur(48px);opacity:0;transition:opacity .35s,left .35s,top .35s;pointer-events:none}
+  .work-card:hover:after{opacity:1;left:-35px;top:-45px}
+  .works-section.reveal-in .work-card{animation:worksCardEnter .8s cubic-bezier(.2,.7,.2,1) both}
+  .works-section.reveal-in .work-card:nth-child(2){animation-delay:.11s}
+  .works-section.reveal-in .work-card:nth-child(3){animation-delay:.22s}
   .client-marquee{overflow:hidden;padding:10px 0 22px;mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
   .client-track{display:flex;width:max-content;animation:clientMarquee 30s linear infinite;will-change:transform}
   .client-group{display:flex;gap:20px;padding-right:20px}
-  .client-logo{width:248px;height:112px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;position:relative;background:#fff;border:1px solid #E3EAE1;border-radius:16px;padding:20px 26px;box-shadow:0 8px 24px rgba(30,39,97,.055);transition:transform .25s,box-shadow .25s,border-color .25s}
-  .client-logo:hover{transform:translateY(-4px);border-color:#BCD9BF;box-shadow:0 14px 34px rgba(30,39,97,.11)}
-  .client-logo img{display:block;max-width:180px;max-height:68px;width:auto;height:auto;object-fit:contain}
+  .client-logo{width:248px;height:112px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;position:relative;padding:16px 20px;transition:transform .25s,opacity .25s}
+  .client-logo:hover{transform:scale(1.035);opacity:.78}
+  .client-logo img{display:block;max-width:190px;max-height:72px;width:auto;height:auto;object-fit:contain}
+  .client-logo img{animation:logoDrift 4.8s ease-in-out infinite}
+  .client-logo:nth-child(2n) img{animation-delay:-1.6s;animation-duration:5.5s}
+  .client-logo:nth-child(3n) img{animation-delay:-3.1s;animation-duration:6.2s}
   .client-logo--square img{max-width:76px;max-height:76px}
   .client-logo__badge{position:absolute;right:11px;bottom:9px;font-size:9px;font-weight:800;letter-spacing:.1em;color:#7A819B}
   @media(max-width:700px){
@@ -147,27 +164,28 @@
   </div>
 </section>
 
-<section id="works" data-screen-label="Works" data-reveal="" style="padding:112px 80px;background:#FFFFFF">
-  <div style="max-width:1120px;margin:0 auto">
+<section id="works" class="works-section" data-screen-label="Works" data-reveal="" style="padding:112px 80px;background-color:#FFFFFF">
+  <div class="works-motion-layer" aria-hidden="true"><span class="works-aurora"></span><span class="works-scan"></span></div>
+  <div style="position:relative;max-width:1120px;margin:0 auto">
     <p style="margin:0 0 12px;font-size:13px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Works</p>
     <h2 style="margin:0 0 12px;font-size:30px;font-weight:800;color:var(--c-primary)">つくっているもの、伴走している相手。</h2>
     <p style="margin:0 0 48px;font-size:16px;line-height:2.1;color:#5A6180;max-width:42em">飾らずに、実際に動いているもの・ご一緒している相手だけを載せています。</p>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
-      <div style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
+      <div class="work-card" style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <div style="position:relative;height:190px;border-radius:12px;overflow:hidden;margin-bottom:20px;border:1px solid #E3EAE1">
           <img src="./assets/dashboard.webp" alt="Seeds ダッシュボードの実画面（売上分析）" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top">
         </div>
         <p style="margin:0 0 8px;font-size:18px;font-weight:800;color:var(--c-primary)">Seeds ダッシュボード</p>
         <p style="margin:0;font-size:14px;line-height:2;color:#5A6180">予約サイト（Beds24）のAPIからデータを取り込み、稼働率・ADR・売上を毎朝確認。AIエージェントが数字を監視して価格戦略を提案し、行政へ毎月提出する宿泊税の書類も予約データから自動生成。自社の宿泊運営を毎日これで回しています。</p>
       </div>
-      <div style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
+      <div class="work-card" style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <div style="position:relative;height:190px;border-radius:12px;overflow:hidden;margin-bottom:20px;border:1px solid #E3EAE1">
           <img src="./assets/tsunagaru.webp" alt="つながるBARアプリの実画面（売上ダッシュボード・デモデータ）" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top">
         </div>
         <p style="margin:0 0 8px;font-size:18px;font-weight:800;color:var(--c-primary)">つながるBARアプリ</p>
         <p style="margin:0;font-size:14px;line-height:2;color:#5A6180">飲食店の売上管理アプリ。来店客をスマホで1件ずつ登録するだけで、全店舗の売上・客数・客単価・営業利益までを一元ダッシュボードに。写真付きの顧客台帳や、QRを読むと「今この店にいる人」が見えるお客さん用ページ&ldquo;here&rdquo;も備えています。</p>
       </div>
-      <div style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
+      <div class="work-card" style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <div style="position:relative;height:190px;border-radius:12px;overflow:hidden;margin-bottom:20px;border:1px solid #E3EAE1">
           <img src="./assets/athlens.webp" alt="ATHLENSの画面（選手の今が、ひと目でわかる）" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left center">
         </div>
@@ -340,6 +358,9 @@ class Component extends DCLogic {
   }
   componentDidMount() {
     this._applyPalette();
+    if (location.hash) {
+      setTimeout(() => document.querySelector(location.hash)?.scrollIntoView(), 250);
+    }
     // fail-visible reveal: elements stay visible by default; entering the viewport just plays an animation class
     this._io = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('reveal-in'); this._io.unobserve(e.target); } });
@@ -364,10 +385,30 @@ class Component extends DCLogic {
       this._logoFrame = requestAnimationFrame(this._moveClientLogos);
     };
     this._logoFrame = requestAnimationFrame(this._moveClientLogos);
+    this._worksSection = document.querySelector('.works-section');
+    if (this._worksSection && matchMedia('(pointer:fine)').matches) {
+      this._moveWorksLight = (event) => {
+        const rect = this._worksSection.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+        this._worksSection.style.setProperty('--works-x', `${x * -18}px`);
+        this._worksSection.style.setProperty('--works-y', `${y * -12}px`);
+      };
+      this._resetWorksLight = () => {
+        this._worksSection.style.setProperty('--works-x', '0px');
+        this._worksSection.style.setProperty('--works-y', '0px');
+      };
+      this._worksSection.addEventListener('pointermove', this._moveWorksLight, { passive:true });
+      this._worksSection.addEventListener('pointerleave', this._resetWorksLight);
+    }
   }
   componentWillUnmount() {
     if (this._io) this._io.disconnect();
     if (this._logoFrame) cancelAnimationFrame(this._logoFrame);
+    if (this._worksSection && this._moveWorksLight) {
+      this._worksSection.removeEventListener('pointermove', this._moveWorksLight);
+      this._worksSection.removeEventListener('pointerleave', this._resetWorksLight);
+    }
   }
   componentDidUpdate() { this._applyPalette(); }
   renderVals() {
