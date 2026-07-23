@@ -71,7 +71,7 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
       <article style="background:#fff;border:1px solid #DDE1EA;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-8px);box-shadow:0 20px 50px rgba(30,39,97,.12)">
         <div style="position:relative;height:240px">
-          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="svc-stay" shape="rect" placeholder="民泊施設の写真をドロップ" hint-size="100%,240px" style="position:absolute;inset:0"></x-import>
+          <img src="./assets/stay.webp" alt="SeedsStayの客室" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
         </div>
         <div style="padding:32px 36px 40px;display:flex;flex-direction:column;gap:14px">
           <p style="margin:0;font-size:12px;font-weight:800;letter-spacing:.2em;color:#5A6180">STAY &amp; COMMUNITY</p>
@@ -81,7 +81,7 @@
       </article>
       <article style="background:#fff;border:1px solid #DDE1EA;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-8px);box-shadow:0 20px 50px rgba(30,39,97,.12)">
         <div style="position:relative;height:240px">
-          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="svc-it" shape="rect" placeholder="開発・ダッシュボードの画面をドロップ" hint-size="100%,240px" style="position:absolute;inset:0"></x-import>
+          <img src="./assets/dashboard.webp" alt="自社開発の売上分析ダッシュボード" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top">
         </div>
         <div style="padding:32px 36px 40px;display:flex;flex-direction:column;gap:14px">
           <p style="margin:0;font-size:12px;font-weight:800;letter-spacing:.2em;color:#5A6180">IT &amp; DATA</p>
@@ -122,7 +122,7 @@
     <h2 style="margin:0 0 56px;font-size:30px;font-weight:800;color:var(--c-primary)">代表プロフィール</h2>
     <div style="display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start">
       <div style="position:relative;height:400px;border-radius:20px;overflow:hidden;box-shadow:0 12px 40px rgba(30,39,97,.10)">
-        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ceo-photo" shape="rect" placeholder="代表の写真をドロップ" hint-size="340px,400px" style="position:absolute;inset:0"></x-import>
+        <img src="./assets/ceo.webp" alt="代表社員 豊島寛也" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top">
       </div>
       <div style="display:flex;flex-direction:column;gap:20px">
         <div>
