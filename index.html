@@ -1,8 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ToyoSeeds合同会社｜ワクワクする場所を、つくる。</title>
+<meta name="description" content="ToyoSeeds合同会社は、福岡で宿泊施設や場を運営し、現場から生まれた知見をもとにシステム開発・DX・AI活用を支援しています。">
+<meta name="theme-color" content="#1E2761">
+<link rel="canonical" href="https://www.toyoseeds.com/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="ToyoSeeds">
+<meta property="og:title" content="ToyoSeeds合同会社｜ワクワクする場所を、つくる。">
+<meta property="og:description" content="宿を営み、店を営み、その現場を自分たちのテクノロジーで回す。福岡を拠点に、場所づくりと企業のDX・AI活用を支援しています。">
+<meta property="og:url" content="https://www.toyoseeds.com/">
+<meta property="og:image" content="https://www.toyoseeds.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ToyoSeeds合同会社｜ワクワクする場所を、つくる。">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ToyoSeeds合同会社",
+  "url": "https://www.toyoseeds.com/",
+  "foundingDate": "2023-10-16",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "福岡県",
+    "addressLocality": "福岡市中央区",
+    "streetAddress": "天神4-6-28 天神ファーストビル7階"
+  },
+  "sameAs": [
+    "https://www.instagram.com/toyo_seeds/",
+    "https://www.youtube.com/@toyopianodiary"
+  ]
+}
+</script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -12,10 +47,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;family=Outfit:wght@500;600;700;800&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Montserrat:wght@500;600;700;800&amp;family=M+PLUS+Rounded+1c:wght@400;500;700;800&amp;family=Quicksand:wght@500;600;700&amp;family=Zen+Old+Mincho:wght@400;600;700;900&amp;family=Cormorant+Garamond:wght@500;600;700&amp;display=swap" rel="stylesheet">
 <style>
-  html{scroll-behavior:smooth}
-  body{--c-primary:#1E2761;--c-primary-deep:#141B4D;--c-accent:#43A047;--c-accent-on:#FFFFFF;--c-accent-ink:#1B5E20;--c-tag-ink:#2F7D52;--c-tag-bg:#E3F0E8;--f-jp:"Zen Kaku Gothic New","Hiragino Sans",Meiryo,sans-serif;--f-latin:Outfit,sans-serif;margin:0;font-family:var(--f-jp);background:#FFFFFF;color:#1A2142;-webkit-font-smoothing:antialiased}
+  html{scroll-behavior:smooth;overflow-x:hidden}
+  body{--c-primary:#1E2761;--c-primary-deep:#141B4D;--c-accent:#43A047;--c-accent-on:#FFFFFF;--c-accent-ink:#1B5E20;--c-tag-ink:#2F7D52;--c-tag-bg:#E3F0E8;--f-jp:"Zen Kaku Gothic New","Hiragino Sans",Meiryo,sans-serif;--f-latin:Outfit,sans-serif;margin:0;font-family:var(--f-jp);background:#FFFFFF;color:#1A2142;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:var(--c-primary);text-decoration:none}
   a:hover{color:var(--c-accent)}
+  a:focus-visible{outline:3px solid color-mix(in oklab,var(--c-accent),white 25%);outline-offset:4px}
+  img{max-width:100%}
+  section{scroll-margin-top:76px}
   @keyframes heroIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
   @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(70px,-50px) scale(1.12)}}
   @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,40px) scale(1.06)}}
@@ -42,7 +80,7 @@
   .hero-seeds i{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--c-accent);border:1px solid rgba(255,255,255,.8);box-shadow:0 0 12px color-mix(in oklab,var(--c-accent),transparent 25%);animation:seedPulse 2.4s ease-in-out infinite}
   .hero-seeds i:after{content:"";position:absolute;inset:-7px;border:1px solid color-mix(in oklab,var(--c-accent),transparent 48%);border-radius:50%;animation:seedRing 2.4s ease-out infinite}
   .hero-seeds i:nth-child(1){left:69%;top:24%;animation-delay:.1s}.hero-seeds i:nth-child(2){left:77%;top:37%;animation-delay:.55s}.hero-seeds i:nth-child(3){left:65%;top:51%;animation-delay:1s}.hero-seeds i:nth-child(4){left:82%;top:61%;animation-delay:1.45s}.hero-seeds i:nth-child(5){left:72%;top:75%;animation-delay:.8s}
-  .motion-section{position:relative!important;isolation:isolate}
+  .motion-section{position:relative!important;isolation:isolate;overflow:hidden}
   .motion-section:not(#works):not(#top):before{content:"";position:absolute;z-index:0;pointer-events:none;width:440px;height:440px;right:-170px;top:8%;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--c-accent),transparent 83%),transparent 68%);filter:blur(24px);opacity:0}
   .motion-section:nth-of-type(even):not(#works):not(#top):before{right:auto;left:-180px;top:35%}
   .motion-section.motion-in:not(#works):not(#top):before{animation:sectionGlowIn 1.4s cubic-bezier(.2,.7,.2,1) both}
@@ -111,8 +149,34 @@
   .client-logo__badge{position:absolute;right:11px;bottom:9px;font-size:9px;font-weight:800;letter-spacing:.1em;color:#7A819B}
   @media(max-width:1000px){
     .works-grid{grid-template-columns:1fr;max-width:680px;margin-inline:auto}
+    .desktop-nav{display:none!important}
+    .mission-grid,.services-grid,.strength-grid,.ceo-grid{grid-template-columns:1fr!important}
+    .mission-grid{gap:28px!important}
+    .services-grid,.strength-grid{gap:24px!important}
+    .ceo-grid{gap:40px!important}
+    .ceo-photo{width:min(100%,440px)}
+    #mission,#services,#model,#works,#strength,#ceo,#news,#company,#contact{padding:96px 40px!important}
   }
   @media(max-width:700px){
+    .site-header{padding:10px 16px!important;background:rgba(255,255,255,.88)!important;backdrop-filter:blur(14px);box-shadow:0 6px 24px rgba(30,39,97,.08)}
+    .motion-section{overflow:hidden}
+    .site-header>a{font-size:21px!important}
+    .header-actions{gap:8px!important}
+    .header-contact{padding:11px 16px!important;font-size:12px!important}
+    #top{min-height:auto!important}
+    .hero-content{padding:118px 24px 72px!important}
+    .hero-content>p:first-of-type{margin-bottom:20px!important;font-size:15px!important;line-height:1.8!important}
+    .hero-content h1{margin-bottom:30px!important;font-size:clamp(38px,12vw,52px)!important;line-height:1.35!important}
+    .hero-content h1+p{margin-bottom:34px!important;font-size:15px!important;line-height:2!important}
+    .hero-content h1+p br{display:none}
+    .hero-actions{flex-direction:column;gap:12px!important}
+    .hero-actions a{box-sizing:border-box;width:100%;padding:15px 22px!important;text-align:center}
+    #mission,#services,#model,#works,#strength,#ceo,#news,#company,#contact{padding:76px 24px!important}
+    #mission h2,#services h2,#works h2,#ceo h2,#news h2,#company h2{font-size:27px!important;line-height:1.55!important}
+    #strength h2 br{display:none}
+    #services article>div:last-child{padding:26px 24px 30px!important}
+    .work-card,.strength-card{padding:24px 22px 28px!important}
+    .clients-head{align-items:flex-start!important;flex-direction:column;gap:10px!important;margin-top:48px!important}
     .hero-seeds i:nth-child(n+4){display:none}
     .hero-scan{width:34%}
     .client-marquee{margin-inline:-28px;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
@@ -122,14 +186,31 @@
     .work-visual{height:224px}
     .phone-stage{gap:16px;padding-inline:18px}
     .phone-frame{width:106px;height:196px}
+    .ceo-photo{height:430px!important}
+    .ceo-name{font-size:28px!important}
+    .ceo-name span{display:block;margin:6px 0 0!important}
+    .news-head{align-items:flex-start!important;flex-direction:column;gap:16px}
+    .news-row{grid-template-columns:1fr!important;gap:8px!important;padding:20px 4px!important}
+    .news-row span:nth-child(2){justify-self:start}
+    .company-card{padding:8px 20px!important}
+    .company-grid{grid-template-columns:1fr!important;gap:0!important}
+    .company-grid>div:nth-child(odd){padding:16px 0 4px!important;border-bottom:0!important}
+    .company-grid>div:nth-child(even){padding:0 0 16px!important}
+    #contact>a{box-sizing:border-box;width:100%;max-width:360px;padding:17px 24px!important}
+    .site-footer{align-items:flex-start!important;flex-direction:column;gap:10px;padding:24px!important}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+    body.motion-ready .motion-item{opacity:1!important;transform:none!important}
   }
 </style>
 </helmet>
 
 <header class="site-header" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:transparent">
   <a href="#top" style="font-family:var(--f-latin);font-size:24px;font-weight:800;letter-spacing:.02em;color:var(--c-primary)">Toyo<span style="color:var(--c-accent)">Seeds</span></a>
-  <div style="display:flex;align-items:center;gap:16px">
-    <nav style="display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;letter-spacing:.06em;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-radius:999px;padding:8px 12px;box-shadow:0 4px 24px rgba(30,39,97,.08)">
+  <div class="header-actions" style="display:flex;align-items:center;gap:16px">
+    <nav class="desktop-nav" aria-label="メインナビゲーション" style="display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;letter-spacing:.06em;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-radius:999px;padding:8px 12px;box-shadow:0 4px 24px rgba(30,39,97,.08)">
       <a href="#mission" style="padding:8px 16px;border-radius:999px;transition:background .2s" style-hover="background:#F0F3F7">Mission</a>
       <a href="#services" style="padding:8px 16px;border-radius:999px;transition:background .2s" style-hover="background:#F0F3F7">Services</a>
       <a href="#works" style="padding:8px 16px;border-radius:999px;transition:background .2s" style-hover="background:#F0F3F7">Works</a>
@@ -138,7 +219,7 @@
       <a href="#news" style="padding:8px 16px;border-radius:999px;transition:background .2s" style-hover="background:#F0F3F7">News</a>
       <a href="#company" style="padding:8px 16px;border-radius:999px;transition:background .2s" style-hover="background:#F0F3F7">Company</a>
     </nav>
-    <a href="#contact" style="background:linear-gradient(135deg,var(--c-accent),color-mix(in oklab,var(--c-accent),white 35%));color:var(--c-accent-on);padding:14px 32px;border-radius:999px;font-size:14px;font-weight:800;letter-spacing:.06em;box-shadow:0 6px 20px color-mix(in oklab,var(--c-accent),transparent 60%);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 10px 28px color-mix(in oklab,var(--c-accent),transparent 45%)">お問い合わせ</a>
+    <a class="header-contact" href="#contact" style="background:linear-gradient(135deg,var(--c-accent),color-mix(in oklab,var(--c-accent),white 35%));color:var(--c-accent-on);padding:14px 32px;border-radius:999px;font-size:14px;font-weight:800;letter-spacing:.06em;box-shadow:0 6px 20px color-mix(in oklab,var(--c-accent),transparent 60%);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 10px 28px color-mix(in oklab,var(--c-accent),transparent 45%)">お問い合わせ</a>
   </div>
 </header>
 
@@ -147,11 +228,11 @@
   <div style="position:absolute;top:-15%;right:-10%;width:56vw;height:56vw;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--c-accent),white 55%) 0%,transparent 65%);filter:blur(40px);opacity:.7;animation:drift1 14s ease-in-out infinite;pointer-events:none"></div>
   <div style="position:absolute;bottom:-20%;left:-12%;width:50vw;height:50vw;border-radius:50%;background:radial-gradient(circle,#BFE3FF 0%,transparent 65%);filter:blur(50px);opacity:.65;animation:drift2 18s ease-in-out infinite;pointer-events:none"></div>
   <div style="position:absolute;top:30%;left:38%;width:34vw;height:34vw;border-radius:50%;background:radial-gradient(circle,#E8F6D9 0%,transparent 65%);filter:blur(46px);opacity:.8;animation:drift3 16s ease-in-out infinite;pointer-events:none"></div>
-  <div style="position:relative;max-width:1200px;margin:0 auto;padding:140px clamp(28px,5vw,80px) 96px;animation:heroIn 1s ease both">
+  <div class="hero-content" style="position:relative;max-width:1200px;margin:0 auto;padding:140px clamp(28px,5vw,80px) 96px;animation:heroIn 1s ease both">
     <p style="margin:0 0 28px;font-size:clamp(16px,1.6vw,22px);font-weight:800;color:var(--c-primary);letter-spacing:.04em">泊まる場所も、集う場所も、働く現場も。</p>
     <h1 style="margin:0 0 44px;font-size:clamp(38px,6vw,80px);line-height:1.4;font-weight:900;color:var(--c-primary);letter-spacing:.02em;text-wrap:pretty">ワクワクする場所を、<br>つくる。</h1>
     <p style="margin:0 0 48px;font-size:16px;line-height:2.4;color:#5A6180;max-width:38em">ToyoSeedsは、福岡で「ワクワクする場所づくり」を軸に事業を育てる会社です。<br>自社で宿を営み、店を営み、その現場を自分たちのテクノロジーで回す。<br>そこで生まれたノウハウで、企業のシステム開発・DX・AI活用を支援しています。</p>
-    <div style="display:flex;gap:16px">
+    <div class="hero-actions" style="display:flex;gap:16px">
       <a href="#services" style="background:linear-gradient(135deg,var(--c-accent),color-mix(in oklab,var(--c-accent),white 35%));color:var(--c-accent-on);font-weight:800;font-size:15px;padding:16px 40px;border-radius:999px;box-shadow:0 6px 20px color-mix(in oklab,var(--c-accent),transparent 60%);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 12px 30px color-mix(in oklab,var(--c-accent),transparent 45%)">事業を見る</a>
       <a href="#mission" style="border:1.5px solid #C6CDD9;color:var(--c-primary);font-weight:700;font-size:15px;padding:16px 40px;border-radius:999px;background:rgba(255,255,255,.7);transition:border-color .2s,color .2s" style-hover="border-color:var(--c-accent);color:var(--c-accent)">わたしたちについて</a>
     </div>
@@ -161,7 +242,7 @@
 <section id="mission" data-screen-label="Mission" data-reveal="" style="padding:128px 80px;max-width:1120px;margin:0 auto">
   <p style="margin:0 0 12px;font-size:13px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Mission</p>
   <h2 style="margin:0 0 40px;font-size:34px;font-weight:800;color:var(--c-primary);line-height:1.5;text-wrap:pretty">ワクワクは、つくれる。</h2>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
+  <div class="mission-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start">
     <p style="margin:0;font-size:17px;line-height:2.2;color:#1A2142">宿に泊まった人の「また来たい」。店で生まれる「また会いたい」。システムを使う現場の「仕事が楽になった」。——私たちのつくりたいワクワクは、ふわっとした気分ではなく、場所と仕組みが生む具体的な体験のことです。</p>
     <p style="margin:0;font-size:17px;line-height:2.2;color:#1A2142">そのために、宿も、店も、システムも、自分たちの手でつくり、毎日自分たちで使いながら磨いています。小さくつくって、現場で試して、少しずつ良くする。この繰り返しで「また来たい」「また使いたい」を積み重ね、ワクワクする場所を福岡から日本中に増やしていきます。</p>
   </div>
@@ -171,7 +252,7 @@
   <div style="max-width:1120px;margin:0 auto">
     <p style="margin:0 0 12px;font-size:13px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Services</p>
     <h2 style="margin:0 0 56px;font-size:30px;font-weight:800;color:var(--c-primary)">2つの事業</h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+    <div class="services-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
       <article style="background:#fff;border:1px solid #DDE1EA;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-8px);box-shadow:0 20px 50px rgba(30,39,97,.12)">
         <div style="position:relative;height:380px">
           <img src="./assets/dashboard.webp" alt="自社開発の売上分析ダッシュボード" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top">
@@ -268,7 +349,7 @@
         <p style="margin:0;font-size:14px;line-height:2;color:#5A6180">店のQRを読むと「今この店に誰がいるか」が見える、お客さん用ページ&ldquo;here&rdquo;。初回に名前とひとことを登録するだけで自動チェックインされ、その場の出会いが生まれます。裏側では来店ログから全店舗の売上・客数・営業利益までを一元管理しています。</p>
       </div>
     </div>
-    <div style="display:flex;align-items:end;justify-content:space-between;gap:24px;margin:64px 0 18px">
+    <div class="clients-head" style="display:flex;align-items:end;justify-content:space-between;gap:24px;margin:64px 0 18px">
       <div>
         <p style="margin:0 0 8px;font-size:13px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Clients — 得意先</p>
         <p style="margin:0;font-size:14px;color:#5A6180">ご一緒している企業・プロジェクト</p>
@@ -315,7 +396,7 @@
     <p style="margin:0 0 12px;font-size:13px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Strength</p>
     <h2 style="margin:0 0 24px;font-size:clamp(26px,3vw,38px);font-weight:800;line-height:1.6;text-wrap:pretty;color:var(--c-primary)">自分たちが毎日使うアプリやサービス・仕組みを、<br data-om-id="81c82e9b:65">自分たちで作ってきた会社です。</h2>
     <p style="margin:0 0 64px;font-size:16px;line-height:2.2;color:#5A6180;max-width:44em">宿の予約管理も、売上ダッシュボードも、まず自社の現場のために開発し、毎日使い、磨き続けています。だから机上の提案ではなく、「現場で本当に回る」システムをお届けできます。</p>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+    <div class="strength-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
       <div class="strength-card" style="background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:28px 28px 32px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <div class="strength-card__head">
           <div class="strength-icon strength-icon--field" aria-hidden="true">
@@ -372,14 +453,14 @@
   <div style="max-width:1120px;margin:0 auto">
     <p style="margin:0 0 12px;font-family:var(--f-latin);font-size:13px;font-weight:800;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">CEO</p>
     <h2 style="margin:0 0 56px;font-size:30px;font-weight:800;color:var(--c-primary)">代表プロフィール</h2>
-    <div style="display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start">
-      <div style="position:relative;height:400px;border-radius:20px;overflow:hidden;box-shadow:0 12px 40px rgba(30,39,97,.10)">
+    <div class="ceo-grid" style="display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start">
+      <div class="ceo-photo" style="position:relative;height:400px;border-radius:20px;overflow:hidden;box-shadow:0 12px 40px rgba(30,39,97,.10)">
         <img src="./assets/ceo.webp" alt="代表社員 豊島寛也" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top">
       </div>
       <div style="display:flex;flex-direction:column;gap:20px">
         <div>
           <p style="margin:0 0 6px;font-size:13px;font-weight:700;letter-spacing:.14em;color:#5A6180">代表社員</p>
-          <p style="margin:0;font-size:32px;font-weight:800;color:var(--c-primary)">豊島 寛也 <span style="font-family:var(--f-latin);font-size:15px;font-weight:700;color:#5A6180;margin-left:12px">Hiroya Toyoshima</span></p>
+          <p class="ceo-name" style="margin:0;font-size:32px;font-weight:800;color:var(--c-primary)">豊島 寛也 <span style="font-family:var(--f-latin);font-size:15px;font-weight:700;color:#5A6180;margin-left:12px">Hiroya Toyoshima</span></p>
         </div>
         <div class="ceo-points" aria-label="豊島寛也の3つの特徴">
           <span class="ceo-point">現場を自分で回す</span>
@@ -411,7 +492,7 @@
 </section>
 
 <section id="news" data-screen-label="News" data-reveal="" style="padding:112px 80px;max-width:1120px;margin:0 auto">
-  <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px">
+  <div class="news-head" style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px">
     <div>
       <p style="margin:0 0 12px;font-size:13px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">News</p>
       <h2 style="margin:0;font-size:30px;font-weight:800;color:var(--c-primary)">社長日記・お知らせ</h2>
@@ -420,7 +501,7 @@
   </div>
   <div style="display:flex;flex-direction:column">
     <sc-for list="{{ news }}" as="item" hint-placeholder-count="4">
-      <a href="{{ item.url }}" style="display:grid;grid-template-columns:130px 110px 1fr;gap:24px;align-items:baseline;padding:22px 8px;border-top:1px solid #DDE1EA;color:#1A2142" style-hover="background:#F7F8FB;color:var(--c-primary)">
+      <a class="news-row" href="{{ item.url }}" style="display:grid;grid-template-columns:130px 110px 1fr;gap:24px;align-items:baseline;padding:22px 8px;border-top:1px solid #DDE1EA;color:#1A2142" style-hover="background:#F7F8FB;color:var(--c-primary)">
         <span style="font-size:13.5px;color:#5A6180;font-variant-numeric:tabular-nums">{{ item.date }}</span>
         <span style="font-size:11.5px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center">{{ item.tag }}</span>
         <span style="font-size:15.5px;font-weight:600">{{ item.title }}</span>
@@ -433,8 +514,8 @@
   <div data-reveal="" style="max-width:840px;margin:0 auto">
     <p style="margin:0 0 12px;font-size:13px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Company</p>
     <h2 style="margin:0 0 48px;font-size:30px;font-weight:800;color:var(--c-primary)">会社概要</h2>
-    <div style="background:#fff;border:1px solid #DDE1EA;border-radius:16px;padding:16px 40px">
-      <div style="display:grid;grid-template-columns:160px 1fr;gap:0 24px;font-size:15px;line-height:1.8">
+    <div class="company-card" style="background:#fff;border:1px solid #DDE1EA;border-radius:16px;padding:16px 40px">
+      <div class="company-grid" style="display:grid;grid-template-columns:160px 1fr;gap:0 24px;font-size:15px;line-height:1.8">
         <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180">会社名</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA">ToyoSeeds合同会社</div>
         <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180">代表社員</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA">豊島 寛也</div>
         <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180">創立</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA">2023年10月16日</div>
@@ -457,7 +538,7 @@
 
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#263238"></rect><text x="50" y="62" font-family="sans-serif" font-size="34" font-weight="800" text-anchor="middle" fill="#FFFFFF">T<tspan fill="#43A047">S</tspan></text></svg></template>
 
-<footer style="display:flex;align-items:center;justify-content:space-between;padding:28px 48px;background:var(--c-primary-deep);color:rgba(255,255,255,.6);font-size:13px">
+<footer class="site-footer" style="display:flex;align-items:center;justify-content:space-between;padding:28px 48px;background:var(--c-primary-deep);color:rgba(255,255,255,.6);font-size:13px">
   <span style="font-family:var(--f-latin);font-weight:800;font-size:16px;color:#fff">Toyo<span style="color:var(--c-accent)">Seeds</span></span>
   <span>© ToyoSeeds LLC.</span>
 </footer>
