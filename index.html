@@ -59,11 +59,11 @@
   @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,40px) scale(1.06)}}
   @keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,60px)}}
   @keyframes revealIn{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
-  @keyframes clientMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
   @keyframes worksAurora{from{opacity:.38;transform:scale(.9) translate3d(-2%,2%,0)}to{opacity:.78;transform:scale(1.12) translate3d(2%,-2%,0)}}
   @keyframes worksScan{0%,12%{left:-28%;opacity:0}22%{opacity:1}68%{opacity:.65}82%,100%{left:118%;opacity:0}}
   @keyframes worksCardEnter{from{opacity:0;transform:translateY(34px) scale(.975);filter:blur(3px)}to{opacity:1;transform:none;filter:blur(0)}}
-  @keyframes logoDrift{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-7px) scale(1.025)}}
+
   @keyframes motionItemIn{from{opacity:0;transform:translateY(30px) scale(.985);filter:blur(2px)}to{opacity:1;transform:none;filter:blur(0)}}
   @keyframes sectionGlowIn{0%{opacity:0;transform:translate3d(-8%,8%,0) scale(.75)}55%{opacity:.75}100%{opacity:.42;transform:translate3d(0,0,0) scale(1)}}
   @keyframes heroScan{0%,10%{left:-30%;opacity:0}20%{opacity:.8}65%{opacity:.5}78%,100%{left:120%;opacity:0}}
@@ -119,7 +119,7 @@
   .works-motion-layer{position:absolute;inset:0;z-index:-1;pointer-events:none;transform:translate3d(var(--works-x,0),var(--works-y,0),0);transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
   .works-aurora{position:absolute;width:640px;height:640px;right:-160px;top:15%;border-radius:50%;background:radial-gradient(circle,rgba(67,160,71,.16),rgba(191,227,255,.08) 42%,transparent 70%);filter:blur(34px);animation:worksAurora 6.5s ease-in-out infinite alternate}
   .works-scan{position:absolute;top:0;bottom:0;left:-28%;width:20%;background:linear-gradient(90deg,transparent,rgba(67,160,71,.025),rgba(67,160,71,.09),transparent);transform:skewX(-16deg);animation:worksScan 9s cubic-bezier(.4,0,.2,1) infinite}
-  .works-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;align-items:stretch}
+  .works-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;align-items:stretch}
   .work-card{position:relative;overflow:hidden}
   .work-visual{position:relative;height:232px;box-sizing:border-box;margin-bottom:20px;border:1px solid #E3EAE1;border-radius:12px;overflow:hidden;background:#F3F6F1}
   .work-visual>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -135,18 +135,7 @@
   .work-card:hover:after{opacity:1;left:-35px;top:-45px}
   .works-section.reveal-in .work-card{animation:worksCardEnter .8s cubic-bezier(.2,.7,.2,1) backwards}
   .works-section.reveal-in .work-card:nth-child(2){animation-delay:.11s}
-  .works-section.reveal-in .work-card:nth-child(3){animation-delay:.22s}
-  .client-marquee{overflow:hidden;padding:10px 0 22px;mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-  .client-track{display:flex;width:max-content;animation:clientMarquee 30s linear infinite;will-change:transform}
-  .client-group{display:flex;gap:20px;padding-right:20px}
-  .client-logo{width:248px;height:112px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;position:relative;padding:16px 20px;transition:transform .25s,opacity .25s}
-  .client-logo:hover{transform:scale(1.035);opacity:.78}
-  .client-logo img{display:block;max-width:190px;max-height:72px;width:auto;height:auto;object-fit:contain}
-  .client-logo img{animation:logoDrift 4.8s ease-in-out infinite}
-  .client-logo:nth-child(2n) img{animation-delay:-1.6s;animation-duration:5.5s}
-  .client-logo:nth-child(3n) img{animation-delay:-3.1s;animation-duration:6.2s}
-  .client-logo--square img{max-width:76px;max-height:76px}
-  .client-logo__badge{position:absolute;right:11px;bottom:9px;font-size:9px;font-weight:800;letter-spacing:.1em;color:#7A819B}
+
   @media(max-width:1000px){
     .works-grid{grid-template-columns:1fr;max-width:680px;margin-inline:auto}
     .desktop-nav{display:none!important}
@@ -193,13 +182,10 @@
     #model .model-loop>div:last-child{grid-column:2;grid-row:1}
     #model .model-loop svg{grid-column:1/-1;grid-row:2;width:min(250px,76vw)!important;margin:-28px auto!important}
     .work-card,.strength-card{padding:24px 22px 28px!important}
-    .clients-head{align-items:flex-start!important;flex-direction:column;gap:10px!important;margin-top:48px!important}
+
     .hero-seeds i:nth-child(n+4){display:none}
     .hero-scan{width:34%}
-    .client-marquee{margin-inline:-28px;mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
-    .client-logo{width:210px;height:100px;padding:18px 22px}
-    .client-logo img{max-width:158px;max-height:58px}
-    .client-logo--square img{max-width:66px;max-height:66px}
+
     .work-visual{height:170px;max-height:38svh}
     .phone-stage{gap:16px;padding-inline:18px}
     .phone-frame{width:80px;height:148px}
@@ -280,8 +266,8 @@
         <div style="padding:32px 36px 40px;display:flex;flex-direction:column;gap:14px">
           <p style="margin:0;font-size:12px;font-weight:800;letter-spacing:.2em;color:var(--c-accent-ink)">AI &amp; DATA</p>
           <h3 style="margin:0;font-size:22px;font-weight:800;color:var(--c-primary);border-bottom:4px solid var(--c-accent);align-self:flex-start;padding-bottom:6px">IT・データ活用事業</h3>
-          <p style="margin:0;font-size:15px;line-height:2;color:#1A2142"><strong style="color:var(--c-primary)">現場に入り込み、要件をその場で掴み、AIで一気に作る。</strong>業務システムの受託開発、売上・顧客データの可視化、AI活用研修「AIKATA」、プロスポーツチームのデータ基盤まで。自社の宿泊事業を毎日この技術で回しているからこそ、机上ではなく「現場で本当に回る」仕組みを届けられます。</p>
-          <a href="#works" style="align-self:flex-start;margin-top:4px;font-size:14px;font-weight:800;color:var(--c-accent);letter-spacing:.02em" style-hover="color:var(--c-primary)">開発事例・得意先を見る →</a>
+          <p style="margin:0;font-size:15px;line-height:2;color:#1A2142"><strong style="color:var(--c-primary)">現場に入り込み、要件をその場で掴み、AIで素早く形にする。</strong>業務システムの開発、売上・顧客データの可視化、帳票の自動化、AI活用研修の設計など、自社の宿泊・店舗運営で培った技術をもとに、現場で実際に使える仕組みをつくります。</p>
+          <a href="#works" style="align-self:flex-start;margin-top:4px;font-size:14px;font-weight:800;color:var(--c-accent);letter-spacing:.02em" style-hover="color:var(--c-primary)">開発事例を見る →</a>
         </div>
       </article>
       <article style="background:#fff;border:1px solid #DDE1EA;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-8px);box-shadow:0 20px 50px rgba(30,39,97,.12)">
@@ -339,8 +325,8 @@
   <div class="works-motion-layer" aria-hidden="true"><span class="works-aurora"></span><span class="works-scan"></span></div>
   <div style="position:relative;max-width:1120px;margin:0 auto">
     <p style="margin:0 0 12px;font-size:13px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Works</p>
-    <h2 style="margin:0 0 12px;font-size:30px;font-weight:800;color:var(--c-primary)">つくっているもの、伴走している相手。</h2>
-    <p style="margin:0 0 48px;font-size:16px;line-height:2.1;color:#5A6180;max-width:42em">飾らずに、実際に動いているもの・ご一緒している相手だけを載せています。</p>
+    <h2 style="margin:0 0 12px;font-size:30px;font-weight:800;color:var(--c-primary)">自分たちの現場で、実際に使っているもの。</h2>
+    <p style="margin:0 0 48px;font-size:16px;line-height:2.1;color:#5A6180;max-width:42em">宿と店舗の運営から生まれ、日々使いながら改善している仕組みだけを紹介します。</p>
     <div class="works-grid">
       <div class="work-card" style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <div class="work-visual work-visual--desktop">
@@ -348,13 +334,6 @@
         </div>
         <p style="margin:0 0 8px;font-size:18px;font-weight:800;color:var(--c-primary)">Minpaku OS</p>
         <p style="margin:0;font-size:14px;line-height:2;color:#5A6180">予約サイト（Beds24）のAPIからデータを取り込み、稼働率・ADR・売上を毎朝確認。AIエージェントが数字を監視して価格戦略を提案し、行政へ毎月提出する宿泊税の書類も予約データから自動生成。自社の宿泊運営を毎日これで回しています。</p>
-      </div>
-      <div class="work-card" style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
-        <div class="work-visual work-visual--desktop">
-          <img src="./assets/athlens.webp" alt="ATHLENSの画面（選手の今が、ひと目でわかる）" loading="lazy">
-        </div>
-        <p style="margin:0 0 8px;font-size:18px;font-weight:800;color:var(--c-primary)">ATHLENS <span style="margin-left:6px;font-size:10.5px;font-weight:800;letter-spacing:.08em;color:var(--c-accent-ink);background:var(--c-tag-bg);border-radius:999px;padding:3px 9px;vertical-align:middle">開発中</span></p>
-        <p style="margin:0;font-size:14px;line-height:2;color:#5A6180">「選手の今が、ひと目でわかる。」スポーツチーム向けのパフォーマンス管理システム。トラッキングデータと負荷・ウェルネス・体組成・ケガ対応をひとつの画面に集め、コンディションの変化を検知して&ldquo;今日見るべき選手&rdquo;を知らせます。</p>
       </div>
       <div class="work-card" style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <div class="work-visual phone-stage" aria-label="つながるBARアプリのスマートフォン画面">
@@ -367,44 +346,6 @@
         </div>
         <p style="margin:0 0 8px;font-size:18px;font-weight:800;color:var(--c-primary)">つながるBARアプリ</p>
         <p style="margin:0;font-size:14px;line-height:2;color:#5A6180">店のQRを読むと「今この店に誰がいるか」が見える、お客さん用ページ&ldquo;here&rdquo;。初回に名前とひとことを登録するだけで自動チェックインされ、その場の出会いが生まれます。裏側では来店ログから全店舗の売上・客数・営業利益までを一元管理しています。</p>
-      </div>
-    </div>
-    <div class="clients-head" style="display:flex;align-items:end;justify-content:space-between;gap:24px;margin:64px 0 18px">
-      <div>
-        <p style="margin:0 0 8px;font-size:13px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Clients — 得意先</p>
-        <p style="margin:0;font-size:14px;color:#5A6180">ご一緒している企業・プロジェクト</p>
-      </div>
-      <p style="margin:0;font-size:11px;color:#8A91A7">※ SAMPLE表記はイメージロゴです</p>
-    </div>
-    <div class="client-marquee" aria-label="クライアントロゴ">
-      <div class="client-track">
-        <div class="client-group">
-          <a class="client-logo client-logo--square" href="https://www.storks.jp/" target="_blank" rel="noopener" aria-label="神戸ストークス公式サイト">
-            <img src="./assets/client-logos/kobe-storks.png" alt="神戸ストークス" loading="lazy">
-          </a>
-          <a class="client-logo client-logo--square" href="https://tsunagarueat.com/" target="_blank" rel="noopener" aria-label="つながるEAT公式サイト">
-            <img src="./assets/client-logos/tsunagaru-eat.png" alt="つながるEAT" loading="lazy">
-          </a>
-          <div class="client-logo">
-            <img src="./assets/client-logos/fictional-harbour-link.png" alt="HARBOUR LINK（イメージロゴ）" loading="lazy">
-            <span class="client-logo__badge">SAMPLE</span>
-          </div>
-          <div class="client-logo">
-            <img src="./assets/client-logos/fictional-mori-works.png" alt="MORI WORKS（イメージロゴ）" loading="lazy">
-            <span class="client-logo__badge">SAMPLE</span>
-          </div>
-          <div class="client-logo">
-            <img src="./assets/client-logos/fictional-nesta-field.png" alt="NESTA FIELD（イメージロゴ）" loading="lazy">
-            <span class="client-logo__badge">SAMPLE</span>
-          </div>
-        </div>
-        <div class="client-group" aria-hidden="true">
-          <div class="client-logo client-logo--square"><img src="./assets/client-logos/kobe-storks.png" alt=""></div>
-          <div class="client-logo client-logo--square"><img src="./assets/client-logos/tsunagaru-eat.png" alt=""></div>
-          <div class="client-logo"><img src="./assets/client-logos/fictional-harbour-link.png" alt=""><span class="client-logo__badge">SAMPLE</span></div>
-          <div class="client-logo"><img src="./assets/client-logos/fictional-mori-works.png" alt=""><span class="client-logo__badge">SAMPLE</span></div>
-          <div class="client-logo"><img src="./assets/client-logos/fictional-nesta-field.png" alt=""><span class="client-logo__badge">SAMPLE</span></div>
-        </div>
       </div>
     </div>
   </div>
@@ -443,10 +384,10 @@
           </div>
           <div>
             <p class="strength-card__label" style="color:#1769AA">SPEED / 速度</p>
-            <p class="strength-card__title">「もう動いてます」</p>
+            <p class="strength-card__title">早く見せ、早く試す</p>
           </div>
         </div>
-        <p style="margin:0;font-size:14.5px;line-height:2;color:#5A6180">電話の10分後に動くモック、翌日にはMTG——実際にあった話です。AI駆動開発で「作る」時間を数分の一に。速度そのものが信頼になります。</p>
+        <p style="margin:0;font-size:14.5px;line-height:2;color:#5A6180">早い段階で動くモックを作ることで、完成形を具体的に共有できます。判断材料が揃うため、社内稟議や関係者への説明を進めやすくなり、検討段階からより多くのトライ＆エラーを回せます。</p>
       </div>
       <div class="strength-card" style="background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:28px 28px 32px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <div class="strength-card__head">
@@ -605,7 +546,7 @@ class Component extends DCLogic {
       '#mission > p', '#mission > h2', '#mission > div > p',
       '#services > div > p', '#services > div > h2', '#services article',
       '#model [data-reveal] > p', '#model [data-reveal] > h2', '#model [data-reveal] > div > div',
-      '#works > div > p', '#works > div > h2', '#works .client-marquee',
+      '#works > div > p', '#works > div > h2',
       '#strength [data-reveal] > p', '#strength [data-reveal] > h2', '#strength [data-reveal] > div > div',
       '#ceo > div > p', '#ceo > div > h2', '#ceo > div > div > div',
       '#news > div:first-child', '#news > div:last-child > a',
@@ -654,21 +595,6 @@ class Component extends DCLogic {
       this._hero.addEventListener('pointermove', this._moveHeroLight, { passive:true });
       this._hero.addEventListener('pointerleave', this._resetHeroLight);
     }
-    // CSS animation can be disabled by OS/browser motion settings, so drive the
-    // client logo lane directly to guarantee the requested continuous movement.
-    this._logoOffset = 0;
-    this._logoLastFrame = performance.now();
-    this._moveClientLogos = (now) => {
-      const track = document.querySelector('.client-track');
-      const firstGroup = track?.querySelector('.client-group');
-      if (track && firstGroup && firstGroup.offsetWidth > 0) {
-        const elapsed = Math.min(now - this._logoLastFrame, 50);
-        this._logoOffset = (this._logoOffset + elapsed * 0.045) % firstGroup.offsetWidth;
-        track.style.animation = 'none';
-        track.style.transform = `translate3d(${-this._logoOffset}px,0,0)`;
-      }
-      this._logoLastFrame = now;
-      this._logoFrame = requestAnimationFrame(this._moveClientLogos);
     };
     this._logoFrame = requestAnimationFrame(this._moveClientLogos);
     this._worksSection = document.querySelector('.works-section');
@@ -691,8 +617,7 @@ class Component extends DCLogic {
   componentWillUnmount() {
     if (this._io) this._io.disconnect();
     if (this._pageMotionObserver) this._pageMotionObserver.disconnect();
-    if (this._logoFrame) cancelAnimationFrame(this._logoFrame);
-    if (this._updateHeader) removeEventListener('scroll', this._updateHeader);
+   if (this._updateHeader) removeEventListener('scroll', this._updateHeader);
     if (this._hero && this._moveHeroLight) {
       this._hero.removeEventListener('pointermove', this._moveHeroLight);
       this._hero.removeEventListener('pointerleave', this._resetHeroLight);
