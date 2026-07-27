@@ -595,8 +595,6 @@ class Component extends DCLogic {
       this._hero.addEventListener('pointermove', this._moveHeroLight, { passive:true });
       this._hero.addEventListener('pointerleave', this._resetHeroLight);
     }
-    };
-    this._logoFrame = requestAnimationFrame(this._moveClientLogos);
     this._worksSection = document.querySelector('.works-section');
     if (this._worksSection && matchMedia('(pointer:fine)').matches) {
       this._moveWorksLight = (event) => {
