@@ -13,7 +13,7 @@
 <meta property="og:title" content="ToyoSeeds合同会社｜ワクワクする場所を、つくる。">
 <meta property="og:description" content="宿を営み、店を営み、その現場を自分たちのテクノロジーで回す。福岡を拠点に、場所づくりと企業のDX・AI活用を支援しています。">
 <meta property="og:url" content="https://www.toyoseeds.com/">
-<meta property="og:image" content="https://www.toyoseeds.com/assets/og-image.jpg">
+<meta property="og:image" content="https://www.toyoseeds.com/assets/og-image-v2.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="ToyoSeeds合同会社｜ワクワクする場所を、つくる。">
@@ -38,11 +38,7 @@
   ]
 }
 </script>
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&amp;family=Outfit:wght@500;600;700;800&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Montserrat:wght@500;600;700;800&amp;family=M+PLUS+Rounded+1c:wght@400;500;700;800&amp;family=Quicksand:wght@500;600;700&amp;family=Zen+Old+Mincho:wght@400;600;700;900&amp;family=Cormorant+Garamond:wght@500;600;700&amp;display=swap" rel="stylesheet">
@@ -77,9 +73,6 @@
   .hero-motion:after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(67,160,71,.026) 1px,transparent 1px),linear-gradient(90deg,rgba(67,160,71,.026) 1px,transparent 1px);background-size:58px 58px;mask-image:linear-gradient(90deg,transparent,#000 38%,#000);-webkit-mask-image:linear-gradient(90deg,transparent,#000 38%,#000)}
   .hero-motion-layer{position:absolute;inset:0;z-index:1;pointer-events:none;transform:translate3d(var(--hero-x,0),var(--hero-y,0),0);transition:transform 1.15s cubic-bezier(.2,.7,.2,1)}
   .hero-scan{position:absolute;inset-block:0;left:-30%;width:18%;background:linear-gradient(90deg,transparent,rgba(67,160,71,.025),rgba(67,160,71,.11),transparent);transform:skewX(-17deg);animation:heroScan 8.5s cubic-bezier(.4,0,.2,1) infinite}
-  .hero-seeds i{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--c-accent);border:1px solid rgba(255,255,255,.8);box-shadow:0 0 12px color-mix(in oklab,var(--c-accent),transparent 25%);animation:seedPulse 2.4s ease-in-out infinite}
-  .hero-seeds i:after{content:"";position:absolute;inset:-7px;border:1px solid color-mix(in oklab,var(--c-accent),transparent 48%);border-radius:50%;animation:seedRing 2.4s ease-out infinite}
-  .hero-seeds i:nth-child(1){left:69%;top:24%;animation-delay:.1s}.hero-seeds i:nth-child(2){left:77%;top:37%;animation-delay:.55s}.hero-seeds i:nth-child(3){left:65%;top:51%;animation-delay:1s}.hero-seeds i:nth-child(4){left:82%;top:61%;animation-delay:1.45s}.hero-seeds i:nth-child(5){left:72%;top:75%;animation-delay:.8s}
   .motion-section{position:relative!important;isolation:isolate;overflow:hidden}
   .motion-section:not(#works):not(#top):before{content:"";position:absolute;z-index:0;pointer-events:none;width:440px;height:440px;right:-170px;top:8%;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--c-accent),transparent 83%),transparent 68%);filter:blur(24px);opacity:0}
   .motion-section:nth-of-type(even):not(#works):not(#top):before{right:auto;left:-180px;top:35%}
@@ -183,7 +176,6 @@
     #model .model-loop svg{grid-column:1/-1;grid-row:2;width:min(250px,76vw)!important;margin:-28px auto!important}
     .work-card,.strength-card{padding:24px 22px 28px!important}
 
-    .hero-seeds i:nth-child(n+4){display:none}
     .hero-scan{width:34%}
 
     .work-visual{height:170px;max-height:38svh}
@@ -211,7 +203,9 @@
     body.motion-ready .motion-item{opacity:1!important;transform:none!important}
   }
 </style>
-</helmet>
+<script src="./site.js" defer></script>
+</head>
+<body>
 
 <header class="site-header" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:transparent">
   <a href="#top" style="font-family:var(--f-latin);font-size:24px;font-weight:800;letter-spacing:.02em;color:var(--c-primary)">Toyo<span style="color:var(--c-accent)">Seeds</span></a>
@@ -230,7 +224,7 @@
 </header>
 
 <section id="top" class="hero-motion" data-screen-label="Hero" style="position:relative;min-height:100vh;display:flex;align-items:center;background:linear-gradient(180deg,#FFFFFF 0%,#F4F8F3 100%);overflow:hidden">
-  <div class="hero-motion-layer" aria-hidden="true"><span class="hero-scan"></span><span class="hero-seeds"><i></i><i></i><i></i><i></i><i></i></span></div>
+  <div class="hero-motion-layer" aria-hidden="true"><span class="hero-scan"></span></div>
   <div style="position:absolute;top:-15%;right:-10%;width:56vw;height:56vw;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--c-accent),white 55%) 0%,transparent 65%);filter:blur(40px);opacity:.7;animation:drift1 14s ease-in-out infinite;pointer-events:none"></div>
   <div style="position:absolute;bottom:-20%;left:-12%;width:50vw;height:50vw;border-radius:50%;background:radial-gradient(circle,#BFE3FF 0%,transparent 65%);filter:blur(50px);opacity:.65;animation:drift2 18s ease-in-out infinite;pointer-events:none"></div>
   <div style="position:absolute;top:30%;left:38%;width:34vw;height:34vw;border-radius:50%;background:radial-gradient(circle,#E8F6D9 0%,transparent 65%);filter:blur(46px);opacity:.8;animation:drift3 16s ease-in-out infinite;pointer-events:none"></div>
@@ -265,11 +259,12 @@
         </div>
         <div style="padding:32px 36px 40px;display:flex;flex-direction:column;gap:14px">
           <p style="margin:0;font-size:12px;font-weight:800;letter-spacing:.2em;color:var(--c-accent-ink)">AI &amp; DATA</p>
-          <h3 style="margin:0;font-size:22px;font-weight:800;color:var(--c-primary);border-bottom:4px solid var(--c-accent);align-self:flex-start;padding-bottom:6px">IT・データ活用事業</h3>
+          <h3 style="margin:0;font-size:22px;font-weight:800;color:var(--c-primary);border-bottom:4px solid var(--c-accent);align-self:flex-start;padding-bottom:6px">AI・データ活用事業</h3>
           <p style="margin:0;font-size:15px;line-height:2;color:#1A2142"><strong style="color:var(--c-primary)">現場に入り込み、要件をその場で掴み、AIで素早く形にする。</strong>業務システムの開発、売上・顧客データの可視化、帳票の自動化、AI活用研修の設計など、自社の宿泊・店舗運営で培った技術をもとに、現場で実際に使える仕組みをつくります。</p>
           <a href="#works" style="align-self:flex-start;margin-top:4px;font-size:14px;font-weight:800;color:var(--c-accent);letter-spacing:.02em" style-hover="color:var(--c-primary)">開発事例を見る →</a>
         </div>
       </article>
+      <a href="https://seeds-stay.com/" target="_blank" rel="noopener noreferrer" aria-label="SeedsStay公式サイトを開く" style="display:grid;height:100%;color:inherit;text-decoration:none;border-radius:20px">
       <article style="background:#fff;border:1px solid #DDE1EA;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-8px);box-shadow:0 20px 50px rgba(30,39,97,.12)">
         <div style="position:relative;height:380px">
           <img src="./assets/stay.webp" alt="SeedsStay Ijiri Ⅱ（一棟運営のアパートメントホテル）" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
@@ -280,6 +275,7 @@
           <p style="margin:0;font-size:15px;line-height:2;color:#1A2142">福岡で宿泊ブランド「SeedsStay」を運営。テーマは&ldquo;Stay to Grow&rdquo;——泊まった人の旅や暮らしが、少し良くなる宿。専属の清掃スタッフとチームで宿を磨き、世界中からのゲストを迎えています。予約・売上・価格は自社開発のシステムで毎日管理。この実業がAI・データ事業の&ldquo;生きた実験場&rdquo;です。</p>
         </div>
       </article>
+      </a>
     </div>
   </div>
 </section>
@@ -328,13 +324,13 @@
     <h2 style="margin:0 0 12px;font-size:30px;font-weight:800;color:var(--c-primary)">自分たちの現場で、実際に使っているもの。</h2>
     <p style="margin:0 0 48px;font-size:16px;line-height:2.1;color:#5A6180;max-width:42em">宿と店舗の運営から生まれ、日々使いながら改善している仕組みだけを紹介します。</p>
     <div class="works-grid">
-      <div class="work-card" style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
+      <a class="work-card" href="https://minpaku-os-lp.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:block;background:#fff;color:inherit;text-decoration:none;cursor:pointer;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <div class="work-visual work-visual--desktop">
-          <img src="./assets/dashboard.webp" alt="Minpaku OSの実画面（売上分析）" loading="lazy">
+          <img src="./assets/dashboard.webp" alt="MinpakuOSの実画面（売上分析）" loading="lazy">
         </div>
-        <p style="margin:0 0 8px;font-size:18px;font-weight:800;color:var(--c-primary)">Minpaku OS</p>
+        <p style="margin:0 0 8px;font-size:18px;font-weight:800;color:var(--c-primary)">MinpakuOS</p>
         <p style="margin:0;font-size:14px;line-height:2;color:#5A6180">予約サイト（Beds24）のAPIからデータを取り込み、稼働率・ADR・売上を毎朝確認。AIエージェントが数字を監視して価格戦略を提案し、行政へ毎月提出する宿泊税の書類も予約データから自動生成。自社の宿泊運営を毎日これで回しています。</p>
-      </div>
+      </a>
       <div class="work-card" style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <div class="work-visual phone-stage" aria-label="つながるBARアプリのスマートフォン画面">
           <div class="phone-frame">
@@ -355,7 +351,7 @@
   <div style="position:absolute;top:-20%;left:-10%;width:44vw;height:44vw;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--c-accent),white 60%) 0%,transparent 65%);filter:blur(48px);opacity:.6;animation:drift2 20s ease-in-out infinite;pointer-events:none"></div>
   <div data-reveal="" style="position:relative;max-width:1120px;margin:0 auto">
     <p style="margin:0 0 12px;font-size:13px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Strength</p>
-    <h2 style="margin:0 0 24px;font-size:clamp(26px,3vw,38px);font-weight:800;line-height:1.6;text-wrap:pretty;color:var(--c-primary)">自分たちが毎日使うアプリやサービス・仕組みを、<br data-om-id="81c82e9b:65">自分たちで作ってきた会社です。</h2>
+    <h2 style="margin:0 0 24px;font-size:clamp(26px,3vw,38px);font-weight:800;line-height:1.6;text-wrap:pretty;color:var(--c-primary)">自分たちが毎日使うアプリやサービス・仕組みを、<br>自分たちで作ってきた会社です。</h2>
     <p style="margin:0 0 64px;font-size:16px;line-height:2.2;color:#5A6180;max-width:44em">宿の予約管理も、売上ダッシュボードも、まず自社の現場のために開発し、毎日使い、磨き続けています。だから机上の提案ではなく、「現場で本当に回る」システムをお届けできます。</p>
     <div class="strength-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
       <div class="strength-card" style="background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:28px 28px 32px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
@@ -457,16 +453,29 @@
       <p style="margin:0 0 12px;font-size:13px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">News</p>
       <h2 style="margin:0;font-size:30px;font-weight:800;color:var(--c-primary)">社長日記・お知らせ</h2>
     </div>
-    <a href="https://www.toyoseeds.com/news/" style="font-size:14px;font-weight:700;color:#5A6180" style-hover="color:var(--c-accent)">一覧を見る →</a>
+    <a href="/news/" style="font-size:14px;font-weight:700;color:#5A6180" style-hover="color:var(--c-accent)">一覧を見る →</a>
   </div>
   <div style="display:flex;flex-direction:column">
-    <sc-for list="{{ news }}" as="item" hint-placeholder-count="4">
-      <a class="news-row" href="{{ item.url }}" style="display:grid;grid-template-columns:130px 110px 1fr;gap:24px;align-items:baseline;padding:22px 8px;border-top:1px solid #DDE1EA;color:#1A2142" style-hover="background:#F7F8FB;color:var(--c-primary)">
-        <span style="font-size:13.5px;color:#5A6180;font-variant-numeric:tabular-nums">{{ item.date }}</span>
-        <span style="font-size:11.5px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center">{{ item.tag }}</span>
-        <span style="font-size:15.5px;font-weight:600">{{ item.title }}</span>
+      <a class="news-row" href="/shachonikki_day27/" style="display:grid;grid-template-columns:130px 110px 1fr;gap:24px;align-items:baseline;padding:22px 8px;border-top:1px solid #DDE1EA;color:#1A2142" style-hover="background:#F7F8FB;color:var(--c-primary)">
+        <span style="font-size:13.5px;color:#5A6180;font-variant-numeric:tabular-nums">2026.08</span>
+        <span style="font-size:11.5px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center">社長日記</span>
+        <span style="font-size:15.5px;font-weight:600">day27 拝啓15のトヨへ</span>
       </a>
-    </sc-for>
+      <a class="news-row" href="/shachonikki_day26/" style="display:grid;grid-template-columns:130px 110px 1fr;gap:24px;align-items:baseline;padding:22px 8px;border-top:1px solid #DDE1EA;color:#1A2142" style-hover="background:#F7F8FB;color:var(--c-primary)">
+        <span style="font-size:13.5px;color:#5A6180;font-variant-numeric:tabular-nums">2026.08</span>
+        <span style="font-size:11.5px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center">社長日記</span>
+        <span style="font-size:15.5px;font-weight:600">day26 地区大会突破、いや全国を目指す</span>
+      </a>
+      <a class="news-row" href="/shachonikki_day25/" style="display:grid;grid-template-columns:130px 110px 1fr;gap:24px;align-items:baseline;padding:22px 8px;border-top:1px solid #DDE1EA;color:#1A2142" style-hover="background:#F7F8FB;color:var(--c-primary)">
+        <span style="font-size:13.5px;color:#5A6180;font-variant-numeric:tabular-nums">2026.03</span>
+        <span style="font-size:11.5px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center">社長日記</span>
+        <span style="font-size:15.5px;font-weight:600">day25 1番になりたい</span>
+      </a>
+      <a class="news-row" href="/shachonikki_day24/" style="display:grid;grid-template-columns:130px 110px 1fr;gap:24px;align-items:baseline;padding:22px 8px;border-top:1px solid #DDE1EA;color:#1A2142" style-hover="background:#F7F8FB;color:var(--c-primary)">
+        <span style="font-size:13.5px;color:#5A6180;font-variant-numeric:tabular-nums">2026.03</span>
+        <span style="font-size:11.5px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center">社長日記</span>
+        <span style="font-size:15.5px;font-weight:600">day24 1.01の法則</span>
+      </a>
   </div>
 </section>
 
@@ -480,7 +489,7 @@
         <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180">代表社員</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA">豊島 寛也</div>
         <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180">創立</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA">2023年10月16日</div>
         <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180">資本金</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA">100万円</div>
-        <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180">事業内容</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA">宿泊・インバウンド事業／IT・データ活用事業</div>
+        <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180">事業内容</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA">宿泊・インバウンド事業／AI・データ活用事業</div>
         <div style="padding:18px 0;font-weight:800;color:#5A6180">所在地</div><div style="padding:18px 0">福岡県福岡市中央区天神4-6-28 天神ファーストビル7階</div>
       </div>
     </div>
@@ -492,153 +501,13 @@
   <div style="position:absolute;bottom:-30%;left:-8%;width:46vw;height:46vw;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--c-accent),white 55%) 0%,transparent 65%);filter:blur(50px);opacity:.6;animation:drift3 19s ease-in-out infinite;pointer-events:none"></div>
   <p style="position:relative;margin:0 0 16px;font-size:13px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Contact</p>
   <h2 style="position:relative;margin:0 0 20px;font-size:clamp(28px,3.4vw,40px);font-weight:800;line-height:1.6;text-wrap:pretty">「こんなこと、できたりする？」</h2>
-  <p style="position:relative;margin:0 auto 40px;font-size:16px;line-height:2.2;color:#5A6180;max-width:38em">実際にあるご相談の入口は、いつもこの一言です。システム開発・DX・AI活用から、宿泊施設・場づくりの話まで。提案書の前に、まず動くもので答えます。</p>
-  <a href="https://www.toyoseeds.com/contact/" style="position:relative;display:inline-block;background:linear-gradient(135deg,var(--c-accent),color-mix(in oklab,var(--c-accent),white 35%));color:var(--c-accent-on);font-weight:800;font-size:16px;padding:18px 56px;border-radius:999px;box-shadow:0 8px 24px color-mix(in oklab,var(--c-accent),transparent 55%);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-3px);box-shadow:0 14px 36px color-mix(in oklab,var(--c-accent),transparent 40%)">お問い合わせフォームへ</a>
+  <a href="/contact/" style="position:relative;display:inline-block;background:linear-gradient(135deg,var(--c-accent),color-mix(in oklab,var(--c-accent),white 35%));color:var(--c-accent-on);font-weight:800;font-size:16px;padding:18px 56px;border-radius:999px;box-shadow:0 8px 24px color-mix(in oklab,var(--c-accent),transparent 55%);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-3px);box-shadow:0 14px 36px color-mix(in oklab,var(--c-accent),transparent 40%)">お問い合わせフォームへ</a>
 </section>
 
-<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#263238"></rect><text x="50" y="62" font-family="sans-serif" font-size="34" font-weight="800" text-anchor="middle" fill="#FFFFFF">T<tspan fill="#43A047">S</tspan></text></svg></template>
 
 <footer class="site-footer" style="display:flex;align-items:center;justify-content:space-between;padding:28px 48px;background:var(--c-primary-deep);color:rgba(255,255,255,.6);font-size:13px">
   <span style="font-family:var(--f-latin);font-weight:800;font-size:16px;color:#fff">Toyo<span style="color:var(--c-accent)">Seeds</span></span>
-  <span>© ToyoSeeds LLC.</span>
+  <span><a href="/privacy-policy/" style="color:inherit;margin-right:22px">プライバシーポリシー</a>© ToyoSeeds LLC.</span>
 </footer>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;font&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;モダンゴシック（Zen Kaku）&quot;,&quot;options&quot;:[&quot;モダンゴシック（Zen Kaku）&quot;,&quot;スタンダード（Noto Sans）&quot;,&quot;まる系・親しみ（M PLUS）&quot;,&quot;上質・明朝（Zen Old Mincho）&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;フォント&quot;},&quot;palette&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;チャコール×グリーン&quot;,&quot;options&quot;:[&quot;ネイビー×グリーン&quot;,&quot;ディープグリーン&quot;,&quot;ネイビー×アンバー&quot;,&quot;チャコール×グリーン&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;カラー&quot;},&quot;newsCount&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:4,&quot;min&quot;:1,&quot;max&quot;:6,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;News&quot;}}">
-class Component extends DCLogic {
-  static PALETTES = {
-    "ネイビー×グリーン":   { p:"#1E2761", d:"#141B4D", a:"#43A047", on:"#FFFFFF", ink:"#1B5E20", ti:"#2F7D52", tb:"#E3F0E8" },
-    "ディープグリーン":     { p:"#1D4D2B", d:"#12351D", a:"#7CB342", on:"#1F3D14", ink:"#33691E", ti:"#33691E", tb:"#EAF3E2" },
-    "ネイビー×アンバー":   { p:"#1E2761", d:"#141B4D", a:"#F2B400", on:"#7A5A00", ink:"#7A5A00", ti:"#7A5A00", tb:"#F8ECD4" },
-    "チャコール×グリーン": { p:"#263238", d:"#161F24", a:"#43A047", on:"#FFFFFF", ink:"#1B5E20", ti:"#2F7D52", tb:"#E3F0E8" }
-  };
-  static FONTS = {
-    "モダンゴシック（Zen Kaku）":  { jp: '"Zen Kaku Gothic New","Hiragino Sans",Meiryo,sans-serif', latin: 'Outfit,sans-serif' },
-    "スタンダード（Noto Sans）":   { jp: '"Noto Sans JP","Hiragino Sans",Meiryo,sans-serif', latin: 'Montserrat,sans-serif' },
-    "まる系・親しみ（M PLUS）":    { jp: '"M PLUS Rounded 1c","Hiragino Maru Gothic ProN",Meiryo,sans-serif', latin: 'Quicksand,sans-serif' },
-    "上質・明朝（Zen Old Mincho）": { jp: '"Zen Old Mincho","Hiragino Mincho ProN",serif', latin: '"Cormorant Garamond",serif' }
-  };
-  _applyPalette() {
-    const f = Component.FONTS[this.props.font] || Component.FONTS["モダンゴシック（Zen Kaku）"];
-    document.body.style.setProperty('--f-jp', f.jp);
-    document.body.style.setProperty('--f-latin', f.latin);
-    document.body.style.fontFamily = 'var(--f-jp)';
-    const c = Component.PALETTES[this.props.palette] || Component.PALETTES["ネイビー×グリーン"];
-    const s = document.body.style;
-    s.setProperty('--c-primary', c.p); s.setProperty('--c-primary-deep', c.d);
-    s.setProperty('--c-accent', c.a); s.setProperty('--c-accent-on', c.on);
-    s.setProperty('--c-accent-ink', c.ink); s.setProperty('--c-tag-ink', c.ti); s.setProperty('--c-tag-bg', c.tb);
-  }
-  componentDidMount() {
-    this._applyPalette();
-    if (location.hash) {
-      setTimeout(() => document.querySelector(location.hash)?.scrollIntoView(), 250);
-    }
-    // fail-visible reveal: elements stay visible by default; entering the viewport just plays an animation class
-    this._io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('reveal-in'); this._io.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    this._observeReveals = () => document.querySelectorAll('[data-reveal]:not(.reveal-in)').forEach(el => this._io.observe(el));
-    setTimeout(this._observeReveals, 400);
-    setTimeout(this._observeReveals, 1500);
-    this._motionSections = [...document.querySelectorAll('section')];
-    this._motionSections.forEach(section => section.classList.add('motion-section'));
-    const motionSelector = [
-      '#mission > p', '#mission > h2', '#mission > div > p',
-      '#services > div > p', '#services > div > h2', '#services article',
-      '#model [data-reveal] > p', '#model [data-reveal] > h2', '#model [data-reveal] > div > div',
-      '#works > div > p', '#works > div > h2',
-      '#strength [data-reveal] > p', '#strength [data-reveal] > h2', '#strength [data-reveal] > div > div',
-      '#ceo > div > p', '#ceo > div > h2', '#ceo > div > div > div',
-      '#news > div:first-child', '#news > div:last-child > a',
-      '#company [data-reveal] > p', '#company [data-reveal] > h2', '#company [data-reveal] > div',
-      '#contact > p', '#contact > h2', '#contact > a'
-    ].join(',');
-    [...document.querySelectorAll(motionSelector)].forEach((item, index) => {
-      item.classList.add('motion-item');
-      item.style.setProperty('--motion-delay', `${(index % 5) * 75}ms`);
-    });
-    const motionCards = document.querySelectorAll(
-      '#services article,#works .work-card,#strength [data-reveal] > div > div,#company [data-reveal] > div'
-    );
-    motionCards.forEach(card => card.classList.add('motion-card'));
-    [...document.querySelectorAll('a')].forEach(link => {
-      const style = link.getAttribute('style') || '';
-      if (style.includes('linear-gradient')) link.classList.add('motion-cta');
-    });
-    this._pageMotionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('motion-in');
-          this._pageMotionObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold:.12, rootMargin:'0px 0px -6%' });
-    this._motionSections.forEach(section => this._pageMotionObserver.observe(section));
-    document.body.classList.add('motion-ready');
-    this._header = document.querySelector('.site-header');
-    this._updateHeader = () => this._header?.classList.toggle('header-scrolled', scrollY > 32);
-    addEventListener('scroll', this._updateHeader, { passive:true });
-    this._updateHeader();
-    this._hero = document.querySelector('.hero-motion');
-    if (this._hero && matchMedia('(pointer:fine)').matches) {
-      this._moveHeroLight = (event) => {
-        const rect = this._hero.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - .5;
-        const y = (event.clientY - rect.top) / rect.height - .5;
-        this._hero.style.setProperty('--hero-x', `${x * -16}px`);
-        this._hero.style.setProperty('--hero-y', `${y * -11}px`);
-      };
-      this._resetHeroLight = () => {
-        this._hero.style.setProperty('--hero-x', '0px');
-        this._hero.style.setProperty('--hero-y', '0px');
-      };
-      this._hero.addEventListener('pointermove', this._moveHeroLight, { passive:true });
-      this._hero.addEventListener('pointerleave', this._resetHeroLight);
-    }
-    this._worksSection = document.querySelector('.works-section');
-    if (this._worksSection && matchMedia('(pointer:fine)').matches) {
-      this._moveWorksLight = (event) => {
-        const rect = this._worksSection.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - .5;
-        const y = (event.clientY - rect.top) / rect.height - .5;
-        this._worksSection.style.setProperty('--works-x', `${x * -18}px`);
-        this._worksSection.style.setProperty('--works-y', `${y * -12}px`);
-      };
-      this._resetWorksLight = () => {
-        this._worksSection.style.setProperty('--works-x', '0px');
-        this._worksSection.style.setProperty('--works-y', '0px');
-      };
-      this._worksSection.addEventListener('pointermove', this._moveWorksLight, { passive:true });
-      this._worksSection.addEventListener('pointerleave', this._resetWorksLight);
-    }
-  }
-  componentWillUnmount() {
-    if (this._io) this._io.disconnect();
-    if (this._pageMotionObserver) this._pageMotionObserver.disconnect();
-   if (this._updateHeader) removeEventListener('scroll', this._updateHeader);
-    if (this._hero && this._moveHeroLight) {
-      this._hero.removeEventListener('pointermove', this._moveHeroLight);
-      this._hero.removeEventListener('pointerleave', this._resetHeroLight);
-    }
-    if (this._worksSection && this._moveWorksLight) {
-      this._worksSection.removeEventListener('pointermove', this._moveWorksLight);
-      this._worksSection.removeEventListener('pointerleave', this._resetWorksLight);
-    }
-  }
-  componentDidUpdate() { this._applyPalette(); }
-  renderVals() {
-    const count = this.props.newsCount ?? 4;
-    const all = [
-      { date: "2026.03", tag: "社長日記", title: "day25 1番になりたい", url: "https://www.toyoseeds.com/shachonikki_day25/" },
-      { date: "2026.03", tag: "社長日記", title: "day24 1.01の法則", url: "https://www.toyoseeds.com/shachonikki_day24/" },
-      { date: "2026.03", tag: "社長日記", title: "day23 3月スタート", url: "https://www.toyoseeds.com/shachonikki_day23/" },
-      { date: "2026.01", tag: "社長日記", title: "day22 2026年も宜しくお願いいたします。", url: "https://www.toyoseeds.com/shachonikki_day22/" },
-      { date: "2025.11", tag: "社長日記", title: "day21 リーダーのしごと。", url: "https://www.toyoseeds.com/shachonikki_day21/" },
-      { date: "2025.07", tag: "社長日記", title: "day20 7月スタート", url: "https://www.toyoseeds.com/sahchonikki_day20/" }
-    ];
-    return { news: all.slice(0, count) };
-  }
-}
-</script>
 </body>
 </html>
