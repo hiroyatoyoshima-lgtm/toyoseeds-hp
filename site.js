@@ -75,7 +75,6 @@
     sections.forEach(function (s) { s.classList.add('motion-section'); });
 
     var motionSelector = [
-      '#mission > p', '#mission > h2', '#mission > div > p',
       '#services > div > p', '#services > div > h2', '#services article',
       '#model [data-reveal] > p', '#model [data-reveal] > h2', '#model [data-reveal] > div > div',
       '#works > div > p', '#works > div > h2',
