@@ -71,11 +71,13 @@ jobs:
             else
               imgline="なし"; imglist=""
             fi
-            dd=$(printf '%02d' "$vol")
-            if [ -f "shachonikki_day${vol}/thumb.jpg" ]; then
-              thumbline="https://www.toyoseeds.com/shachonikki_day${vol}/thumb.jpg ／ 見出し画像（ローカル）: C:\\dev\\toyoseeds-hp\\site\\shachonikki_day${vol}\\thumb.jpg"
+            # note のエディタは toyoseeds.com 上の画像URLなら取り込める（ローカル・チャット添付は不可）
+            if [ -f "shachonikki_day${vol}/note-thumb.jpg" ]; then
+              thumbline="https://www.toyoseeds.com/shachonikki_day${vol}/note-thumb.jpg（この URL の画像を見出し画像に設定）"
+            elif [ -f "shachonikki_day${vol}/thumb.jpg" ]; then
+              thumbline="https://www.toyoseeds.com/shachonikki_day${vol}/thumb.jpg（この URL の画像を見出し画像に設定）"
             else
-              thumbline="リポジトリに無し。見出し画像（ローカル）: C:\\dev\\toyoseeds-hp\\note-thumbnails\\day${dd}.jpg（無ければ scripts/generate_diary_thumbnails.ps1 で作る。無いまま公開してよい）"
+              thumbline="無し（記事フォルダに thumb.jpg を push すれば起票に載る。無いまま公開してよい）"
             fi
             {
               echo "HP に公開された社長日記を note に転載する起票です。"
@@ -90,7 +92,7 @@ jobs:
               echo "## 手順（Claude in Chrome）"
               echo "1. 下の「note貼り付けテキスト」の 1行目をタイトル欄に、2行目以降を本文に入れる（改行・空行はそのまま）"
               echo "2. 「［画像：…］」で始まる行は消す（画像はあとでトヨが入れる）。末尾の「初出」ブロックは残す"
-              echo "3. 「見出し画像（ローカル）」のファイルがあれば、見出し画像としてアップロードする（無ければ設定しない）"
+              echo "3. 「見出し画像」に URL があれば、その画像を見出し画像に設定する（toyoseeds.com 上の画像URLのみ可。チャット添付・ローカルは note 側から読めない）。無ければ設定しない"
               echo "4. ハッシュタグを付けて公開する"
               echo "5. 公開した note の URL をこの Issue にコメントして、Issue を閉じる"
               echo
