@@ -69,7 +69,7 @@ ARTICLE = """<!doctype html>
     </div>
   </article>
   <aside class="post-cta">
-    <p>ToyoSeeds合同会社は、福岡でAI・データ活用と、宿泊・インバウンドの2つの事業をやっています。</p>
+    <p>ToyoSeeds合同会社は、福岡でAI・データ活用と、宿泊・インバウンドの2つの事業を営んでいます。</p>
     <a href="/#services">ToyoSeedsの事業を見る →</a>
   </aside>
   <nav class="article-nav" aria-label="記事の前後移動"><a href="/{prev_slug}/"><small>← 前の記事</small><strong>{prev_title}</strong></a></nav>
