@@ -1,9 +1,20 @@
 const DEFAULT_CONTACT_TO = 'hiroyatoyoshima@toyoseeds.com';
+// 合言葉。スクリプトプロパティ CONTACT_SECRET が無いときはこの定数を使う。
+// GitHub 上のこのファイルでは空のまま。本番は c:\dev\gas-tools\toyoseeds-site\Code.js（clasp で公開するコピー）に埋め込む。
+const CONTACT_SECRET = '';
+
+// 初回だけ、スクリプトエディタでこの関数を「実行」して権限（メール送信・スプレッドシート）を許可する。
+// ついでにスプレッドシート「社長日記スキ」も作られる。
+function authorizeOnce() {
+  MailApp.getRemainingDailyQuota();
+  const sheet = likesSheet();
+  Logger.log('OK: ' + sheet.getParent().getUrl());
+}
 
 function doPost(event) {
   try {
     const properties = PropertiesService.getScriptProperties();
-    const expectedSecret = properties.getProperty('CONTACT_SECRET');
+    const expectedSecret = properties.getProperty('CONTACT_SECRET') || CONTACT_SECRET;
     const contactTo = properties.getProperty('CONTACT_TO_EMAIL') || DEFAULT_CONTACT_TO;
     const payload = JSON.parse(event && event.postData ? event.postData.contents : '{}');
 

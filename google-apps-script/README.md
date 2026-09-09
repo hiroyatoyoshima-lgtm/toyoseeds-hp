@@ -5,6 +5,12 @@
 1. `hiroyatoyoshima@toyoseeds.com` への問い合わせ通知
 2. 問い合わせ送信者への受付完了メール
 
+同じスクリプトが社長日記の「スキ」の台帳も担当します（下の節）。
+
+**実際の公開は `c:\dev\gas-tools\toyoseeds-site\deploy.ps1`（clasp）で行います。** 合言葉の生成・埋め込み・Apps Script の作成・公開・Vercel の環境変数設定まで1コマンド。
+このファイルの `CONTACT_SECRET` は空のままにしておき、埋め込み済みのコピーは GitHub に置きません。
+以下の手順は、ブラウザで手作業する場合の説明です。
+
 ## Google側の設定
 
 1. `https://script.google.com/` を開き、「新しいプロジェクト」を作成
