@@ -90,6 +90,17 @@ python3 scripts/export_note.py 56
 
 **検索流入を狙っている記事（`mimpaku_buy-list` など）はnoteに全文転載しない。**
 
+### 公開したあとは自動で「note起票」される
+
+`main` に新しい `shachonikki_dayNN/index.html` が増えると、GitHub Actions（`.github/workflows/note-kihyo.yml`）が
+Issue「note起票: volNN タイトル」（ラベル `note`）を立てる。本文は上の export_note.py の出力＋手順。
+投稿は トヨが Claude in Chrome に「ラベル note の open Issue を古い順に note へ」と指示して行い、Chrome 側が
+公開URLをコメントして Issue を閉じる。**この手順で手作業は「Chrome に一言」だけ**。
+
+- 記事を書き直しても Issue は増えない（追加された記事だけ拾う）。note 側の直しは Chrome に頼む
+- 手動で起票したいとき: Actions の「note起票」→ Run workflow → vol 番号
+- 台帳（どの vol がいつ note に載ったか）は ToyoSeeds 側 `/note-tensai --sync` が note の公開APIから自動で付ける
+
 ## 6. 書き直しを頼まれたら
 
 公開後の修正はよくある。該当ファイルを直して `main` にプッシュし直すだけ。

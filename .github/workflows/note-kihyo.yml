@@ -1,0 +1,97 @@
+name: note起票（社長日記の公開を検知してIssueを立てる）
+
+# 社長日記を main に push して公開すると、新しく増えた記事ぶんだけ
+# 「note起票: volNN タイトル」という Issue（ラベル note）を立てる。
+# Issue 本文＝note に貼るテキスト＋手順。投稿は Claude in Chrome が Issue を読んで行い、
+# 公開URLをコメントして閉じる。台帳への反映は ToyoSeeds 側 /note-tensai --sync（note公開API）。
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "shachonikki_day*/index.html"
+  workflow_dispatch:
+    inputs:
+      vol:
+        description: "起票する vol 番号（手動・テスト用。空白区切りで複数可）"
+        required: true
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  kihyo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 新しく増えた記事を拾う
+        id: detect
+        env:
+          INPUT_VOL: ${{ github.event.inputs.vol }}
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          if [ -n "$INPUT_VOL" ]; then
+            echo "vols=$INPUT_VOL" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+            BEFORE="$AFTER^"
+          fi
+          vols=$(git diff --diff-filter=A --name-only "$BEFORE" "$AFTER" -- 'shachonikki_day*/index.html' \
+            | sed -E 's#^shachonikki_day([0-9]+)/index.html$#\1#' | sort -n | tr '\n' ' ')
+          echo "追加された記事: ${vols:-なし}"
+          echo "vols=$vols" >> "$GITHUB_OUTPUT"
+
+      - name: Issue を起票
+        if: steps.detect.outputs.vols != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          VOLS: ${{ steps.detect.outputs.vols }}
+        run: |
+          gh label create note --color 43A047 --description "noteへ転載する起票" --force >/dev/null 2>&1 || true
+          existing=$(gh issue list --label note --state all --limit 500 --json title --jq '.[].title')
+          for vol in $VOLS; do
+            if ! python3 scripts/export_note.py "$vol" > note.txt 2> images.txt; then
+              echo "vol$vol: export_note.py が失敗（記事が無い？）"; continue
+            fi
+            title=$(head -n 1 note.txt)
+            if printf '%s\n' "$existing" | grep -Fxq "note起票: $title"; then
+              echo "vol$vol: すでに起票済み"; continue
+            fi
+            imgs=$(grep -o '［画像：[^］]*］' note.txt | sed -E 's/^［画像：(.*)］$/\1/; s#^/#https://www.toyoseeds.com/#' || true)
+            if [ -n "$imgs" ]; then
+              imgline="あり（Chrome側では画像行を消して公開し、あとでトヨが note 上で入れる）"
+              imglist=$(printf '%s\n' "$imgs" | sed 's/^/  - /')
+            else
+              imgline="なし"; imglist=""
+            fi
+            {
+              echo "HP に公開された社長日記を note に転載する起票です。"
+              echo
+              echo "- 元記事: https://www.toyoseeds.com/shachonikki_day${vol}/"
+              echo "- 転載先: https://note.com/crichan"
+              echo "- ハッシュタグ: #社長日記 #ToyoSeeds"
+              echo "- 画像: $imgline"
+              [ -n "$imglist" ] && printf '%s\n' "$imglist"
+              echo
+              echo "## 手順（Claude in Chrome）"
+              echo "1. 下の「note貼り付けテキスト」の 1行目をタイトル欄に、2行目以降を本文に入れる（改行・空行はそのまま）"
+              echo "2. 「［画像：…］」で始まる行は消す（画像はあとでトヨが入れる）。末尾の「初出」ブロックは残す"
+              echo "3. ハッシュタグを付けて公開する"
+              echo "4. 公開した note の URL をこの Issue にコメントして、Issue を閉じる"
+              echo
+              echo "## note貼り付けテキスト"
+              echo
+              echo '```text'
+              cat note.txt
+              echo '```'
+            } > body.md
+            url=$(gh issue create --title "note起票: $title" --label note --body-file body.md)
+            echo "vol$vol: 起票 $url"
+          done
