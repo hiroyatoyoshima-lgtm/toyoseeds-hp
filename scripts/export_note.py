@@ -28,7 +28,6 @@ ToyoSeeds合同会社（福岡）
 AI・データ活用事業／宿泊・インバウンド事業
 {base}/
 
-note: https://note.com/crichan
 Instagram: https://www.instagram.com/toyo_seeds/"""
 
 
