@@ -43,7 +43,7 @@
 
   render();
 
-  fetch('/api/like?slug=' + encodeURIComponent(slug) + '&title=' + encodeURIComponent(title), {credentials: 'omit'})
+  fetch('/api/like/?slug=' + encodeURIComponent(slug) + '&title=' + encodeURIComponent(title), {credentials: 'omit'})
     .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (d) {
       if (d && typeof d.count === 'number') { count = d.count; render(); }
@@ -62,7 +62,7 @@
     if (next) pop();
     render();
 
-    fetch('/api/like', {
+    fetch('/api/like/', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       credentials: 'omit',
