@@ -26,7 +26,10 @@ FOOTER = """―――
 
 ToyoSeeds合同会社（福岡）
 AI・データ活用事業／宿泊・インバウンド事業
-{base}/"""
+{base}/
+
+note: https://note.com/crichan
+Instagram: https://www.instagram.com/toyo_seeds/"""
 
 
 def to_text(body):
