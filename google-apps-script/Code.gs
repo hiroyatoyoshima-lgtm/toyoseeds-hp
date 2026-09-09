@@ -11,6 +11,11 @@ function doPost(event) {
       throw new Error('Unauthorized request');
     }
 
+    // 社長日記の「スキ」（/api/like から届く）。お問い合わせとは action の有無で見分ける
+    if (payload.action === 'like' || payload.action === 'unlike' || payload.action === 'get') {
+      return jsonResponse(handleLike(payload));
+    }
+
     const name = clean(payload.name, 80);
     const company = clean(payload.company, 120);
     const email = clean(payload.email, 254).toLowerCase();
@@ -114,4 +119,63 @@ function jsonResponse(value) {
   return ContentService
     .createTextOutput(JSON.stringify(value))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+// ---- 社長日記の「スキ」 ----
+// 台帳はスプレッドシート「社長日記スキ」（初回に自動作成し、IDをスクリプトプロパティ LIKES_SHEET_ID に保存）。
+// 列: slug / タイトル / スキ / 最終更新。1記事1行。
+const LIKES_SHEET_NAME = '社長日記スキ';
+
+function handleLike(payload) {
+  const slug = clean(payload.slug, 60);
+  if (!/^(shachonikki|sahchonikki)_day\d{1,3}$/.test(slug)) throw new Error('Invalid slug');
+  const title = clean(payload.title, 80).replace(/[\r\n]+/g, ' ');
+  const delta = payload.action === 'like' ? 1 : payload.action === 'unlike' ? -1 : 0;
+
+  const lock = LockService.getScriptLock();
+  lock.waitLock(10000);
+  try {
+    const sheet = likesSheet();
+    const values = sheet.getDataRange().getValues();
+    let row = -1;
+    for (let index = 1; index < values.length; index += 1) {
+      if (String(values[index][0]) === slug) { row = index + 1; break; }
+    }
+
+    let count;
+    if (row < 0) {
+      count = Math.max(0, delta);
+      sheet.appendRow([slug, title, count, new Date()]);
+    } else {
+      const current = Number(values[row - 1][2]) || 0;
+      count = Math.max(0, current + delta);
+      if (delta !== 0) {
+        sheet.getRange(row, 3).setValue(count);
+        sheet.getRange(row, 4).setValue(new Date());
+      }
+      if (title && !String(values[row - 1][1] || '').trim()) sheet.getRange(row, 2).setValue(title);
+    }
+    return {ok: true, count: count};
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function likesSheet() {
+  const properties = PropertiesService.getScriptProperties();
+  const savedId = properties.getProperty('LIKES_SHEET_ID');
+  let spreadsheet = null;
+  if (savedId) {
+    try { spreadsheet = SpreadsheetApp.openById(savedId); } catch (error) { spreadsheet = null; }
+  }
+  if (!spreadsheet) {
+    spreadsheet = SpreadsheetApp.create(LIKES_SHEET_NAME);
+    properties.setProperty('LIKES_SHEET_ID', spreadsheet.getId());
+  }
+  const sheet = spreadsheet.getSheets()[0];
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(['slug', 'タイトル', 'スキ', '最終更新']);
+    sheet.setFrozenRows(1);
+  }
+  return sheet;
 }

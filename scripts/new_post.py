@@ -63,6 +63,10 @@ ARTICLE = """<!doctype html>
       <h1>vol{vol} {title}</h1>
     </header>
     <div class="wp-content">{body}</div>
+    <div class="post-like">
+      <button type="button" class="like-btn" data-slug="{slug}" aria-pressed="false" aria-label="スキ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.3 4.8 6.6 4.5c2-.2 3.7.8 4.6 2.3 1-1.5 2.7-2.5 4.7-2.3 3.3.3 5.2 3.5 3.9 6.8-1.8 4.6-7.8 9.2-7.8 9.2z"/></svg>スキ</button>
+      <span class="like-count" aria-live="polite"></span>
+    </div>
   </article>
   <aside class="post-cta">
     <p>ToyoSeeds合同会社は、福岡でAI・データ活用と、宿泊・インバウンドの2つの事業をやっています。</p>
@@ -75,6 +79,7 @@ ARTICLE = """<!doctype html>
   <a class="brand brand--footer" href="/">Toyo<span>Seeds</span></a>
   <div><a href="/privacy-policy/">プライバシーポリシー</a><span>© ToyoSeeds LLC.</span></div>
 </footer>
+<script defer src="/likes.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
