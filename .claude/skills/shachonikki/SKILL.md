@@ -67,6 +67,21 @@ python3 scripts/new_post.py --title "ベクトル" --body draft.txt --image ~/ph
 
 キャプションは説明に使い、笑いどころは本文側に置く。
 
+### 見出し画像（note用 thumb.jpg・記事と同じ commit で push する）
+
+note の見出し画像は記事フォルダの `thumb.jpg`（1280×670）。**記事と一緒に push する**と、起票 Action が Issue に画像URLを載せ、Chrome 側がそのまま見出し画像に設定する。後から足すと Issue の書き換えが要る。
+API は使わない（費用ゼロ）。見出しコピー（hook 2行＋category）を書いて、テンプレ描画のスクリプトに渡す:
+
+```powershell
+# category: growth / action / people / business / habits
+.\scripts\make_thumb_template.ps1 -Day 57 -Category habits -Hook "1行目`n2行目"
+```
+
+- hook は 2 行・各 12 字前後。記事の核心を言い切る（教訓にしない）。`note-thumbnails\thumbnail-copy.json` に保存され、次回以降は `-Day` だけで再描画できる
+- 見た目を先に確認したいときは `-OutFile <どこか>.jpg` で外に出す
+- イラスト版にしたい回は、Codex で作った画像を 1280×670 の JPEG にして `thumb.jpg` を上書き push（note-tensai の「差し替え」指示文 C の流れ）
+- Toyo のマシンは python が動かないので、記事の 5 か所更新は `node scripts/new_post.mjs`（同じ引数）を使う
+
 ## 4. 公開する
 
 サイトは `main` にプッシュすると Vercel が自動デプロイする。作業ブランチのままだと公開されない。
