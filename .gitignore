@@ -5,3 +5,5 @@ migration-media-*.txt
 
 .vercel
 .env*
+.thumb-log/
+node_modules/
