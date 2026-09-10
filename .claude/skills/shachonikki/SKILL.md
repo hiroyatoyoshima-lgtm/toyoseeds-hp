@@ -67,19 +67,19 @@ python3 scripts/new_post.py --title "ベクトル" --body draft.txt --image ~/ph
 
 キャプションは説明に使い、笑いどころは本文側に置く。
 
-### 見出し画像（note用 thumb.jpg・記事と同じ commit で push する）
+### 見出し画像（note用 thumb.jpg）は Codex に描かせる
 
-note の見出し画像は記事フォルダの `thumb.jpg`（1280×670）。**記事と一緒に push する**と、起票 Action が Issue に画像URLを載せ、Chrome 側がそのまま見出し画像に設定する。後から足すと Issue の書き換えが要る。
-API は使わない（費用ゼロ）。見出しコピー（hook 2行＋category）を書いて、テンプレ描画のスクリプトに渡す:
+note の見出し画像は記事フォルダの `thumb.jpg`（1280×670）。イラスト版を **Codex の画像生成**（VS Code 拡張に同梱の `codex exec`。トヨの ChatGPT プラン内・API キー不要・1枚あたりの費用ゼロ）で作る。
+記事を push した後、Claude Code が記事を読んで「見出し・小見出し（日本語・画像にそのまま出る）」「記事の真実・場面（英語）」を書き、これを回す:
 
 ```powershell
-# category: growth / action / people / business / habits
-.\scripts\make_thumb_template.ps1 -Day 57 -Category habits -Hook "1行目`n2行目"
+.\scripts\codex_thumb.ps1 -Day 57 -Headline "…。" -Subtitle "…。" -Truth "English: what the article says, and what must NOT be implied." -Scene "English: left / center / right, one thin connecting line, one tiny Japanese label if useful."
 ```
 
-- hook は 2 行・各 12 字前後。記事の核心を言い切る（教訓にしない）。`note-thumbnails\thumbnail-copy.json` に保存され、次回以降は `-Day` だけで再描画できる
-- 見た目を先に確認したいときは `-OutFile <どこか>.jpg` で外に出す
-- イラスト版にしたい回は、Codex で作った画像を 1280×670 の JPEG にして `thumb.jpg` を上書き push（note-tensai の「差し替え」指示文 C の流れ）
+1本で「Codex 生成 → 1280×670 JPEG → thumb.jpg を commit/push → open の note 起票 Issue の『見出し画像』行を URL に書き換え」まで進む。**5〜35 分かかる**のでバックグラウンドで回し、終わったらトヨに「Chrome どうぞ」と伝える。
+- 文面の型は `note-thumbnails\day56-prompt.txt`（Codex が最初に作った回）。テンプレは `scripts/codex_thumb_prompt.txt`
+- `-DryRun` でプロンプトだけ確認、`-NoPush` で生成と変換まで、`-FromPng <png>` で手持ちの画像から変換・push・Issue だけ
+- Codex 本体は `%USERPROFILE%\.vscode\extensions\openai.chatgpt-*\bin\windows-x86_64\codex.exe`（拡張の更新でフォルダ名が変わる。スクリプトが最新を探す）
 - Toyo のマシンは python が動かないので、記事の 5 か所更新は `node scripts/new_post.mjs`（同じ引数）を使う
 
 ## 4. 公開する
