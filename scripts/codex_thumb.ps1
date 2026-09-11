@@ -120,7 +120,7 @@ $repo = 'hiroyatoyoshima-lgtm/toyoseeds-hp'
 $issues = gh issue list -R $repo --label note --state open --limit 50 --json number,title | ConvertFrom-Json
 $issue = $issues | Where-Object { $_.title -match ("^note起票: vol{0} " -f $Day) } | Select-Object -First 1
 if (-not $issue) { Write-Host "no open note Issue for vol$Day (nothing to edit)"; return }
-$body = gh issue view $issue.number -R $repo --json body -q .body
+$body = (gh issue view $issue.number -R $repo --json body -q .body) -join "`n"
 $newBody = [regex]::Replace($body, '(?m)^- 見出し画像: .*$', ("- 見出し画像: {0}（この URL の画像を見出し画像に設定）" -f $url))
 if ($newBody -eq $body) { Write-Host "Issue #$($issue.number): header-image line not found; left as is"; return }
 $tmp = Join-Path $WorkRoot ("day{0}-issue-body.md" -f $Day)
