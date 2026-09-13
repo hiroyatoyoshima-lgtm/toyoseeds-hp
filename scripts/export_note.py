@@ -44,7 +44,13 @@ def to_text(body):
                 out.append(html.unescape(re.sub(r"<[^>]+>", "", cap.group(1))).strip())
             continue
         text = re.sub(r"<br\s*/?>\s*", "\n", inner)
-        text = re.sub(r'<a [^>]*href="([^"]+)"[^>]*>(.*?)</a>', r"\2（\1）", text, flags=re.S)
+        # リンクは「文字（URL）」に。文字とURLが同じなら URL だけ（noteが自動で埋め込む）
+        text = re.sub(
+            r'<a [^>]*href="([^"]+)"[^>]*>(.*?)</a>',
+            lambda m: m.group(1) if m.group(2).strip() == m.group(1) else f"{m.group(2)}（{m.group(1)}）",
+            text,
+            flags=re.S,
+        )
         text = html.unescape(re.sub(r"<[^>]+>", "", text)).strip()
         if text:
             out.append(text)
