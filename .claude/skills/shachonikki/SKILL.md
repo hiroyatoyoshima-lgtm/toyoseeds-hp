@@ -69,11 +69,11 @@ python3 scripts/new_post.py --title "ベクトル" --body draft.txt --image ~/ph
 
 ### 見出し画像（note用 thumb.jpg）は Codex に描かせる
 
-note の見出し画像は記事フォルダの `thumb.jpg`（1280×670）。イラスト版を **Codex の画像生成**（VS Code 拡張に同梱の `codex exec`。トヨの ChatGPT プラン内・API キー不要・1枚あたりの費用ゼロ）で作る。
-記事を push した後、Claude Code が記事を読んで「見出し・小見出し（日本語・画像にそのまま出る）」「記事の真実・場面（英語）」を書き、これを回す:
+note の見出し画像は記事フォルダの `thumb.jpg`（1280×670）。**写真背景＋白ゴシックの見出し1本（小見出し無し）**の型（2026-09-15 トヨ確定。見本は `note-thumbnails\day57.png`）を **Codex の画像生成**（VS Code 拡張に同梱の `codex exec`。トヨの ChatGPT プラン内・API キー不要・1枚あたりの費用ゼロ）で作る。
+記事を push した後、Claude Code が記事を読んで「見出し（日本語・画像にそのまま出る。`|` で改行位置）」「記事の真実（英語）」「写真の場面（英語・人物なし）」を書き、これを回す:
 
 ```powershell
-.\scripts\codex_thumb.ps1 -Day 57 -Headline "…。" -Subtitle "…。" -Truth "English: what the article says, and what must NOT be implied." -Scene "English: left / center / right, one thin connecting line, one tiny Japanese label if useful."
+.\scripts\codex_thumb.ps1 -Day 57 -Headline "地元を離れて、|出身地が変わった。" -Truth "English: what the article says, and what must NOT be implied." -Scene "English: the photographic background (place, objects, light). No people, no signs."
 ```
 
 1本で「Codex 生成 → 1280×670 JPEG → thumb.jpg を commit/push → open の note 起票 Issue の『見出し画像』行を URL に書き換え」まで進む。**5〜35 分かかる**のでバックグラウンドで回し、終わったらトヨに「Chrome どうぞ」と伝える。

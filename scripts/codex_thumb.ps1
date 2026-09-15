@@ -2,13 +2,16 @@
 # (runs the local Codex CLI bundled with the VS Code extension; uses Toyo's ChatGPT plan, no API key, no per-image cost),
 # then push it and put the URL into the open "note起票" Issue so Claude in Chrome sets it as the header image.
 #
-#   .\scripts\codex_thumb.ps1 -Day 57 -Headline "..." -Subtitle "..." -Truth "..." -Scene "..."
+#   .\scripts\codex_thumb.ps1 -Day 57 -Headline "地元を離れて、|出身地が変わった。" -Truth "..." -Scene "..."
 #   .\scripts\codex_thumb.ps1 -Day 57 ... -DryRun            # only print the prompt
 #   .\scripts\codex_thumb.ps1 -Day 57 -FromPng C:\x\day57.png   # skip Codex, just convert + push + Issue
 #   .\scripts\codex_thumb.ps1 -Day 57 ... -NoPush             # generate + convert, leave git/Issue alone
 #
-# Headline/Subtitle are the exact Japanese strings rendered in the image. Truth/Scene/Avoid are English (see
-# note-thumbnails\day56-prompt.txt for the reference). Generation takes 5-35 minutes; run it in the background.
+# Style (2026-09-15, Toyo): full-bleed photo background, ONE white Gothic headline upper-left, no subtitle, small footer
+# (reference: note-thumbnails\day57-photo-prompt.txt / day57.png). Headline is the exact Japanese string rendered in the
+# image; "|" marks the line break (otherwise Codex balances two lines). Scene = the photographic background, in English
+# (place, objects, light; no people). Truth = what the article says, in English (mood only). -Subtitle is ignored.
+# Generation takes 2-35 minutes; run it in the background.
 param(
   [Parameter(Mandatory = $true)][int]$Day,
   [string]$Headline = "",
@@ -54,13 +57,18 @@ if ($FromPng -ne "") {
   Copy-Item -LiteralPath $FromPng -Destination $png -Force
   Write-Host "Using existing PNG: $FromPng"
 } else {
-  foreach ($k in 'Headline', 'Subtitle', 'Truth', 'Scene') {
+  if ($Subtitle -ne "") { Write-Warning "-Subtitle is ignored: the photo style has no subtitle (2026-09-15)" }
+  foreach ($k in 'Headline', 'Truth', 'Scene') {
     if ((Get-Variable $k).Value -eq "") { throw "-$k is required (or use -FromPng)" }
   }
   $template = [System.IO.File]::ReadAllText((Join-Path $PSScriptRoot 'codex_thumb_prompt.txt'), [System.Text.Encoding]::UTF8)
   $avoidText = if ($Avoid -ne "") { ", " + $Avoid.Trim().TrimEnd('.') } else { "" }
   $promptOut = Join-Path $WorkRoot ("day{0}-prompt.txt" -f $Day)
-  $prompt = $template.Replace('{DAY}', "$Day").Replace('{TITLE}', $title).Replace('{HEADLINE}', $Headline).Replace('{SUBTITLE}', $Subtitle).Replace('{TRUTH}', $Truth.Trim()).Replace('{SCENE}', $Scene.Trim()).Replace('{AVOID}', $avoidText).Replace('{OUT_PNG}', $png).Replace('{OUT_PROMPT}', $promptOut)
+  $headlineText = if ($Headline -match '\|') {
+    $hp = $Headline -split '\|', 2
+    "'{0}' on the first line and '{1}' on the second line" -f $hp[0].Trim(), $hp[1].Trim()
+  } else { "'$Headline' split into two well balanced lines" }
+  $prompt = $template.Replace('{DAY}', "$Day").Replace('{TITLE}', $title).Replace('{HEADLINE}', $headlineText).Replace('{TRUTH}', $Truth.Trim()).Replace('{SCENE}', $Scene.Trim()).Replace('{AVOID}', $avoidText).Replace('{OUT_PNG}', $png).Replace('{OUT_PROMPT}', $promptOut)
   [System.IO.File]::WriteAllText((Join-Path $WorkRoot ("day{0}-request.txt" -f $Day)), $prompt, $utf8)
   if ($DryRun) { Write-Host $prompt; return }
 
