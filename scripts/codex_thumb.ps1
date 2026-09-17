@@ -7,7 +7,10 @@
 #   .\scripts\codex_thumb.ps1 -Day 57 -FromPng C:\x\day57.png   # skip Codex, just convert + push + Issue
 #   .\scripts\codex_thumb.ps1 -Day 57 ... -NoPush             # generate + convert, leave git/Issue alone
 #
-# Style (2026-09-15, Toyo): full-bleed photo background, ONE white Gothic headline upper-left, no subtitle, small footer
+# Style (2026-09-15, Toyo): full-bleed photo background, ONE white Gothic headline upper-left, no subtitle, small footer.
+# 2026-09-17 (Toyo: "same taste two days in a row" / "text too small"): the template now demands a magazine-cover sized
+# headline (about 60% width, top 40% height) and bright daylight unless -Scene says otherwise. Vary -Scene day to day
+# (time of day, palette, subject) so consecutive thumbnails do not look alike; check the PNG with -NoPush before pushing.
 # (reference: note-thumbnails\day57-photo-prompt.txt / day57.png). Headline is the exact Japanese string rendered in the
 # image; "|" marks the line break (otherwise Codex balances two lines). Scene = the photographic background, in English
 # (place, objects, light; no people). Truth = what the article says, in English (mood only). -Subtitle is ignored.
