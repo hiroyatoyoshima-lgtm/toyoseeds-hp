@@ -3,20 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ToyoSeeds合同会社｜AI・データで、ビジネスを加速する。</title>
-<meta name="description" content="ToyoSeeds合同会社は、AI・データ活用で企業のビジネスを加速する福岡の会社です。自社で宿泊施設や店舗を運営し、現場で磨いた知見をもとにシステム開発・DX・AI活用を支援しています。">
+<title data-en="ToyoSeeds LLC | Accelerating business with AI and data.">ToyoSeeds合同会社｜AI・データで、ビジネスを加速する。</title>
+<meta name="description" data-en-content="ToyoSeeds LLC is a Fukuoka-based company that accelerates business with AI and data. We run our own guesthouses and shops, and support system development, DX and AI adoption with the know-how we earn on site." content="ToyoSeeds合同会社は、AI・データ活用で企業のビジネスを加速する福岡の会社です。自社で宿泊施設や店舗を運営し、現場で磨いた知見をもとにシステム開発・DX・AI活用を支援しています。">
 <meta name="theme-color" content="#1E2761">
 <link rel="canonical" href="https://www.toyoseeds.com/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:site_name" content="ToyoSeeds">
-<meta property="og:title" content="ToyoSeeds合同会社｜AI・データで、ビジネスを加速する。">
-<meta property="og:description" content="宿を営み、店を営み、その現場を自分たちのテクノロジーで回す。福岡を拠点に、AI・データ活用で企業のビジネスを加速します。">
+<meta property="og:title" data-en-content="ToyoSeeds LLC | Accelerating business with AI and data." content="ToyoSeeds合同会社｜AI・データで、ビジネスを加速する。">
+<meta property="og:description" data-en-content="We run guesthouses, we run shops, and we operate them with our own technology. From Fukuoka, we accelerate business with AI and data." content="宿を営み、店を営み、その現場を自分たちのテクノロジーで回す。福岡を拠点に、AI・データ活用で企業のビジネスを加速します。">
 <meta property="og:url" content="https://www.toyoseeds.com/">
 <meta property="og:image" content="https://www.toyoseeds.com/assets/og-image-v3.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="ToyoSeeds合同会社｜AI・データで、ビジネスを加速する。">
+<meta property="og:image:alt" data-en-content="ToyoSeeds LLC | Accelerating business with AI and data." content="ToyoSeeds合同会社｜AI・データで、ビジネスを加速する。">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {
@@ -67,6 +68,10 @@
   @keyframes seedPulse{0%,100%{opacity:.3;transform:scale(.65)}48%{opacity:1;transform:scale(1.12)}}
   @keyframes seedRing{0%{opacity:.5;transform:scale(.3)}80%,100%{opacity:0;transform:scale(2.5)}}
   @keyframes ctaGlint{0%,64%{left:-55%;opacity:0}70%{opacity:1}88%,100%{left:135%;opacity:0}}
+  .lang-toggle{display:inline-grid;place-items:center;box-sizing:border-box;min-width:66px;padding:13px 18px;border:1.5px solid #C6CDD9;border-radius:999px;background:rgba(255,255,255,.75);color:var(--c-primary);font-family:var(--f-latin);font-size:13px;font-weight:800;letter-spacing:.08em;cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+  .lang-toggle:hover{border-color:var(--c-accent);color:var(--c-accent);background:#fff}
+  .lang-toggle[lang="ja"]{font-family:var(--f-jp);letter-spacing:.02em}
+  html[lang="ja"] .en-only,html[lang="en"] .ja-only{display:none}
   .reveal-in{animation:revealIn .9s cubic-bezier(.22,.8,.3,1) both}
   .site-header{transition:background .35s,box-shadow .35s,padding .35s,backdrop-filter .35s}
   .site-header.header-scrolled{background:rgba(255,255,255,.82)!important;backdrop-filter:blur(18px);box-shadow:0 8px 30px rgba(30,39,97,.09);padding-top:10px!important;padding-bottom:10px!important}
@@ -147,12 +152,14 @@
     .site-header>a{font-size:21px!important}
     .header-actions{gap:8px!important}
     .header-contact{padding:11px 16px!important;font-size:12px!important}
+    .lang-toggle{min-width:54px;padding:10px 12px!important;font-size:12px!important}
     #top{min-height:auto!important}
     .hero-content{padding:118px 24px 72px!important}
     .hero-content>p:first-of-type{margin-bottom:20px!important;font-size:16.9px!important;line-height:1.8!important}
     .hero-content h1{margin-bottom:30px!important;font-size:clamp(42.8px,13.5vw,58.5px)!important;line-height:1.35!important}
     .hero-content h1+p{margin-bottom:34px!important;font-size:16.9px!important;line-height:2!important}
     .hero-content h1+p br{display:none}
+    html[lang="en"] .hero-content h1{font-size:clamp(36px,10.2vw,52px)!important}
     .hero-actions{flex-direction:column;gap:12px!important}
     .hero-actions a{box-sizing:border-box;width:100%;padding:15px 22px!important;text-align:center}
     #services,#model,#works,#strength,#ceo,#news,#company,#contact{padding:60px 20px!important}
@@ -199,6 +206,7 @@
     body.motion-ready .motion-item{opacity:1!important;transform:none!important}
   }
 </style>
+<script src="./assets/i18n.js" defer></script>
 <script src="./site.js" defer></script>
 </head>
 <body>
@@ -206,16 +214,17 @@
 <header class="site-header" style="position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 40px;background:transparent">
   <a href="#top" style="font-family:var(--f-latin);font-size:24px;font-weight:800;letter-spacing:.02em;color:var(--c-primary)">Toyo<span style="color:var(--c-accent)">Seeds</span></a>
   <div class="header-actions" style="display:flex;align-items:center;gap:16px">
-    <nav class="desktop-nav" aria-label="メインナビゲーション" style="display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;letter-spacing:.06em;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-radius:999px;padding:8px 12px;box-shadow:0 4px 24px rgba(30,39,97,.08)">
+    <nav class="desktop-nav" aria-label="メインナビゲーション" data-en-aria-label="Main navigation" style="display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;letter-spacing:.06em;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-radius:999px;padding:8px 12px;box-shadow:0 4px 24px rgba(30,39,97,.08)">
       <a href="#services" style="padding:8px 16px;border-radius:999px;transition:background .2s" style-hover="background:#F0F3F7">Services</a>
-      <a href="/ai-personal/" style="padding:8px 16px;border-radius:999px;transition:background .2s" style-hover="background:#F0F3F7">AIパーソナル</a>
+      <a href="/ai-personal/" style="padding:8px 16px;border-radius:999px;transition:background .2s" style-hover="background:#F0F3F7" data-en="AI Personal">AIパーソナル</a>
       <a href="#works" style="padding:8px 16px;border-radius:999px;transition:background .2s" style-hover="background:#F0F3F7">Works</a>
       <a href="#strength" style="padding:8px 16px;border-radius:999px;transition:background .2s" style-hover="background:#F0F3F7">Strength</a>
       <a href="#ceo" style="padding:8px 16px;border-radius:999px;transition:background .2s" style-hover="background:#F0F3F7">CEO</a>
       <a href="#news" style="padding:8px 16px;border-radius:999px;transition:background .2s" style-hover="background:#F0F3F7">News</a>
       <a href="#company" style="padding:8px 16px;border-radius:999px;transition:background .2s" style-hover="background:#F0F3F7">Company</a>
     </nav>
-    <a class="header-contact" href="#contact" style="background:linear-gradient(135deg,var(--c-accent),color-mix(in oklab,var(--c-accent),white 35%));color:var(--c-accent-on);padding:14px 32px;border-radius:999px;font-size:14px;font-weight:800;letter-spacing:.06em;box-shadow:0 6px 20px color-mix(in oklab,var(--c-accent),transparent 60%);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 10px 28px color-mix(in oklab,var(--c-accent),transparent 45%)">お問い合わせ</a>
+    <a class="lang-toggle" href="?lang=en" lang="en" data-lang-toggle aria-label="Switch to English">EN</a>
+    <a class="header-contact" href="#contact" style="background:linear-gradient(135deg,var(--c-accent),color-mix(in oklab,var(--c-accent),white 35%));color:var(--c-accent-on);padding:14px 32px;border-radius:999px;font-size:14px;font-weight:800;letter-spacing:.06em;box-shadow:0 6px 20px color-mix(in oklab,var(--c-accent),transparent 60%);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 10px 28px color-mix(in oklab,var(--c-accent),transparent 45%)" data-en="Contact">お問い合わせ</a>
   </div>
 </header>
 
@@ -225,12 +234,12 @@
   <div style="position:absolute;bottom:-20%;left:-12%;width:50vw;height:50vw;border-radius:50%;background:radial-gradient(circle,#BFE3FF 0%,transparent 65%);filter:blur(50px);opacity:.65;animation:drift2 18s ease-in-out infinite;pointer-events:none"></div>
   <div style="position:absolute;top:30%;left:38%;width:34vw;height:34vw;border-radius:50%;background:radial-gradient(circle,#E8F6D9 0%,transparent 65%);filter:blur(46px);opacity:.8;animation:drift3 16s ease-in-out infinite;pointer-events:none"></div>
   <div class="hero-content" style="position:relative;max-width:1200px;margin:0 auto;padding:140px clamp(28px,5vw,80px) 96px;animation:heroIn 1s ease both">
-    <p style="margin:0 0 28px;font-size:clamp(18px,1.8vw,24.8px);font-weight:800;color:var(--c-primary);letter-spacing:.04em">泊まる場所も、集う場所も、働く現場も。</p>
-    <h1 style="margin:0 0 44px;font-size:clamp(42.8px,6.8vw,90px);line-height:1.4;font-weight:900;color:var(--c-primary);letter-spacing:.02em;text-wrap:pretty">AIデータで<br>ビジネスを<br class="sp-br">加速する。</h1>
-    <p style="margin:0 0 48px;font-size:18px;line-height:2.4;color:#5A6180;max-width:38em">ToyoSeedsは、福岡でAIとデータの活用を軸に事業を育てる会社です。<br>自社で宿を営み、店を営み、その現場を自分たちのテクノロジーで回す。<br>そこで生まれたノウハウで、企業のシステム開発・DX・AI活用を支援しています。</p>
+    <p style="margin:0 0 28px;font-size:clamp(18px,1.8vw,24.8px);font-weight:800;color:var(--c-primary);letter-spacing:.04em" data-en="Places to stay, places to gather, places to work.">泊まる場所も、集う場所も、働く現場も。</p>
+    <h1 style="margin:0 0 44px;font-size:clamp(42.8px,6.8vw,90px);line-height:1.4;font-weight:900;color:var(--c-primary);letter-spacing:.02em;text-wrap:pretty" data-en="Accelerating<br>business with <br class='sp-br'>AI and data.">AIデータで<br>ビジネスを<br class="sp-br">加速する。</h1>
+    <p style="margin:0 0 48px;font-size:18px;line-height:2.4;color:#5A6180;max-width:38em" data-en="ToyoSeeds is a Fukuoka-based company that grows its business around AI and data. <br>We run our own guesthouses and shops, and keep them running on technology we build ourselves. <br>The know-how born there is what we bring to system development, DX and AI adoption for other companies.">ToyoSeedsは、福岡でAIとデータの活用を軸に事業を育てる会社です。<br>自社で宿を営み、店を営み、その現場を自分たちのテクノロジーで回す。<br>そこで生まれたノウハウで、企業のシステム開発・DX・AI活用を支援しています。</p>
     <div class="hero-actions" style="display:flex;gap:16px">
-      <a href="#services" style="background:linear-gradient(135deg,var(--c-accent),color-mix(in oklab,var(--c-accent),white 35%));color:var(--c-accent-on);font-weight:800;font-size:16.9px;padding:16px 40px;border-radius:999px;box-shadow:0 6px 20px color-mix(in oklab,var(--c-accent),transparent 60%);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 12px 30px color-mix(in oklab,var(--c-accent),transparent 45%)">事業を見る</a>
-      <a href="#company" style="border:1.5px solid #C6CDD9;color:var(--c-primary);font-weight:700;font-size:16.9px;padding:16px 40px;border-radius:999px;background:rgba(255,255,255,.7);transition:border-color .2s,color .2s" style-hover="border-color:var(--c-accent);color:var(--c-accent)">わたしたちについて</a>
+      <a href="#services" style="background:linear-gradient(135deg,var(--c-accent),color-mix(in oklab,var(--c-accent),white 35%));color:var(--c-accent-on);font-weight:800;font-size:16.9px;padding:16px 40px;border-radius:999px;box-shadow:0 6px 20px color-mix(in oklab,var(--c-accent),transparent 60%);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-2px);box-shadow:0 12px 30px color-mix(in oklab,var(--c-accent),transparent 45%)" data-en="Our business">事業を見る</a>
+      <a href="#company" style="border:1.5px solid #C6CDD9;color:var(--c-primary);font-weight:700;font-size:16.9px;padding:16px 40px;border-radius:999px;background:rgba(255,255,255,.7);transition:border-color .2s,color .2s" style-hover="border-color:var(--c-accent);color:var(--c-accent)" data-en="About us">わたしたちについて</a>
     </div>
   </div>
 </section>
@@ -239,32 +248,32 @@
 <section id="services" data-screen-label="Services" data-reveal="" style="padding:112px 80px;background:#F7F8FB">
   <div style="max-width:1120px;margin:0 auto">
     <p style="margin:0 0 12px;font-size:14.6px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Services</p>
-    <h2 style="margin:0 0 56px;font-size:33.8px;font-weight:800;color:var(--c-primary)">2つの事業</h2>
+    <h2 style="margin:0 0 56px;font-size:33.8px;font-weight:800;color:var(--c-primary)" data-en="Two businesses">2つの事業</h2>
     <div class="services-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
       <article style="background:#fff;border:1px solid #DDE1EA;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-8px);box-shadow:0 20px 50px rgba(30,39,97,.12)">
         <div style="position:relative;height:380px">
-          <img src="./assets/dashboard.webp" alt="自社開発の売上分析ダッシュボード" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top">
+          <img src="./assets/dashboard.webp" alt="自社開発の売上分析ダッシュボード" data-en-alt="Our in-house sales analytics dashboard" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top">
         </div>
         <div style="padding:32px 36px 40px;display:flex;flex-direction:column;gap:14px">
           <p style="margin:0;font-size:13.5px;font-weight:800;letter-spacing:.2em;color:var(--c-accent-ink)">AI &amp; DATA</p>
-          <h3 style="margin:0;font-size:24.8px;font-weight:800;color:var(--c-primary);border-bottom:4px solid var(--c-accent);align-self:flex-start;padding-bottom:6px">AI・データ活用事業</h3>
-          <p style="margin:0;font-size:16.9px;line-height:2;color:#1A2142"><strong style="color:var(--c-primary)">現場に入り込み、要件をその場で掴み、AIで素早く形にする。</strong>業務システムの開発、売上・顧客データの可視化、帳票の自動化、AI活用研修の設計など、自社の宿泊・店舗運営で培った技術をもとに、現場で実際に使える仕組みをつくります。</p>
-          <p style="margin:0;font-size:15.8px;line-height:2;color:#5A6180">法人向けのAI研修プログラム「<a href="/ai-personal/" style="color:var(--c-accent);font-weight:800" style-hover="color:var(--c-primary)">AIパーソナル</a>」も提供しています。専属AIトレーナーが週1回御社に伺い、3週間でAIを「全員が毎日使うもの」にする研修です。</p>
+          <h3 style="margin:0;font-size:24.8px;font-weight:800;color:var(--c-primary);border-bottom:4px solid var(--c-accent);align-self:flex-start;padding-bottom:6px" data-en="AI &amp; Data Business">AI・データ活用事業</h3>
+          <p style="margin:0;font-size:16.9px;line-height:2;color:#1A2142" data-en="<strong style='color:var(--c-primary)'>We get onto the floor, grasp the requirements on the spot, and shape them fast with AI.</strong> Business systems, dashboards for sales and customer data, automated paperwork, AI training programmes — all built on the technology we developed for our own guesthouse and shop operations, so that what we deliver is actually used on site."><strong style="color:var(--c-primary)">現場に入り込み、要件をその場で掴み、AIで素早く形にする。</strong>業務システムの開発、売上・顧客データの可視化、帳票の自動化、AI活用研修の設計など、自社の宿泊・店舗運営で培った技術をもとに、現場で実際に使える仕組みをつくります。</p>
+          <p style="margin:0;font-size:15.8px;line-height:2;color:#5A6180" data-en="We also run &ldquo;<a href='/ai-personal/' style='color:var(--c-accent);font-weight:800' style-hover='color:var(--c-primary)'>AI Personal</a>&rdquo;, an AI training programme for companies (Japanese only). A dedicated AI trainer visits your office once a week and, over three weeks, turns AI into something everyone uses every day.">法人向けのAI研修プログラム「<a href="/ai-personal/" style="color:var(--c-accent);font-weight:800" style-hover="color:var(--c-primary)">AIパーソナル</a>」も提供しています。専属AIトレーナーが週1回御社に伺い、3週間でAIを「全員が毎日使うもの」にする研修です。</p>
           <div style="display:flex;flex-wrap:wrap;gap:8px 24px;margin-top:4px">
-            <a href="/ai-personal/" style="font-size:15.8px;font-weight:800;color:var(--c-accent);letter-spacing:.02em" style-hover="color:var(--c-primary)">AIパーソナルを見る →</a>
-            <a href="#works" style="font-size:15.8px;font-weight:800;color:var(--c-accent);letter-spacing:.02em" style-hover="color:var(--c-primary)">開発事例を見る →</a>
+            <a href="/ai-personal/" style="font-size:15.8px;font-weight:800;color:var(--c-accent);letter-spacing:.02em" style-hover="color:var(--c-primary)" data-en="See AI Personal →">AIパーソナルを見る →</a>
+            <a href="#works" style="font-size:15.8px;font-weight:800;color:var(--c-accent);letter-spacing:.02em" style-hover="color:var(--c-primary)" data-en="See our work →">開発事例を見る →</a>
           </div>
         </div>
       </article>
-      <a href="https://seeds-stay.com/" target="_blank" rel="noopener noreferrer" aria-label="SeedsStay公式サイトを開く" style="display:grid;height:100%;color:inherit;text-decoration:none;border-radius:20px">
+      <a href="https://seeds-stay.com/" target="_blank" rel="noopener noreferrer" aria-label="SeedsStay公式サイトを開く" data-en-aria-label="Open the SeedsStay website" style="display:grid;height:100%;color:inherit;text-decoration:none;border-radius:20px">
       <article style="background:#fff;border:1px solid #DDE1EA;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-8px);box-shadow:0 20px 50px rgba(30,39,97,.12)">
         <div style="position:relative;height:380px">
-          <img src="./assets/stay.webp" alt="SeedsStay Ijiri Ⅱ（一棟運営のアパートメントホテル）" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+          <img src="./assets/stay.webp" alt="SeedsStay Ijiri Ⅱ（一棟運営のアパートメントホテル）" data-en-alt="SeedsStay Ijiri II, an apartment hotel we run as a whole building" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
         </div>
         <div style="padding:32px 36px 40px;display:flex;flex-direction:column;gap:14px">
           <p style="margin:0;font-size:13.5px;font-weight:800;letter-spacing:.2em;color:#5A6180">STAY &amp; COMMUNITY</p>
-          <h3 style="margin:0;font-size:24.8px;font-weight:800;color:var(--c-primary);border-bottom:4px solid var(--c-accent);align-self:flex-start;padding-bottom:6px">宿泊・インバウンド事業</h3>
-          <p style="margin:0;font-size:16.9px;line-height:2;color:#1A2142">福岡で宿泊ブランド「SeedsStay」を運営。テーマは&ldquo;Stay to Grow&rdquo;——泊まった人の旅や暮らしが、少し良くなる宿。専属の清掃スタッフとチームで宿を磨き、世界中からのゲストを迎えています。予約・売上・価格は自社開発のシステムで毎日管理。この実業がAI・データ事業の&ldquo;生きた実験場&rdquo;です。</p>
+          <h3 style="margin:0;font-size:24.8px;font-weight:800;color:var(--c-primary);border-bottom:4px solid var(--c-accent);align-self:flex-start;padding-bottom:6px" data-en="Stay &amp; Inbound Business">宿泊・インバウンド事業</h3>
+          <p style="margin:0;font-size:16.9px;line-height:2;color:#1A2142" data-en="We run SeedsStay, our own lodging brand in Fukuoka. The theme is &ldquo;Stay to Grow&rdquo; — a place that leaves your travel, and your life, a little better than before. Together with our own cleaning staff we keep the rooms in shape and welcome guests from all over the world. Bookings, revenue and pricing are managed every day on a system we built ourselves. This real-world operation is the living laboratory for our AI and data work.">福岡で宿泊ブランド「SeedsStay」を運営。テーマは&ldquo;Stay to Grow&rdquo;——泊まった人の旅や暮らしが、少し良くなる宿。専属の清掃スタッフとチームで宿を磨き、世界中からのゲストを迎えています。予約・売上・価格は自社開発のシステムで毎日管理。この実業がAI・データ事業の&ldquo;生きた実験場&rdquo;です。</p>
         </div>
       </article>
       </a>
@@ -277,15 +286,15 @@
   <div style="position:absolute;bottom:-22%;right:-8%;width:44vw;height:44vw;border-radius:50%;background:radial-gradient(circle,rgba(67,160,71,.28) 0%,transparent 65%);filter:blur(60px);animation:drift1 17s ease-in-out infinite;pointer-events:none"></div>
   <div data-reveal="" style="position:relative;max-width:1000px;margin:0 auto">
     <p style="margin:0 0 12px;font-size:14.6px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:#A6E6B0;text-transform:uppercase">Our Model</p>
-    <h2 style="margin:0 0 20px;font-size:clamp(29.3px,3.8vw,45px);font-weight:800;line-height:1.5;text-wrap:pretty">実業と企業支援が、噛み合って回り続ける。</h2>
-    <p class="model-copy" style="margin:0 auto;font-size:18px;line-height:2.1;color:rgba(255,255,255,.82);max-width:40em">自分たちで宿を運営し、現場に必要な仕組みを内製する。そこで得た知見を企業支援に活かし、磨いた技術を再び実業へ戻す。この&ldquo;&infin;&rdquo;の循環が、ToyoSeedsの強みです。</p>
+    <h2 style="margin:0 0 20px;font-size:clamp(29.3px,3.8vw,45px);font-weight:800;line-height:1.5;text-wrap:pretty" data-en="Our own operations and our client work keep each other turning.">実業と企業支援が、噛み合って回り続ける。</h2>
+    <p class="model-copy" style="margin:0 auto;font-size:18px;line-height:2.1;color:rgba(255,255,255,.82);max-width:40em" data-en="We run the guesthouses ourselves and build in-house whatever the site needs. What we learn there goes into the work we do for client companies, and the skills we sharpen there come back to our own operations. This &ldquo;&infin;&rdquo; loop is what makes ToyoSeeds different.">自分たちで宿を運営し、現場に必要な仕組みを内製する。そこで得た知見を企業支援に活かし、磨いた技術を再び実業へ戻す。この&ldquo;&infin;&rdquo;の循環が、ToyoSeedsの強みです。</p>
     <div class="model-loop" style="display:flex;align-items:center;justify-content:center;gap:clamp(6px,2vw,24px);flex-wrap:wrap;margin-top:40px">
       <div style="flex:0 1 200px;min-width:150px;text-align:right">
-        <p style="margin:0;font-size:13.5px;letter-spacing:.16em;color:#A6E6B0;font-weight:700">裏側の実業</p>
+        <p style="margin:0;font-size:13.5px;letter-spacing:.16em;color:#A6E6B0;font-weight:700" data-en="Behind the scenes">裏側の実業</p>
         <p style="margin:6px 0 0;font-size:clamp(20.3px,2.5vw,27px);font-weight:800;line-height:1.3">SeedsStay</p>
-        <p style="margin:2px 0 0;font-size:14.6px;color:rgba(255,255,255,.65)">宿泊運営</p>
+        <p style="margin:2px 0 0;font-size:14.6px;color:rgba(255,255,255,.65)" data-en="Hospitality">宿泊運営</p>
       </div>
-      <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="flex:0 0 auto;width:min(380px,62vw);height:auto;overflow:visible" aria-label="実業と企業支援が無限に循環する図">
+      <svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="flex:0 0 auto;width:min(380px,62vw);height:auto;overflow:visible" aria-label="実業と企業支援が無限に循環する図" data-en-aria-label="Diagram of our own operations and client work circulating in an endless loop">
         <defs>
           <linearGradient id="loopGrad" x1="0" y1="0" x2="600" y2="0" gradientUnits="userSpaceOnUse">
             <stop offset="0" stop-color="#7CB342"/>
@@ -301,9 +310,9 @@
         </circle>
       </svg>
       <div style="flex:0 1 200px;min-width:150px;text-align:left">
-        <p style="margin:0;font-size:13.5px;letter-spacing:.16em;color:#A6E6B0;font-weight:700">企業支援</p>
-        <p style="margin:6px 0 0;font-size:clamp(20.3px,2.5vw,27px);font-weight:800;line-height:1.3">AI・データ</p>
-        <p style="margin:2px 0 0;font-size:14.6px;color:rgba(255,255,255,.65)">開発・DX支援</p>
+        <p style="margin:0;font-size:13.5px;letter-spacing:.16em;color:#A6E6B0;font-weight:700" data-en="Client work">企業支援</p>
+        <p style="margin:6px 0 0;font-size:clamp(20.3px,2.5vw,27px);font-weight:800;line-height:1.3" data-en="AI &amp; Data">AI・データ</p>
+        <p style="margin:2px 0 0;font-size:14.6px;color:rgba(255,255,255,.65)" data-en="Development &amp; DX">開発・DX支援</p>
       </div>
     </div>
   </div>
@@ -313,27 +322,27 @@
   <div class="works-motion-layer" aria-hidden="true"><span class="works-aurora"></span><span class="works-scan"></span></div>
   <div style="position:relative;max-width:1120px;margin:0 auto">
     <p style="margin:0 0 12px;font-size:14.6px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Works</p>
-    <h2 style="margin:0 0 12px;font-size:33.8px;font-weight:800;color:var(--c-primary)">自分たちの現場で、実際に使っているもの。</h2>
-    <p style="margin:0 0 48px;font-size:18px;line-height:2.1;color:#5A6180;max-width:42em">宿と店舗の運営から生まれ、日々使いながら改善している仕組みだけを紹介します。</p>
+    <h2 style="margin:0 0 12px;font-size:33.8px;font-weight:800;color:var(--c-primary)" data-en="The tools we actually use on our own sites.">自分たちの現場で、実際に使っているもの。</h2>
+    <p style="margin:0 0 48px;font-size:18px;line-height:2.1;color:#5A6180;max-width:42em" data-en="We only show systems that came out of running our guesthouses and shops, and that we keep improving as we use them.">宿と店舗の運営から生まれ、日々使いながら改善している仕組みだけを紹介します。</p>
     <div class="works-grid">
       <a class="work-card" href="https://minpaku-os-lp.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:block;background:#fff;color:inherit;text-decoration:none;cursor:pointer;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <div class="work-visual work-visual--desktop">
-          <img src="./assets/dashboard.webp" alt="MinpakuOSの実画面（売上分析）" loading="lazy">
+          <img src="./assets/dashboard.webp" alt="MinpakuOSの実画面（売上分析）" data-en-alt="A real MinpakuOS screen (sales analytics)" loading="lazy">
         </div>
         <p style="margin:0 0 8px;font-size:20.3px;font-weight:800;color:var(--c-primary)">MinpakuOS</p>
-        <p style="margin:0;font-size:15.8px;line-height:2;color:#5A6180">予約サイト（Beds24）のAPIからデータを取り込み、稼働率・ADR・売上を毎朝確認。AIエージェントが数字を監視して価格戦略を提案し、行政へ毎月提出する宿泊税の書類も予約データから自動生成。自社の宿泊運営を毎日これで回しています。</p>
+        <p style="margin:0;font-size:15.8px;line-height:2;color:#5A6180" data-en="It pulls data from the booking platform API (Beds24) so we can check occupancy, ADR and revenue every morning. An AI agent watches the numbers and proposes pricing moves, and the monthly lodging-tax filing for the city is generated automatically from the booking data. We run our own lodging business on this, every day.">予約サイト（Beds24）のAPIからデータを取り込み、稼働率・ADR・売上を毎朝確認。AIエージェントが数字を監視して価格戦略を提案し、行政へ毎月提出する宿泊税の書類も予約データから自動生成。自社の宿泊運営を毎日これで回しています。</p>
       </a>
       <div class="work-card" style="background:#fff;border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:30px 28px 34px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
-        <div class="work-visual phone-stage" aria-label="つながるBARアプリのスマートフォン画面">
+        <div class="work-visual phone-stage" aria-label="つながるBARアプリのスマートフォン画面" data-en-aria-label="Smartphone screens of the Tsunagaru BAR app">
           <div class="phone-frame">
-            <img src="./assets/tsunagaru.webp" alt="つながるBARアプリ here画面（今この店にいる人・デモデータ）" loading="lazy">
+            <img src="./assets/tsunagaru.webp" alt="つながるBARアプリ here画面（今この店にいる人・デモデータ）" data-en-alt="Tsunagaru BAR app, the here screen showing who is in the bar right now (demo data)" loading="lazy">
           </div>
           <div class="phone-frame">
-            <img src="./assets/tsunagaru2.webp" alt="つながるBARアプリ 売上ダッシュボード画面（デモデータ）" loading="lazy">
+            <img src="./assets/tsunagaru2.webp" alt="つながるBARアプリ 売上ダッシュボード画面（デモデータ）" data-en-alt="Tsunagaru BAR app, the sales dashboard screen (demo data)" loading="lazy">
           </div>
         </div>
-        <p style="margin:0 0 8px;font-size:20.3px;font-weight:800;color:var(--c-primary)">つながるBARアプリ</p>
-        <p style="margin:0;font-size:15.8px;line-height:2;color:#5A6180">店のQRを読むと「今この店に誰がいるか」が見える、お客さん用ページ&ldquo;here&rdquo;。初回に名前とひとことを登録するだけで自動チェックインされ、その場の出会いが生まれます。裏側では来店ログから全店舗の売上・客数・営業利益までを一元管理しています。</p>
+        <p style="margin:0 0 8px;font-size:20.3px;font-weight:800;color:var(--c-primary)" data-en="Tsunagaru BAR app">つながるBARアプリ</p>
+        <p style="margin:0;font-size:15.8px;line-height:2;color:#5A6180" data-en="Scan the QR code in the bar and you can see who else is there right now — a page for guests called &ldquo;here&rdquo;. You register a name and one line about yourself the first time, and after that check-in happens automatically, so conversations start on their own. Behind it, visit logs roll up into sales, guest counts and operating profit across every bar.">店のQRを読むと「今この店に誰がいるか」が見える、お客さん用ページ&ldquo;here&rdquo;。初回に名前とひとことを登録するだけで自動チェックインされ、その場の出会いが生まれます。裏側では来店ログから全店舗の売上・客数・営業利益までを一元管理しています。</p>
       </div>
     </div>
   </div>
@@ -343,8 +352,8 @@
   <div style="position:absolute;top:-20%;left:-10%;width:44vw;height:44vw;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--c-accent),white 60%) 0%,transparent 65%);filter:blur(48px);opacity:.6;animation:drift2 20s ease-in-out infinite;pointer-events:none"></div>
   <div data-reveal="" style="position:relative;max-width:1120px;margin:0 auto">
     <p style="margin:0 0 12px;font-size:14.6px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Strength</p>
-    <h2 style="margin:0 0 24px;font-size:clamp(29.3px,3.4vw,42.8px);font-weight:800;line-height:1.6;text-wrap:pretty;color:var(--c-primary)">自分たちが毎日使うアプリや仕組みを、<br>自分たちで作ってきた会社です。</h2>
-    <p style="margin:0 0 64px;font-size:18px;line-height:2.2;color:#5A6180;max-width:44em">宿の予約管理も、売上ダッシュボードも、まず自社の現場のために開発し、毎日使い、磨き続けています。だから机上の提案ではなく、「現場で本当に回る」システムをお届けできます。</p>
+    <h2 style="margin:0 0 24px;font-size:clamp(29.3px,3.4vw,42.8px);font-weight:800;line-height:1.6;text-wrap:pretty;color:var(--c-primary)" data-en="We are a company that has built the apps and systems <br>we ourselves use every day.">自分たちが毎日使うアプリや仕組みを、<br>自分たちで作ってきた会社です。</h2>
+    <p style="margin:0 0 64px;font-size:18px;line-height:2.2;color:#5A6180;max-width:44em" data-en="The booking management and the sales dashboards were all developed for our own operations first, used daily, and polished ever since. That is why we can deliver systems that really work on site, rather than proposals that only work on paper.">宿の予約管理も、売上ダッシュボードも、まず自社の現場のために開発し、毎日使い、磨き続けています。だから机上の提案ではなく、「現場で本当に回る」システムをお届けできます。</p>
     <div class="strength-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
       <div class="strength-card" style="background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:28px 28px 32px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <div class="strength-card__head">
@@ -356,11 +365,11 @@
             </svg>
           </div>
           <div>
-            <p class="strength-card__label" style="color:#237A49">FIELD / 現場</p>
-            <p class="strength-card__title">現場に入り込む</p>
+            <p class="strength-card__label" style="color:#237A49" data-en="FIELD">FIELD / 現場</p>
+            <p class="strength-card__title" data-en="We get onto the floor">現場に入り込む</p>
           </div>
         </div>
-        <p style="margin:0;font-size:16.3px;line-height:2;color:#5A6180">オフィスで仕様書を待ちません。業務のど真ん中で困りごとを肌で掴み、「何を作るべきか」から一緒に考えます。要件を掴む力こそ、AI時代にいちばん残る価値だと考えています。</p>
+        <p style="margin:0;font-size:16.3px;line-height:2;color:#5A6180" data-en="We do not sit in an office waiting for a spec. We stand in the middle of the work, feel the problems for ourselves, and think through what should be built with you. Being able to grasp the real requirement is, we believe, the value that lasts longest in the age of AI.">オフィスで仕様書を待ちません。業務のど真ん中で困りごとを肌で掴み、「何を作るべきか」から一緒に考えます。要件を掴む力こそ、AI時代にいちばん残る価値だと考えています。</p>
       </div>
       <div class="strength-card" style="background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:28px 28px 32px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <div class="strength-card__head">
@@ -371,11 +380,11 @@
             </svg>
           </div>
           <div>
-            <p class="strength-card__label" style="color:#1769AA">SPEED / 速度</p>
-            <p class="strength-card__title">早く見せ、早く試す</p>
+            <p class="strength-card__label" style="color:#1769AA" data-en="SPEED">SPEED / 速度</p>
+            <p class="strength-card__title" data-en="Show early, test early">早く見せ、早く試す</p>
           </div>
         </div>
-        <p style="margin:0;font-size:16.3px;line-height:2;color:#5A6180">早い段階で動くモックを作ることで、完成形を具体的に共有できます。判断材料が揃うため、社内稟議や関係者への説明を進めやすくなり、検討段階からより多くのトライ＆エラーを回せます。</p>
+        <p style="margin:0;font-size:16.3px;line-height:2;color:#5A6180" data-en="Building a working mock-up early lets everyone see the finished shape concretely. With something real to judge, internal approval and explanations to stakeholders move faster, and you can run far more trial and error while decisions are still open.">早い段階で動くモックを作ることで、完成形を具体的に共有できます。判断材料が揃うため、社内稟議や関係者への説明を進めやすくなり、検討段階からより多くのトライ＆エラーを回せます。</p>
       </div>
       <div class="strength-card" style="background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border:1px solid #E3EAE1;border-top:3px solid var(--c-accent);border-radius:16px;padding:28px 28px 32px;box-shadow:0 8px 30px rgba(30,39,97,.06);transition:transform .25s,box-shadow .25s" style-hover="transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,39,97,.12)">
         <div class="strength-card__head">
@@ -388,11 +397,11 @@
             </svg>
           </div>
           <div>
-            <p class="strength-card__label" style="color:#A86708">RESULT / 成果</p>
-            <p class="strength-card__title">成果で受ける</p>
+            <p class="strength-card__label" style="color:#A86708" data-en="RESULT">RESULT / 成果</p>
+            <p class="strength-card__title" data-en="Measured by results">成果で受ける</p>
           </div>
         </div>
-        <p style="margin:0;font-size:16.3px;line-height:2;color:#5A6180">人月ではなく「現場が変わったか」で仕事を測ります。既製のSaaSを当てはめるのではなく、その現場の項目・帳票・運用に合わせて専用に作り、毎日使われるまで磨き込みます。</p>
+        <p style="margin:0;font-size:16.3px;line-height:2;color:#5A6180" data-en="We measure our work by whether the site actually changed, not by man-months. Instead of fitting an off-the-shelf SaaS to you, we build for your fields, your forms and your way of working, and keep refining it until it is used every day.">人月ではなく「現場が変わったか」で仕事を測ります。既製のSaaSを当てはめるのではなく、その現場の項目・帳票・運用に合わせて専用に作り、毎日使われるまで磨き込みます。</p>
       </div>
     </div>
   </div>
@@ -401,38 +410,38 @@
 <section id="ceo" data-screen-label="CEO" data-reveal="" style="padding:112px 80px;background:#FFFFFF">
   <div style="max-width:1120px;margin:0 auto">
     <p style="margin:0 0 12px;font-family:var(--f-latin);font-size:14.6px;font-weight:800;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">CEO</p>
-    <h2 style="margin:0 0 56px;font-size:33.8px;font-weight:800;color:var(--c-primary)">代表プロフィール</h2>
+    <h2 style="margin:0 0 56px;font-size:33.8px;font-weight:800;color:var(--c-primary)" data-en="CEO Profile">代表プロフィール</h2>
     <div class="ceo-grid" style="display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start">
       <div class="ceo-photo" style="position:relative;height:400px;border-radius:20px;overflow:hidden;box-shadow:0 12px 40px rgba(30,39,97,.10)">
-        <img src="./assets/ceo.webp" alt="代表社員 豊島寛也" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top">
+        <img src="./assets/ceo.webp" alt="代表社員 豊島寛也" data-en-alt="Hiroya Toyoshima, Representative" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top">
       </div>
       <div style="display:flex;flex-direction:column;gap:20px">
         <div>
-          <p style="margin:0 0 6px;font-size:14.6px;font-weight:700;letter-spacing:.14em;color:#5A6180">代表社員</p>
-          <p class="ceo-name" style="margin:0;font-size:36px;font-weight:800;color:var(--c-primary)">豊島 寛也 <span style="font-family:var(--f-latin);font-size:16.9px;font-weight:700;color:#5A6180;margin-left:12px">Hiroya Toyoshima</span></p>
+          <p style="margin:0 0 6px;font-size:14.6px;font-weight:700;letter-spacing:.14em;color:#5A6180" data-en="Representative">代表社員</p>
+          <p class="ceo-name" style="margin:0;font-size:36px;font-weight:800;color:var(--c-primary)" data-en="Hiroya Toyoshima <span style='font-family:var(--f-jp);font-size:16.9px;font-weight:700;color:#5A6180;margin-left:12px'>豊島 寛也</span>">豊島 寛也 <span style="font-family:var(--f-latin);font-size:16.9px;font-weight:700;color:#5A6180;margin-left:12px">Hiroya Toyoshima</span></p>
         </div>
-        <div class="ceo-points" aria-label="豊島寛也の3つの特徴">
-          <span class="ceo-point">現場を自分で回す</span>
-          <span class="ceo-point">AI × データ</span>
-          <span class="ceo-point">日記10年・著書1冊</span>
+        <div class="ceo-points" aria-label="豊島寛也の3つの特徴" data-en-aria-label="Three things about Hiroya Toyoshima">
+          <span class="ceo-point" data-en="Runs the floor in person">現場を自分で回す</span>
+          <span class="ceo-point" data-en="AI × data">AI × データ</span>
+          <span class="ceo-point" data-en="10 years of diaries, one book">日記10年・著書1冊</span>
         </div>
-        <p class="ceo-bio" style="margin:0;font-size:18px;line-height:2.2;color:#1A2142;text-wrap:pretty">九州大学経済学部卒。広告代理店で営業・人事DXを経験し、2023年に創業。自社で店舗と宿を運営し、現場の課題をAI・データで改善する。10年間の日記と、未経験から始めたピアノを続け、<a href="https://www.amazon.co.jp/dp/B0DG5FXY1F" target="_blank" rel="noopener" style="color:var(--c-accent);font-weight:700;text-decoration:underline;text-underline-offset:3px">『日記の習慣』</a>を出版。「小さく続け、昨日より1%良くする」ことを大切にしている。</p>
+        <p class="ceo-bio" style="margin:0;font-size:18px;line-height:2.2;color:#1A2142;text-wrap:pretty" data-en="Graduated in economics from Kyushu University. After working in sales and HR digitalisation at an advertising agency, founded ToyoSeeds in 2023. Runs the company&rsquo;s own shops and guesthouses, and uses AI and data to fix the problems that come up there. Has kept a diary for ten years, took up the piano from scratch, and published <a href='https://www.amazon.co.jp/dp/B0DG5FXY1F' target='_blank' rel='noopener' style='color:var(--c-accent);font-weight:700;text-decoration:underline;text-underline-offset:3px'>&lsquo;The Diary Habit&rsquo;</a> (Japanese). The principle: keep it small, keep going, and make today one per cent better than yesterday.">九州大学経済学部卒。広告代理店で営業・人事DXを経験し、2023年に創業。自社で店舗と宿を運営し、現場の課題をAI・データで改善する。10年間の日記と、未経験から始めたピアノを続け、<a href="https://www.amazon.co.jp/dp/B0DG5FXY1F" target="_blank" rel="noopener" style="color:var(--c-accent);font-weight:700;text-decoration:underline;text-underline-offset:3px">『日記の習慣』</a>を出版。「小さく続け、昨日より1%良くする」ことを大切にしている。</p>
         <div class="ceo-socials">
           <span class="ceo-socials__label">TOYO'S SNS</span>
-          <a class="ceo-social ceo-social--instagram" href="https://www.instagram.com/toyo_seeds/" target="_blank" rel="noopener" aria-label="豊島寛也のInstagram" title="Instagram">
+          <a class="ceo-social ceo-social--instagram" href="https://www.instagram.com/toyo_seeds/" target="_blank" rel="noopener" aria-label="豊島寛也のInstagram" data-en-aria-label="Hiroya Toyoshima on Instagram" title="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="3" y="3" width="18" height="18" rx="5"/>
               <circle cx="12" cy="12" r="4"/>
               <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
             </svg>
           </a>
-          <a class="ceo-social ceo-social--youtube" href="https://www.youtube.com/@toyopianodiary" target="_blank" rel="noopener" aria-label="豊島寛也のYouTube（ピアノ日記）" title="YouTube（ピアノ日記）">
+          <a class="ceo-social ceo-social--youtube" href="https://www.youtube.com/@toyopianodiary" target="_blank" rel="noopener" aria-label="豊島寛也のYouTube（ピアノ日記）" data-en-aria-label="Hiroya Toyoshima on YouTube (piano diary)" title="YouTube（ピアノ日記）" data-en-title="YouTube (piano diary)">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
               <path d="M21 8.2a3 3 0 0 0-2.1-2.1C17.1 5.6 12 5.6 12 5.6s-5.1 0-6.9.5A3 3 0 0 0 3 8.2 31 31 0 0 0 2.6 12 31 31 0 0 0 3 15.8a3 3 0 0 0 2.1 2.1c1.8.5 6.9.5 6.9.5s5.1 0 6.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .4-3.8 31 31 0 0 0-.4-3.8Z"/>
               <path d="m10 9 5 3-5 3V9Z" fill="currentColor" stroke="none"/>
             </svg>
           </a>
-          <a class="ceo-social ceo-social--note" href="https://note.com/crichan" target="_blank" rel="noopener" aria-label="豊島寛也のnote" title="note">
+          <a class="ceo-social ceo-social--note" href="https://note.com/crichan" target="_blank" rel="noopener" aria-label="豊島寛也のnote" data-en-aria-label="Hiroya Toyoshima on note" title="note">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <circle cx="12" cy="12" r="9"/>
               <path d="M9.4 15.6V8.9"/>
@@ -440,7 +449,7 @@
             </svg>
           </a>
         </div>
-        <a href="#news" style="align-self:flex-start;margin-top:8px;font-size:16.3px;font-weight:800;color:var(--c-accent)" style-hover="color:var(--c-primary)">社長日記を読む →</a>
+        <a href="#news" style="align-self:flex-start;margin-top:8px;font-size:16.3px;font-weight:800;color:var(--c-accent)" style-hover="color:var(--c-primary)" data-en="Read the CEO diary (Japanese) →">社長日記を読む →</a>
       </div>
     </div>
   </div>
@@ -450,29 +459,30 @@
   <div class="news-head" style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px">
     <div>
       <p style="margin:0 0 12px;font-size:14.6px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">News</p>
-      <h2 style="margin:0;font-size:33.8px;font-weight:800;color:var(--c-primary)">日記・お知らせ</h2>
+      <h2 style="margin:0;font-size:33.8px;font-weight:800;color:var(--c-primary)" data-en="Diary &amp; News">日記・お知らせ</h2>
+      <p class="en-only" style="margin:14px 0 0;font-size:15.2px;line-height:1.9;color:#5A6180">The diary and news entries below are written in Japanese.</p>
     </div>
-    <a href="/news/" style="font-size:15.8px;font-weight:700;color:#5A6180" style-hover="color:var(--c-accent)">一覧を見る →</a>
+    <a href="/news/" style="font-size:15.8px;font-weight:700;color:#5A6180" style-hover="color:var(--c-accent)" data-en="View all →">一覧を見る →</a>
   </div>
   <div style="display:flex;flex-direction:column">
       <a class="news-row" href="/shachonikki_day65/" style="display:grid;grid-template-columns:130px 110px 1fr;gap:24px;align-items:baseline;padding:22px 8px;border-top:1px solid #DDE1EA;color:#1A2142" style-hover="background:#F7F8FB;color:var(--c-primary)">
         <span style="font-size:15.2px;color:#5A6180;font-variant-numeric:tabular-nums">2026.09.19</span>
-        <span style="font-size:12.9px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center">社長日記</span>
+        <span style="font-size:12.9px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center" data-en="CEO Diary">社長日記</span>
         <span style="font-size:17.4px;font-weight:600">vol65 I don't have dreams, I have goals</span>
       </a>
       <a class="news-row" href="/shachonikki_day64/" style="display:grid;grid-template-columns:130px 110px 1fr;gap:24px;align-items:baseline;padding:22px 8px;border-top:1px solid #DDE1EA;color:#1A2142" style-hover="background:#F7F8FB;color:var(--c-primary)">
         <span style="font-size:15.2px;color:#5A6180;font-variant-numeric:tabular-nums">2026.09.18</span>
-        <span style="font-size:12.9px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center">社長日記</span>
+        <span style="font-size:12.9px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center" data-en="CEO Diary">社長日記</span>
         <span style="font-size:17.4px;font-weight:600">vol64 マクドナルド生活</span>
       </a>
       <a class="news-row" href="/shachonikki_day63/" style="display:grid;grid-template-columns:130px 110px 1fr;gap:24px;align-items:baseline;padding:22px 8px;border-top:1px solid #DDE1EA;color:#1A2142" style-hover="background:#F7F8FB;color:var(--c-primary)">
         <span style="font-size:15.2px;color:#5A6180;font-variant-numeric:tabular-nums">2026.09.17</span>
-        <span style="font-size:12.9px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center">社長日記</span>
+        <span style="font-size:12.9px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center" data-en="CEO Diary">社長日記</span>
         <span style="font-size:17.4px;font-weight:600">vol63 人生5年おじさん</span>
       </a>
       <a class="news-row" href="/shachonikki_day62/" style="display:grid;grid-template-columns:130px 110px 1fr;gap:24px;align-items:baseline;padding:22px 8px;border-top:1px solid #DDE1EA;color:#1A2142" style-hover="background:#F7F8FB;color:var(--c-primary)">
         <span style="font-size:15.2px;color:#5A6180;font-variant-numeric:tabular-nums">2026.09.16</span>
-        <span style="font-size:12.9px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center">社長日記</span>
+        <span style="font-size:12.9px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center" data-en="CEO Diary">社長日記</span>
         <span style="font-size:17.4px;font-weight:600">vol62 問いを立てる</span>
       </a>
 
@@ -482,15 +492,15 @@
 <section id="company" data-screen-label="Company" style="padding:112px 80px;background:#F7F8FB">
   <div data-reveal="" style="max-width:840px;margin:0 auto">
     <p style="margin:0 0 12px;font-size:14.6px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Company</p>
-    <h2 style="margin:0 0 48px;font-size:33.8px;font-weight:800;color:var(--c-primary)">会社概要</h2>
+    <h2 style="margin:0 0 48px;font-size:33.8px;font-weight:800;color:var(--c-primary)" data-en="Company Profile">会社概要</h2>
     <div class="company-card" style="background:#fff;border:1px solid #DDE1EA;border-radius:16px;padding:16px 40px">
       <div class="company-grid" style="display:grid;grid-template-columns:160px 1fr;gap:0 24px;font-size:16.9px;line-height:1.8">
-        <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180">会社名</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA">ToyoSeeds合同会社</div>
-        <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180">代表社員</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA">豊島 寛也</div>
-        <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180">創立</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA">2023年10月16日</div>
-        <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180">資本金</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA">100万円</div>
-        <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180">事業内容</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA">宿泊・インバウンド事業／AI・データ活用事業</div>
-        <div style="padding:18px 0;font-weight:800;color:#5A6180">所在地</div><div style="padding:18px 0">福岡県福岡市中央区天神4-6-28 いちご天神ノースビル7階</div>
+        <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180" data-en="Company name">会社名</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA" data-en="ToyoSeeds LLC">ToyoSeeds合同会社</div>
+        <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180" data-en="Representative">代表社員</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA" data-en="Hiroya Toyoshima">豊島 寛也</div>
+        <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180" data-en="Founded">創立</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA" data-en="16 October 2023">2023年10月16日</div>
+        <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180" data-en="Capital">資本金</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA" data-en="JPY 1,000,000">100万円</div>
+        <div style="padding:18px 0;border-bottom:1px solid #DDE1EA;font-weight:800;color:#5A6180" data-en="Business">事業内容</div><div style="padding:18px 0;border-bottom:1px solid #DDE1EA" data-en="Stay &amp; inbound business / AI &amp; data business">宿泊・インバウンド事業／AI・データ活用事業</div>
+        <div style="padding:18px 0;font-weight:800;color:#5A6180" data-en="Address">所在地</div><div style="padding:18px 0" data-en="7F Ichigo Tenjin North Bldg., 4-6-28 Tenjin, Chuo-ku, Fukuoka, Japan">福岡県福岡市中央区天神4-6-28 いちご天神ノースビル7階</div>
       </div>
     </div>
   </div>
@@ -500,14 +510,14 @@
   <div style="position:absolute;top:-30%;right:-8%;width:46vw;height:46vw;border-radius:50%;background:radial-gradient(circle,#BFE3FF 0%,transparent 65%);filter:blur(50px);opacity:.55;animation:drift1 17s ease-in-out infinite;pointer-events:none"></div>
   <div style="position:absolute;bottom:-30%;left:-8%;width:46vw;height:46vw;border-radius:50%;background:radial-gradient(circle,color-mix(in oklab,var(--c-accent),white 55%) 0%,transparent 65%);filter:blur(50px);opacity:.6;animation:drift3 19s ease-in-out infinite;pointer-events:none"></div>
   <p style="position:relative;margin:0 0 16px;font-size:14.6px;font-family:var(--f-latin);font-weight:700;letter-spacing:.24em;color:var(--c-accent);text-transform:uppercase">Contact</p>
-  <h2 style="position:relative;margin:0 0 20px;font-size:clamp(31.5px,3.8vw,45px);font-weight:800;line-height:1.6;text-wrap:pretty">「こんなこと、できたりする？」</h2>
-  <a href="/contact/" style="position:relative;display:inline-block;background:linear-gradient(135deg,var(--c-accent),color-mix(in oklab,var(--c-accent),white 35%));color:var(--c-accent-on);font-weight:800;font-size:18px;padding:18px 56px;border-radius:999px;box-shadow:0 8px 24px color-mix(in oklab,var(--c-accent),transparent 55%);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-3px);box-shadow:0 14px 36px color-mix(in oklab,var(--c-accent),transparent 40%)">お問い合わせフォームへ</a>
+  <h2 style="position:relative;margin:0 0 20px;font-size:clamp(31.5px,3.8vw,45px);font-weight:800;line-height:1.6;text-wrap:pretty" data-en="&ldquo;Could you build something like this?&rdquo;">「こんなこと、できたりする？」</h2>
+  <a href="/contact/" style="position:relative;display:inline-block;background:linear-gradient(135deg,var(--c-accent),color-mix(in oklab,var(--c-accent),white 35%));color:var(--c-accent-on);font-weight:800;font-size:18px;padding:18px 56px;border-radius:999px;box-shadow:0 8px 24px color-mix(in oklab,var(--c-accent),transparent 55%);transition:transform .2s,box-shadow .2s" style-hover="transform:translateY(-3px);box-shadow:0 14px 36px color-mix(in oklab,var(--c-accent),transparent 40%)" data-en="Go to the contact form">お問い合わせフォームへ</a>
 </section>
 
 
 <footer class="site-footer" style="display:flex;align-items:center;justify-content:space-between;padding:28px 48px;background:var(--c-primary-deep);color:rgba(255,255,255,.6);font-size:14.6px">
   <span style="font-family:var(--f-latin);font-weight:800;font-size:18px;color:#fff">Toyo<span style="color:var(--c-accent)">Seeds</span></span>
-  <span><a href="/privacy-policy/" style="color:inherit;margin-right:22px">プライバシーポリシー</a>© ToyoSeeds LLC.</span>
+  <span><a href="/privacy-policy/" style="color:inherit;margin-right:22px" data-en="Privacy Policy">プライバシーポリシー</a>© ToyoSeeds LLC.</span>
 </footer>
 <script defer src="/_vercel/insights/script.js"></script>
 </body>
