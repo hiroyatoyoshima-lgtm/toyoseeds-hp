@@ -270,12 +270,17 @@ def main():
     if bool(args.title_en) != bool(args.body_en):
         sys.exit("[中止] --title-en と --body-en は両方を指定してください")
     if args.title_en:
-        from add_translation import apply_translation
         title_en = args.title_en.strip()
         if not title_en.lower().startswith("vol"):
             title_en = f"vol{vol} {title_en}"
-        body_en = build_body(Path(args.body_en).read_text(encoding="utf-8"), slug)
-        changes += apply_translation(slug, title_en, body_en, args.dry_run)
+        if args.dry_run:
+            # 記事ファイルがまだ無いので、英訳の流し込みは走らせられない
+            build_body(Path(args.body_en).read_text(encoding="utf-8"), slug)
+            changes.append(f'英訳「{title_en}」（--dry-run では流し込みません）')
+        else:
+            from add_translation import apply_translation
+            body_en = build_body(Path(args.body_en).read_text(encoding="utf-8"), slug)
+            changes += apply_translation(slug, title_en, body_en, False)
 
     head = "変更予定（--dry-run なので書き込みません）" if args.dry_run else "更新しました"
     print(f"vol{vol} {title}（{dot}）… {head}")
