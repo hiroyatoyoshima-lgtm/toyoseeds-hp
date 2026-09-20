@@ -64,8 +64,13 @@ python3 scripts/add_translation.py 66 --title "Vectors" --body draft_en.txt   # 
 ### HTMLを機械的に読むスクリプトの注意
 
 `<h1>` と `<div class="wp-content">` には `data-en` が付くので、
-これらを正規表現で拾うときは `<h1[^>]*>` のように属性を許す形にする。
-`export_note.py` は note に英語が混ざらないよう、先に `data-en` / `data-ja` 属性を落としている。
+正規表現で拾うときは `<h1[^>]*>` のように属性を許す形にする。
+
+**本文の `data-en` には `<p>` などが入っている。** つまり属性値の中に `>` がある。
+`<div class="wp-content"[^>]*>` だと属性の途中で切れて本文が壊れるので、
+`add_translation.py` の `open_tag()`（`(?:[^>"]|"[^"]*")*>`）を使うか、
+先に `data-en` / `data-ja` 属性を落としてから読む（`export_note.py` はこの方法。
+note に英語が混ざらないようにするのも兼ねている）。
 
 ## 気をつけること
 
