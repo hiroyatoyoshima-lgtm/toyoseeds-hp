@@ -32,7 +32,8 @@ python3 scripts/export_note.py 56    # note貼り付け用テキスト
 ## 記事ページの決まり
 
 - 本文は `<div class="wp-content">` の中。段落は `<p>`、段落内の改行は `<br>`
-- 本文のリンクは下書きに `[表示テキスト](/shachonikki_day40/)` と書く（日本語版・英訳版とも）
+- 本文のリンクは下書きに `[表示テキスト](/shachonikki_day40/)` と書く（日本語版・英訳版とも）。
+  **リンクのテキストには必ずリンク先の記事タイトルを入れる**（例 `（[vol56 ペルソナ](/shachonikki_day56/)）`）
 - 補足を囲みにしたいときは下書きで `[box]` と `[/box]` の行ではさむ（vol43〜45・66で使っている灰色の囲み）
 - 本文の下（`</article>` の直前）に `.post-like`（スキ♡。`new_post.py` が自動で付ける。過去記事は `node scripts/add-like-button.mjs`）
 - 記事カードの下に `.post-cta`（トップの事業紹介への導線）、その下に前後記事ナビ
