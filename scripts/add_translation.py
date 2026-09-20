@@ -33,6 +33,11 @@ def attr(value):
     return value.replace("&", "&amp;").replace('"', "&quot;")
 
 
+# 開始タグ。data-en の中には <p> などが入るので、属性値の中の > で切らないようにする
+def open_tag(prefix):
+    return prefix + r'(?:[^>"]|"[^"]*")*>'
+
+
 def set_attr(html, pattern, name, value, label, changes, required=True):
     """pattern の1件目に name="value" を足す（すでにあれば置き換える）。"""
     m = re.search(pattern, html)
@@ -42,16 +47,16 @@ def set_attr(html, pattern, name, value, label, changes, required=True):
         return html
     tag = m.group(0)
     new_tag = re.sub(r'\s' + re.escape(name) + r'="[^"]*"', "", tag)
-    insert = f' {name}="{attr(value)}"'
-    new_tag = new_tag[: new_tag.index(">")] + insert + new_tag[new_tag.index(">") :]
+    assert new_tag.endswith(">"), new_tag[:80]
+    new_tag = new_tag[:-1].rstrip() + f' {name}="{attr(value)}">'
     if new_tag != tag:
         changes.append(label)
     return html[: m.start()] + new_tag + html[m.end() :]
 
 
 def find_wp_content(html):
-    """<div class="wp-content"> の開始タグの範囲を返す（入れ子の div があるので手で数える）。"""
-    m = re.search(r'<div class="wp-content"[^>]*>', html)
+    """本文 <div class="wp-content"> の開始タグを返す。"""
+    m = re.search(open_tag(r'<div class="wp-content"'), html)
     if not m:
         sys.exit("[中止] 本文（wp-content）が見つかりませんでした")
     return m
@@ -74,15 +79,15 @@ def apply_translation(slug, title_en, body_en, dry_run=False):
         )
         changes.append(f"{slug}: i18n.js を読み込み")
 
-    html = set_attr(html, r"<title>[\s\S]*?</title>|<title [^>]*>[\s\S]*?</title>",
-                    "data-en", f"{title_en} | ToyoSeeds LLC", f"{slug}: <title>", changes)
-    html = set_attr(html, r'<meta name="description"[^>]*>',
+    html = set_attr(html, open_tag(r"<title"), "data-en",
+                    f"{title_en} | ToyoSeeds LLC", f"{slug}: <title>", changes)
+    html = set_attr(html, open_tag(r'<meta name="description"'),
                     "data-en-content", desc, f"{slug}: meta description", changes)
-    html = set_attr(html, r'<meta property="og:title"[^>]*>',
+    html = set_attr(html, open_tag(r'<meta property="og:title"'),
                     "data-en-content", f"{title_en} | ToyoSeeds LLC", f"{slug}: og:title", changes)
-    html = set_attr(html, r'<meta property="og:description"[^>]*>',
+    html = set_attr(html, open_tag(r'<meta property="og:description"'),
                     "data-en-content", desc, f"{slug}: og:description", changes)
-    html = set_attr(html, r"<h1[^>]*>", "data-en", title_en, f"{slug}: <h1>", changes)
+    html = set_attr(html, open_tag(r"<h1"), "data-en", title_en, f"{slug}: <h1>", changes)
 
     m = find_wp_content(html)
     html = set_attr(html, re.escape(m.group(0)), "data-en", body_en, f"{slug}: 本文", changes)

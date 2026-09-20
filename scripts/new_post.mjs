@@ -41,13 +41,20 @@ const dataEn = (v, name = "data-en") => (v ? ` ${name}="${attrEn(v)}"` : "");
 const titleEn = TITLE_EN ? (/^vol/i.test(TITLE_EN.trim()) ? TITLE_EN.trim() : `vol${vol} ${TITLE_EN.trim()}`) : "";
 
 // 本文: 空行で段落、段落内改行は <br>。裸URLはリンクにする。
+// 本文の [表示テキスト](/リンク先/) をリンクにする
+const link = (t) => t.replace(/\[([^\]\n]+)\]\((\/[^)\s]*|https?:\/\/[^)\s]+)\)/g,
+  (_, label, url) => `<a href="${url}">${label}</a>`);
+
 function buildBody(text) {
   const blocks = [];
   for (const raw of text.replace(/\r\n/g, "\n").trim().split(/\n\s*\n/)) {
     const block = raw.trim();
     if (!block) continue;
     const lines = block.split("\n").map((l) => l.trim()).filter(Boolean).map((l) =>
-      esc(l).replace(/https?:\/\/[^\s<]+/g, (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`)
+      // [表示テキスト](/リンク先/) を先にリンクにし、残った裸のURLだけをリンクにする
+      link(esc(l)).split(/(<a [^>]*>[\s\S]*?<\/a>)/).map((part, i) =>
+        i % 2 ? part : part.replace(/https?:\/\/[^\s<]+/g, (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`)
+      ).join("")
     );
     blocks.push("<p>" + lines.join("<br>\n") + "</p>");
   }

@@ -9,6 +9,7 @@
 body ファイルの書き方:
     - 空行で段落を区切る（<p> になる）
     - 段落内の改行はそのまま改行として表示される（<br> になる）
+    - リンクは [表示テキスト](/shachonikki_day40/) と書く
     - 画像を入れたい位置に次の1行を単独で置く:
         [img ファイル名 | キャプション | alt文]
       ファイル名は --image で取り込んだ後の記事内ファイル名（既定 photo.jpg）
@@ -132,6 +133,14 @@ def image_size(path):
         return None
 
 
+LINK_RE = re.compile(r"\[([^\]\n]+)\]\((/[^)\s]*|https?://[^)\s]+)\)")
+
+
+def link(text):
+    """本文の [表示テキスト](/リンク先/) をリンクにする。"""
+    return LINK_RE.sub(lambda m: f'<a href="{m.group(2)}">{m.group(1)}</a>', text)
+
+
 def build_body(text, slug):
     """本文テキストを wp-content 用の HTML にする。"""
     blocks = []
@@ -151,7 +160,7 @@ def build_body(text, slug):
                 f'<img src="{src}" alt="{esc(alt or caption)}"{dims} loading="lazy">{cap}</figure>'
             )
             continue
-        lines = [esc(line.strip()) for line in block.split("\n") if line.strip()]
+        lines = [link(esc(line.strip())) for line in block.split("\n") if line.strip()]
         blocks.append("<p>" + "<br>\n".join(lines) + "</p>")
     return "\n\n".join(blocks)
 
