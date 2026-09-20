@@ -45,19 +45,32 @@ const titleEn = TITLE_EN ? (/^vol/i.test(TITLE_EN.trim()) ? TITLE_EN.trim() : `v
 const link = (t) => t.replace(/\[([^\]\n]+)\]\((\/[^)\s]*|https?:\/\/[^)\s]+)\)/g,
   (_, label, url) => `<a href="${url}">${label}</a>`);
 
+const BOX_OPEN = '<div style="margin:34px 0;padding:26px 28px;border-radius:16px;background:var(--soft)">';
+// [box] 〜 [/box] の中身を囲みにする。最後の段落は下の余白を詰める
+function wrapBox(inner) {
+  if (inner.length) inner[inner.length - 1] = inner[inner.length - 1].replace("<p>", '<p style="margin-bottom:0">');
+  return BOX_OPEN + "\n" + inner.join("\n\n") + "\n</div>";
+}
+
 function buildBody(text) {
   const blocks = [];
-  for (const raw of text.replace(/\r\n/g, "\n").trim().split(/\n\s*\n/)) {
+  let box = null; // [box] の中を集めている間だけ配列になる
+  // [box] / [/box] の行は、前後に空行が無くても段落の区切りとして扱う
+  text = text.replace(/\r\n/g, "\n").replace(/^\[(\/?)box\][ \t]*$/gm, "\n[$1box]\n");
+  for (const raw of text.trim().split(/\n\s*\n/)) {
     const block = raw.trim();
     if (!block) continue;
+    if (block === "[box]") { box = []; continue; }
+    if (block === "[/box]") { blocks.push(wrapBox(box || [])); box = null; continue; }
     const lines = block.split("\n").map((l) => l.trim()).filter(Boolean).map((l) =>
       // [表示テキスト](/リンク先/) を先にリンクにし、残った裸のURLだけをリンクにする
       link(esc(l)).split(/(<a [^>]*>[\s\S]*?<\/a>)/).map((part, i) =>
         i % 2 ? part : part.replace(/https?:\/\/[^\s<]+/g, (u) => `<a href="${u}" target="_blank" rel="noopener">${u}</a>`)
       ).join("")
     );
-    blocks.push("<p>" + lines.join("<br>\n") + "</p>");
+    (box !== null ? box : blocks).push("<p>" + lines.join("<br>\n") + "</p>");
   }
+  if (box !== null) { console.error("[中止] [box] が [/box] で閉じられていません"); process.exit(1); }
   return blocks.join("\n\n");
 }
 const plain = (h) => h.replace(/<br>\s*/g, " ").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();

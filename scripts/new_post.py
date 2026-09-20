@@ -10,6 +10,7 @@ body ファイルの書き方:
     - 空行で段落を区切る（<p> になる）
     - 段落内の改行はそのまま改行として表示される（<br> になる）
     - リンクは [表示テキスト](/shachonikki_day40/) と書く
+    - 囲み（補足やメモ）は [box] と [/box] の行ではさむ
     - 画像を入れたい位置に次の1行を単独で置く:
         [img ファイル名 | キャプション | alt文]
       ファイル名は --image で取り込んだ後の記事内ファイル名（既定 photo.jpg）
@@ -141,12 +142,32 @@ def link(text):
     return LINK_RE.sub(lambda m: f'<a href="{m.group(2)}">{m.group(1)}</a>', text)
 
 
+BOX_OPEN = '<div style="margin:34px 0;padding:26px 28px;border-radius:16px;background:var(--soft)">'
+
+
+def wrap_box(inner):
+    """[box] 〜 [/box] の中身を囲みにする。最後の段落は下の余白を詰める。"""
+    if inner:
+        inner[-1] = inner[-1].replace("<p>", '<p style="margin-bottom:0">', 1)
+    return BOX_OPEN + "\n" + "\n\n".join(inner) + "\n</div>"
+
+
 def build_body(text, slug):
     """本文テキストを wp-content 用の HTML にする。"""
     blocks = []
+    box = None  # [box] の中を集めている間だけリストになる
+    # [box] / [/box] の行は、前後に空行が無くても段落の区切りとして扱う
+    text = re.sub(r"(?m)^\[(/?)box\][ \t]*$", r"\n[\1box]\n", text)
     for raw in re.split(r"\n\s*\n", text.strip()):
         block = raw.strip()
         if not block:
+            continue
+        if block == "[box]":
+            box = []
+            continue
+        if block == "[/box]":
+            blocks.append(wrap_box(box or []))
+            box = None
             continue
         m = re.fullmatch(r"\[img\s+([^|\]]+?)\s*(?:\|\s*([^|\]]*?)\s*)?(?:\|\s*([^\]]*?)\s*)?\]", block)
         if m:
@@ -155,13 +176,15 @@ def build_body(text, slug):
             size = image_size(ROOT / slug / name)
             dims = f' width="{size[0]}" height="{size[1]}"' if size else ""
             cap = f"<figcaption>{esc(caption)}</figcaption>" if caption else ""
-            blocks.append(
+            (box if box is not None else blocks).append(
                 f'<figure class="wp-block-image size-full">'
                 f'<img src="{src}" alt="{esc(alt or caption)}"{dims} loading="lazy">{cap}</figure>'
             )
             continue
         lines = [link(esc(line.strip())) for line in block.split("\n") if line.strip()]
-        blocks.append("<p>" + "<br>\n".join(lines) + "</p>")
+        (box if box is not None else blocks).append("<p>" + "<br>\n".join(lines) + "</p>")
+    if box is not None:
+        sys.exit("[中止] [box] が [/box] で閉じられていません")
     return "\n\n".join(blocks)
 
 
