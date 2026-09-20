@@ -15,7 +15,11 @@
   var countEl = btn.parentNode.querySelector('.like-count');
   var key = 'suki:' + slug;
   var h1 = document.querySelector('.article-title h1');
-  var title = h1 ? h1.textContent.replace(/\s+/g, ' ').trim() : '';
+  // 英語表示に切り替わっていても、台帳には日本語のタイトルを送る（data-ja は assets/i18n.js が入れる）
+  var titleSrc = h1 ? (h1.dataset.ja || h1.textContent) : '';
+  var title = titleSrc.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+
+  function t(ja, en) { return document.documentElement.lang === 'en' ? en : ja; }
 
   var liked = false;
   try { liked = localStorage.getItem(key) === '1'; } catch (e) {}
@@ -31,7 +35,7 @@
   function render() {
     btn.classList.toggle('on', liked);
     btn.setAttribute('aria-pressed', liked ? 'true' : 'false');
-    btn.setAttribute('aria-label', liked ? 'スキを取り消す' : 'スキ');
+    btn.setAttribute('aria-label', liked ? t('スキを取り消す', 'Undo like') : t('スキ', 'Like'));
     if (countEl) countEl.textContent = count !== null && count > 0 ? String(count) : '';
   }
 
@@ -42,6 +46,7 @@
   }
 
   render();
+  document.addEventListener('toyoseeds:langchange', render);
 
   fetch('/api/like/?slug=' + encodeURIComponent(slug) + '&title=' + encodeURIComponent(title), {credentials: 'omit'})
     .then(function (r) { return r.ok ? r.json() : null; })

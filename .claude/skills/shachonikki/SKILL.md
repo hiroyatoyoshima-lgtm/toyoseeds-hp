@@ -46,8 +46,8 @@ description: ToyoSeedsの社長日記を書いて公開する。音声の書き�
 本文をテキストファイルに書いてから、スクリプトで流し込む。
 
 ```bash
-python3 scripts/new_post.py --title "ベクトル" --body draft.txt
-python3 scripts/new_post.py --title "ベクトル" --body draft.txt --date 2026-09-10 --dry-run
+python3 scripts/new_post.py --title "ベクトル" --body draft.txt --title-en "Vectors" --body-en draft_en.txt
+python3 scripts/new_post.py --title "ベクトル" --body draft.txt --title-en "Vectors" --body-en draft_en.txt --dry-run
 ```
 
 vol番号・日付（既定は今日）・前後記事のリンクは自動。
@@ -55,6 +55,21 @@ vol番号・日付（既定は今日）・前後記事のリンクは自動。
 **手作業でHTMLを書き足さない。** 抜けが出る。
 
 本文ファイルの書き方は `scripts/new_post.py` の冒頭を参照。空行で段落、段落内の改行はそのまま改行。
+
+### 英訳を必ず付ける
+
+サイトは EN 切り替えに対応していて、**記事は本文まで英語で読める**。
+新しい記事にも毎回、日本語の下書きと一緒に英訳（`draft_en.txt`）を作って、
+上のコマンドの `--title-en` / `--body-en` で一緒に流し込む。
+
+- 英訳の方針は**自然な英語優先**。日本語の改行やリズムをそのまま写さず、英語として読みやすい形に寄せる
+- 段落の区切り（空行）は日本語版と合わせる。画像の `[img ...]` も同じ位置に置く
+- 固有名詞は既存記事に合わせる（つながるBAR → Tsunagaru BAR、民泊/宿 → guesthouse、社長日記 → CEO Diary）
+- 英訳を忘れて公開してしまったら、あとから足せる:
+  `python3 scripts/add_translation.py 66 --title "Vectors" --body draft_en.txt`
+- トヨのマシン（python が動かない）では `node scripts/new_post.mjs` に同じ `--title-en` / `--body-en` を付ける
+
+仕組みの詳細は `CLAUDE.md` の「英語切り替え」を参照。
 
 ### 画像
 
@@ -85,7 +100,7 @@ note の見出し画像は記事フォルダの `thumb.jpg`（1280×670）。**�
 - 文面の型は `note-thumbnails\day56-prompt.txt`（Codex が最初に作った回）。テンプレは `scripts/codex_thumb_prompt.txt`
 - `-DryRun` でプロンプトだけ確認、`-NoPush` で生成と変換まで、`-FromPng <png>` で手持ちの画像から変換・push・Issue だけ
 - Codex 本体は `%USERPROFILE%\.vscode\extensions\openai.chatgpt-*\bin\windows-x86_64\codex.exe`（拡張の更新でフォルダ名が変わる。スクリプトが最新を探す）
-- Toyo のマシンは python が動かないので、記事の 5 か所更新は `node scripts/new_post.mjs`（同じ引数）を使う
+- Toyo のマシンは python が動かないので、記事の 5 か所更新は `node scripts/new_post.mjs`（同じ引数。`--title-en` / `--body-en` も使える）
 
 ## 4. 公開する
 

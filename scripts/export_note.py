@@ -72,8 +72,10 @@ def main():
         sys.exit(f"[中止] 記事が見つかりません: {slug}/index.html")
 
     s = path.read_text(encoding="utf-8")
-    title = html.unescape(re.search(r"<h1>(.*?)</h1>", s, re.S).group(1).strip())
-    body = re.search(r'<div class="wp-content">(.*?)</div>\s*</article>', s, re.S).group(1)
+    # 英語版（data-en）は note には出さないので、先に落とす
+    s = re.sub(r'\sdata-(en|ja)(-[a-z-]+)?="[^"]*"', "", s)
+    title = html.unescape(re.search(r"<h1[^>]*>(.*?)</h1>", s, re.S).group(1).strip())
+    body = re.search(r'<div class="wp-content"[^>]*>(.*?)</div>\s*</article>', s, re.S).group(1)
 
     text = f"{title}\n\n{to_text(body)}\n\n{FOOTER.format(url=f'{BASE}/{slug}/', base=BASE)}\n"
     print(text)

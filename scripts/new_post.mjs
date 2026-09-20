@@ -1,5 +1,6 @@
 // scripts/new_post.py の node 移植（トヨのマシンは python が Windows Store のスタブで動かないため）。処理・テンプレは py と同じ。
 // 使い方: node scripts/new_post.mjs --title "ペルソナ" --body draft.txt [--date 2026-09-10] [--desc "..."] [--vol 56] [--dry-run]
+//        英語版も一緒に出すとき: --title-en "Persona" --body-en draft_en.txt
 //        --root は省略可（既定＝このリポジトリのルート）
 import fs from "node:fs";
 import path from "node:path";
@@ -12,6 +13,9 @@ const ROOT = opt("--root") || path.resolve(path.dirname(fileURLToPath(import.met
 const TITLE = opt("--title");
 const BODY = opt("--body");
 const DRY = has("--dry-run");
+const TITLE_EN = opt("--title-en");
+const BODY_EN = opt("--body-en");
+if (!!TITLE_EN !== !!BODY_EN) { console.error("--title-en と --body-en は両方を指定してください"); process.exit(1); }
 const BASE = "https://www.toyoseeds.com";
 const TOP_NEWS_ROWS = 4;
 if (!TITLE || !BODY) { console.error("--title --body は必須"); process.exit(1); }
@@ -31,6 +35,10 @@ const dateStr = opt("--date") || new Date(Date.now() + 9 * 3600 * 1000).toISOStr
 const iso = dateStr;
 const dot = dateStr.replace(/-/g, ".");
 const title = TITLE.trim();
+// EN切り替え用。属性に入れるのでタグは生かし、& と " だけ逃がす
+const attrEn = (v) => v.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
+const dataEn = (v, name = "data-en") => (v ? ` ${name}="${attrEn(v)}"` : "");
+const titleEn = TITLE_EN ? (/^vol/i.test(TITLE_EN.trim()) ? TITLE_EN.trim() : `vol${vol} ${TITLE_EN.trim()}`) : "";
 
 // 本文: 空行で段落、段落内改行は <br>。裸URLはリンクにする。
 function buildBody(text) {
@@ -49,56 +57,62 @@ const plain = (h) => h.replace(/<br>\s*/g, " ").replace(/<[^>]+>/g, "").replace(
 
 const bodyHtml = buildBody(fs.readFileSync(BODY, "utf8"));
 const desc = opt("--desc") || plain(bodyHtml).slice(0, 110) + "…";
+const bodyEn = BODY_EN ? buildBody(fs.readFileSync(BODY_EN, "utf8")) : "";
+const descEn = bodyEn ? plain(bodyEn).slice(0, 150) + "…" : "";
 const prevRead = readLF(path.join(ROOT, prevSlug, "index.html"));
-const prevTitle = /<h1>([\s\S]*?)<\/h1>/.exec(prevRead.text)[1].trim();
+const prevH1 = /<h1([^>]*)>([\s\S]*?)<\/h1>/.exec(prevRead.text);
+const prevTitle = prevH1[2].trim();
+// 前の記事に英語タイトルがあれば、この記事の「← 前の記事」にも入れる
+const prevTitleEn = (/ data-en="([^"]*)"/.exec(prevH1[1]) || [])[1] || "";
 
 const article = `<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>vol${vol} ${esc(title)}｜ToyoSeeds合同会社</title>
-<meta name="description" content="${esc(desc)}">
+<title${dataEn(titleEn && titleEn + " | ToyoSeeds LLC")}>vol${vol} ${esc(title)}｜ToyoSeeds合同会社</title>
+<meta name="description"${dataEn(descEn, "data-en-content")} content="${esc(desc)}">
 <link rel="canonical" href="${BASE}/${slug}/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vol${vol} ${esc(title)}｜ToyoSeeds合同会社">
-<meta property="og:description" content="${esc(desc)}">
+<meta property="og:title"${dataEn(titleEn && titleEn + " | ToyoSeeds LLC", "data-en-content")} content="vol${vol} ${esc(title)}｜ToyoSeeds合同会社">
+<meta property="og:description"${dataEn(descEn, "data-en-content")} content="${esc(desc)}">
 <meta property="og:url" content="${BASE}/${slug}/">
 <meta property="og:image" content="${BASE}/assets/og-image-v3.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/content-v2.css">
+<script src="../assets/i18n.js" defer></script>
 </head>
 <body>
 <header class="content-header">
   <a class="brand" href="/">Toyo<span>Seeds</span></a>
-  <nav aria-label="主要メニュー">
-    <a href="/">ホーム</a><a href="/news/">News</a><a href="/#company">会社概要</a><a class="nav-contact" href="/contact/">お問い合わせ</a>
+  <nav aria-label="主要メニュー" data-en-aria-label="Main menu">
+    <a href="/" data-en="Home">ホーム</a><a href="/news/">News</a><a href="/#company" data-en="Company">会社概要</a><a class="lang-toggle" href="?lang=en" lang="en" data-lang-toggle aria-label="Switch to English">EN</a><a class="nav-contact" href="/contact/" data-en="Contact">お問い合わせ</a>
   </nav>
 </header>
 <main class="article-shell">
-  <a class="back-link" href="/news/">← News一覧へ</a>
+  <a class="back-link" href="/news/" data-en="← Back to News">← News一覧へ</a>
   <article class="article-card">
     <header class="article-title">
-      <span class="category">社長日記</span>
+      <span class="category" data-en="CEO Diary">社長日記</span>
       <time datetime="${iso}">${dot}</time>
-      <h1>vol${vol} ${esc(title)}</h1>
+      <h1${dataEn(titleEn)}>vol${vol} ${esc(title)}</h1>
     </header>
-    <div class="wp-content">${bodyHtml}</div>
+    <div class="wp-content"${dataEn(bodyEn)}>${bodyHtml}</div>
     <div class="post-like">
-      <button type="button" class="like-btn" data-slug="${slug}" aria-pressed="false" aria-label="スキ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.3 4.8 6.6 4.5c2-.2 3.7.8 4.6 2.3 1-1.5 2.7-2.5 4.7-2.3 3.3.3 5.2 3.5 3.9 6.8-1.8 4.6-7.8 9.2-7.8 9.2z"/></svg>スキ</button>
+      <button type="button" class="like-btn" data-slug="${slug}" aria-pressed="false" aria-label="スキ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.3 4.8 6.6 4.5c2-.2 3.7.8 4.6 2.3 1-1.5 2.7-2.5 4.7-2.3 3.3.3 5.2 3.5 3.9 6.8-1.8 4.6-7.8 9.2-7.8 9.2z"/></svg><span data-en="Like">スキ</span></button>
       <span class="like-count" aria-live="polite"></span>
     </div>
   </article>
   <aside class="post-cta">
     <p>ToyoSeeds合同会社は、福岡でAI・データ活用と、宿泊・インバウンドの2つの事業を営んでいます。</p>
-    <a href="/#services">ToyoSeedsの事業を見る →</a>
+    <a href="/#services" data-en="See what ToyoSeeds does →">ToyoSeedsの事業を見る →</a>
   </aside>
-  <nav class="article-nav" aria-label="記事の前後移動"><a href="/${prevSlug}/"><small>← 前の記事</small><strong>${esc(prevTitle)}</strong></a></nav>
-  <a class="button" href="/news/">社長日記・お知らせ一覧へ</a>
+  <nav class="article-nav" aria-label="記事の前後移動"><a href="/${prevSlug}/"><small data-en="← Previous">← 前の記事</small><strong${dataEn(prevTitleEn)}>${esc(prevTitle)}</strong></a></nav>
+  <a class="button" href="/news/" data-en="All diary entries and news">社長日記・お知らせ一覧へ</a>
 </main>
 <footer class="content-footer">
   <a class="brand brand--footer" href="/">Toyo<span>Seeds</span></a>
-  <div><a href="/privacy-policy/">プライバシーポリシー</a><span>© ToyoSeeds LLC.</span></div>
+  <div><a href="/privacy-policy/" data-en="Privacy Policy">プライバシーポリシー</a><span>© ToyoSeeds LLC.</span></div>
 </footer>
 <script defer src="/likes.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -108,8 +122,8 @@ const article = `<!doctype html>
 
 const topRow = `      <a class="news-row" href="/${slug}/" style="display:grid;grid-template-columns:130px 110px 1fr;gap:24px;align-items:baseline;padding:22px 8px;border-top:1px solid #DDE1EA;color:#1A2142" style-hover="background:#F7F8FB;color:var(--c-primary)">
         <span style="font-size:15.2px;color:#5A6180;font-variant-numeric:tabular-nums">${dot}</span>
-        <span style="font-size:12.9px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center">社長日記</span>
-        <span style="font-size:17.4px;font-weight:600">vol${vol} ${esc(title)}</span>
+        <span style="font-size:12.9px;font-weight:800;letter-spacing:.1em;color:var(--c-tag-ink);background:var(--c-tag-bg);border-radius:999px;padding:4px 12px;text-align:center" data-en="CEO Diary">社長日記</span>
+        <span style="font-size:17.4px;font-weight:600"${dataEn(titleEn)}>vol${vol} ${esc(title)}</span>
       </a>
 `;
 
@@ -129,7 +143,7 @@ if (!DRY) { fs.mkdirSync(path.join(ROOT, slug), { recursive: true }); fs.writeFi
 
 // 2. news 一覧の先頭
 replaceOnce("news/index.html", '<div class="news-list">',
-  `<div class="news-list"><a class="news-list-row" href="/${slug}/"><time datetime="${iso}">${dot}</time><span class="category">社長日記</span><strong>vol${vol} ${esc(title)}</strong></a>`);
+  `<div class="news-list"><a class="news-list-row" href="/${slug}/"><time datetime="${iso}">${dot}</time><span class="category" data-en="CEO Diary">社長日記</span><strong${dataEn(titleEn)}>vol${vol} ${esc(title)}</strong></a>`);
 
 // 3. トップ News 欄（先頭に足して最古を落とす）
 {
@@ -151,7 +165,7 @@ replaceOnce("sitemap.xml", "</urlset>", `  <url><loc>${BASE}/${slug}/</loc></url
 // 5. 前の記事に「次の記事 →」
 if (prevRead.text.includes("次の記事")) console.log(`[skip] ${prevSlug} には次の記事リンクが既にある`);
 else replaceOnce(`${prevSlug}/index.html`, "</a></nav>",
-  `</a><a href="/${slug}/"><small>次の記事 →</small><strong>vol${vol} ${esc(title)}</strong></a></nav>`);
+  `</a><a href="/${slug}/"><small data-en="Next →">次の記事 →</small><strong${dataEn(titleEn)}>vol${vol} ${esc(title)}</strong></a></nav>`);
 
 console.log(`vol${vol} ${title}（${dot}）… ${DRY ? "変更予定（--dry-run）" : "更新しました"}`);
 for (const c of changes) console.log("  - " + c);

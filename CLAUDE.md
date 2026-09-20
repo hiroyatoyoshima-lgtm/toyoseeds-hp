@@ -14,7 +14,8 @@
 | `assets/content-v2.css` | 記事ページ共通のスタイル（末尾に「スキ」ボタンのスタイル） |
 | `likes.js` / `api/like.mjs` | 社長日記の「スキ」♡。件数の台帳は Google Apps Script 側のスプレッドシート「社長日記スキ」（`google-apps-script/README.md`） |
 | `api/contact.mjs` | お問い合わせフォームの送信（同じ Apps Script へ中継） |
-| `assets/i18n.js` | 日本語/英語の切り替え。トップ・お問い合わせ・News一覧に入れている |
+| `assets/i18n.js` | 日本語/英語の切り替え。全ページに入れている（記事は本文まで英訳あり） |
+| `scripts/add_translation.py` | 公開済みの記事にあとから英訳を入れる |
 | `scripts/` | 記事作成・note書き出し・sitemap生成・過去記事へのスキ一括追加 |
 
 ## 記事を追加するとき
@@ -38,17 +39,32 @@ python3 scripts/export_note.py 56    # note貼り付け用テキスト
 
 ## 英語切り替え（EN / 日本語）
 
-海外の人向けに、トップ・お問い合わせ・News一覧の3ページを英語で読めるようにしてある。
+海外の人向けに、**サイト全体**（トップ・お問い合わせ・一覧・社長日記/社員日記の全記事）を英語で読めるようにしてある。
 別ページを作らず、同じHTMLの中身を `assets/i18n.js` が差し替える方式。
 
 - 日本語が入る要素に `data-en="English"` を足すだけで切り替え対象になる（中身はHTMLも可。属性は `data-en-alt` `data-en-content` `data-en-placeholder` `data-en-title` `data-en-aria-label`）
+- 記事本文は `<div class="wp-content" data-en="…英訳のHTML…">` の形で丸ごと持たせている
 - 片方の言語だけ出したいものは `class="en-only"` / `class="ja-only"`
 - 言語の決まり方: URLの `?lang=en` → 前回の選択（localStorage） → ブラウザの言語（日本語以外なら英語）
 - **英語は単語の間に空白が要る。** モバイルで `<br>` を `display:none` にしている見出し・段落（ヒーロー、Strengthのh2）は、`data-en` の中で改行の手前に半角スペースを入れる
-- JSで出す文言（`assets/contact.js` の送信メッセージ）は `document.documentElement.lang` を見て切り替えている
-- 社長日記・社員日記の本文は日本語のまま。記事ページに切り替えボタンは置いていない
+- JSで出す文言（`assets/contact.js` の送信メッセージ、`likes.js` のラベル）は `document.documentElement.lang` を見て切り替えている
+- 「スキ」の台帳には英語表示のときも**日本語のタイトル**を送る（`likes.js` が h1 の `data-ja` を見る）
 
-トップと一覧のタグ（社長日記）は `scripts/new_post.py` のテンプレートにも `data-en` が入っているので、記事を足しても切り替えは保たれる。
+### 新しい記事には必ず英訳を付ける
+
+```bash
+python3 scripts/new_post.py --title "ベクトル" --body draft.txt --title-en "Vectors" --body-en draft_en.txt
+python3 scripts/add_translation.py 66 --title "Vectors" --body draft_en.txt   # あとから足すとき
+```
+
+`draft_en.txt` の書き方は日本語の本文ファイルと同じ（空行で段落、画像は同じ位置に `[img ...]`）。
+英訳の方針は**自然な英語優先**（`.claude/skills/shachonikki/SKILL.md` 参照）。
+
+### HTMLを機械的に読むスクリプトの注意
+
+`<h1>` と `<div class="wp-content">` には `data-en` が付くので、
+これらを正規表現で拾うときは `<h1[^>]*>` のように属性を許す形にする。
+`export_note.py` は note に英語が混ざらないよう、先に `data-en` / `data-ja` 属性を落としている。
 
 ## 気をつけること
 

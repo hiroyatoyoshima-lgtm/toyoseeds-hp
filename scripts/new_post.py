@@ -19,6 +19,12 @@ body ファイルの書き方:
     3. index.html                    … トップの News 欄（最新4件を維持）
     4. sitemap.xml                   … URL を追加
     5. 1つ前の記事                    … 「次の記事 →」ナビを追加
+
+英語版（EN切り替え）は記事作成と同時に入れられる:
+    python3 scripts/new_post.py --title "ベクトル" --body draft.txt \\
+        --title-en "Vectors" --body-en draft_en.txt
+あとから足すときは:
+    python3 scripts/add_translation.py 66 --title "Vectors" --body draft_en.txt
 """
 import argparse
 import datetime
@@ -46,38 +52,39 @@ ARTICLE = """<!doctype html>
 <meta property="og:image" content="{base}/assets/og-image-v3.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="../assets/content-v2.css">
+<script src="../assets/i18n.js" defer></script>
 </head>
 <body>
 <header class="content-header">
   <a class="brand" href="/">Toyo<span>Seeds</span></a>
-  <nav aria-label="主要メニュー">
-    <a href="/">ホーム</a><a href="/news/">News</a><a href="/#company">会社概要</a><a class="nav-contact" href="/contact/">お問い合わせ</a>
+  <nav aria-label="主要メニュー" data-en-aria-label="Main menu">
+    <a href="/" data-en="Home">ホーム</a><a href="/news/">News</a><a href="/#company" data-en="Company">会社概要</a><a class="lang-toggle" href="?lang=en" lang="en" data-lang-toggle aria-label="Switch to English">EN</a><a class="nav-contact" href="/contact/" data-en="Contact">お問い合わせ</a>
   </nav>
 </header>
 <main class="article-shell">
-  <a class="back-link" href="/news/">← News一覧へ</a>
+  <a class="back-link" href="/news/" data-en="← Back to News">← News一覧へ</a>
   <article class="article-card">
     <header class="article-title">
-      <span class="category">社長日記</span>
+      <span class="category" data-en="CEO Diary">社長日記</span>
       <time datetime="{iso}">{dot}</time>
       <h1>vol{vol} {title}</h1>
     </header>
     <div class="wp-content">{body}</div>
     <div class="post-like">
-      <button type="button" class="like-btn" data-slug="{slug}" aria-pressed="false" aria-label="スキ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.3 4.8 6.6 4.5c2-.2 3.7.8 4.6 2.3 1-1.5 2.7-2.5 4.7-2.3 3.3.3 5.2 3.5 3.9 6.8-1.8 4.6-7.8 9.2-7.8 9.2z"/></svg>スキ</button>
+      <button type="button" class="like-btn" data-slug="{slug}" aria-pressed="false" aria-label="スキ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.3 4.8 6.6 4.5c2-.2 3.7.8 4.6 2.3 1-1.5 2.7-2.5 4.7-2.3 3.3.3 5.2 3.5 3.9 6.8-1.8 4.6-7.8 9.2-7.8 9.2z"/></svg><span data-en="Like">スキ</span></button>
       <span class="like-count" aria-live="polite"></span>
     </div>
   </article>
   <aside class="post-cta">
-    <p>ToyoSeeds合同会社は、福岡でAI・データ活用と、宿泊・インバウンドの2つの事業を営んでいます。</p>
-    <a href="/#services">ToyoSeedsの事業を見る →</a>
+    <p data-en="ToyoSeeds LLC runs two businesses out of Fukuoka: AI and data, and places to stay for visitors from overseas.">ToyoSeeds合同会社は、福岡でAI・データ活用と、宿泊・インバウンドの2つの事業を営んでいます。</p>
+    <a href="/#services" data-en="See what ToyoSeeds does →">ToyoSeedsの事業を見る →</a>
   </aside>
-  <nav class="article-nav" aria-label="記事の前後移動"><a href="/{prev_slug}/"><small>← 前の記事</small><strong>{prev_title}</strong></a></nav>
-  <a class="button" href="/news/">社長日記・お知らせ一覧へ</a>
+  <nav class="article-nav" aria-label="記事の前後移動"><a href="/{prev_slug}/"><small data-en="← Previous">← 前の記事</small><strong{prev_title_en}>{prev_title}</strong></a></nav>
+  <a class="button" href="/news/" data-en="All diary entries and news">社長日記・お知らせ一覧へ</a>
 </main>
 <footer class="content-footer">
   <a class="brand brand--footer" href="/">Toyo<span>Seeds</span></a>
-  <div><a href="/privacy-policy/">プライバシーポリシー</a><span>© ToyoSeeds LLC.</span></div>
+  <div><a href="/privacy-policy/" data-en="Privacy Policy">プライバシーポリシー</a><span>© ToyoSeeds LLC.</span></div>
 </footer>
 <script defer src="/likes.js"></script>
 <script defer src="/_vercel/insights/script.js"></script>
@@ -106,7 +113,14 @@ def latest_vol():
 
 def article_title(slug):
     html = (ROOT / slug / "index.html").read_text(encoding="utf-8")
-    return re.search(r"<h1>(.*?)</h1>", html, re.S).group(1).strip()
+    return re.search(r"<h1[^>]*>(.*?)</h1>", html, re.S).group(1).strip()
+
+
+def article_title_en(slug):
+    """前の記事に英語タイトル（h1 の data-en）があれば返す。"""
+    html = (ROOT / slug / "index.html").read_text(encoding="utf-8")
+    m = re.search(r'<h1[^>]*\sdata-en="([^"]*)"', html)
+    return m.group(1) if m else ""
 
 
 def image_size(path):
@@ -169,6 +183,8 @@ def main():
     ap.add_argument("--image", help="記事に入れる画像ファイル。記事フォルダに取り込む")
     ap.add_argument("--image-name", default="photo.jpg", help="取り込み後のファイル名（既定 photo.jpg）")
     ap.add_argument("--max-width", type=int, default=700, help="画像の最大幅（既定 700px）")
+    ap.add_argument("--title-en", help="英語のタイトル（EN切り替え用）")
+    ap.add_argument("--body-en", help="英訳した本文のテキストファイル（--title-en と一緒に指定）")
     ap.add_argument("--dry-run", action="store_true", help="書き込まずに変更予定だけ表示")
     args = ap.parse_args()
 
@@ -207,9 +223,11 @@ def main():
     desc = args.desc or (plain_text(body_html)[:110] + "…")
 
     # 1. 記事本体
+    prev_en = article_title_en(prev_slug)
     article = ARTICLE.format(vol=vol, title=esc(title), desc=esc(desc), base=BASE, slug=slug,
-                             iso=iso, dot=dot, body=body_html,
-                             prev_slug=prev_slug, prev_title=esc(article_title(prev_slug)))
+                             iso=iso, dot=dot, body=body_html, prev_slug=prev_slug,
+                             prev_title=esc(article_title(prev_slug)),
+                             prev_title_en=f' data-en="{prev_en}"' if prev_en else "")
     changes.append(f"{slug}/index.html")
     if not args.dry_run:
         (ROOT / slug).mkdir(exist_ok=True)
@@ -245,8 +263,19 @@ def main():
         print(f"[skip] {prev_slug} にはすでに次の記事リンクがあります")
     else:
         replace_once(f"{prev_slug}/index.html", "</a></nav>",
-                     f'</a><a href="/{slug}/"><small>次の記事 →</small>'
+                     f'</a><a href="/{slug}/"><small data-en="Next →">次の記事 →</small>'
                      f'<strong>vol{vol} {esc(title)}</strong></a></nav>', changes, args.dry_run)
+
+    # 英訳（EN切り替え）。両方そろっているときだけ入れる
+    if bool(args.title_en) != bool(args.body_en):
+        sys.exit("[中止] --title-en と --body-en は両方を指定してください")
+    if args.title_en:
+        from add_translation import apply_translation
+        title_en = args.title_en.strip()
+        if not title_en.lower().startswith("vol"):
+            title_en = f"vol{vol} {title_en}"
+        body_en = build_body(Path(args.body_en).read_text(encoding="utf-8"), slug)
+        changes += apply_translation(slug, title_en, body_en, args.dry_run)
 
     head = "変更予定（--dry-run なので書き込みません）" if args.dry_run else "更新しました"
     print(f"vol{vol} {title}（{dot}）… {head}")
