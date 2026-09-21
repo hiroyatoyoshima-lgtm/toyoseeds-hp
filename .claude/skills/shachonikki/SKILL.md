@@ -56,7 +56,7 @@ python3 scripts/new_post.py --title "ベクトル" --body draft.txt --tag "#勉�
 python3 scripts/new_post.py --title "ベクトル" --body draft.txt --tag "#勉強法" --tag-en "#HowIStudy" --title-en "Vectors" --body-en draft_en.txt --dry-run
 ```
 
-`--tag` は記事末尾のハッシュタグ。**1記事につき1つだけ**で、毎回変える
+`--tag` は記事末尾のハッシュタグ。**1記事につき1〜2つ**。毎回変える
 （全記事に同じタグが並ぶと、タグから記事を探せない）。**毎回新しいタグを作らず、次の10カテゴリから選ぶ**:
 `#ピアノ` `#AI` `#日記` `#SeedsStay` `#つながるBAR` `#経営` `#習慣` `#チーム` `#昔の話` `#目標`
 （どれにも入らない記事が続くようなら、そのときカテゴリを足す。1本のために増やさない）

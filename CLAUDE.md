@@ -36,13 +36,13 @@ python3 scripts/export_note.py 56    # note貼り付け用テキスト
 - 本文のリンクは下書きに `[表示テキスト](/shachonikki_day40/)` と書く（日本語版・英訳版とも）。
   **リンクのテキストには必ずリンク先の記事タイトルを入れる**（例 `（[vol56 ペルソナ](/shachonikki_day56/)）`）
 - 補足を囲みにしたいときは下書きで `[box]` と `[/box]` の行ではさむ（vol43〜45・66で使っている灰色の囲み）
-- 本文の下に `.post-tags`（末尾のハッシュタグ）。**1記事につき1つだけ**で、記事ごとに変える
+- 本文の下に `.post-tags`（末尾のハッシュタグ）。**1記事につき1〜2つ**で、記事ごとに変える
   （全記事に同じタグを並べると、タグから記事を探せなくなる）
   タグは記事ごとに新しく作らず、**この10カテゴリから選ぶ**（束にならないと関連記事に飛べない）:
   `#ピアノ` `#AI` `#日記` `#SeedsStay` `#つながるBAR` `#経営` `#習慣` `#チーム` `#昔の話` `#目標`
   どの記事にどのタグを付けたかは `scripts/tags.json`。直したら `python3 scripts/add_tags.py` で全記事に反映（何度流しても増えない）
   タグは `/tags/#tag-角野隼斗` へのリンク。`add_tags.py` は最後に `generate_tags_page.py` を呼んで一覧ページも作り直す
-  新しい記事は `new_post.py --tag "#角野隼斗" [--tag-en "#HayatoSumino"]`（必須。`tags.json` にも自動で入る）
+  新しい記事は `new_post.py --tag "#SeedsStay" [--tag "#ピアノ"]`（必須。2つ付けるなら `--tag` を2回。`tags.json` にも自動で入る）
   node版（`new_post.mjs --tag`）は `tags.json` に書かないので、そのときだけ1行足す
 - その下（`</article>` の直前）に `.post-like`（スキ♡。`new_post.py` が自動で付ける。過去記事は `node scripts/add-like-button.mjs`）
 - 記事カードの下に `.post-cta`（トップの事業紹介への導線）、その下に前後記事ナビ

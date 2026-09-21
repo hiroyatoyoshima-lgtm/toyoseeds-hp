@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """記事の末尾のハッシュタグ（.post-tags）を scripts/tags.json のとおりに入れ直す。
 
-1記事につき1つ。同じタグが並ぶと記事を探せないので、記事ごとに変えている。
+1記事につき1〜2つ。同じタグが全記事に並ぶと記事を探せないので、カテゴリで分けている。
 すでに入っている記事は中身を差し替えるだけなので、何度流しても増えない。
 
     python3 scripts/add_tags.py           # 全記事に反映
@@ -19,12 +19,17 @@ TAGS = ROOT / "scripts" / "tags.json"
 BLOCK = re.compile(r'[ \t]*<div class="post-tags".*?</div>\n?', re.S)
 
 
-def block(tag):
-    """タグ1つ。押すと /tags/ のそのタグの場所に飛ぶ。"""
-    en = f' data-en="{tag["en"]}"' if tag["en"] != tag["ja"] else ""
-    href = "/tags/#tag-" + tag["ja"].lstrip("#")
-    return (f'    <div class="post-tags" aria-label="ハッシュタグ">'
-            f'<a href="{href}"{en}>{tag["ja"]}</a></div>\n')
+MAX_TAGS = 2
+
+
+def block(tags):
+    """タグ1〜2つ。押すと /tags/ のそのタグの場所に飛ぶ。"""
+    links = ""
+    for tag in tags:
+        en = f' data-en="{tag["en"]}"' if tag["en"] != tag["ja"] else ""
+        href = "/tags/#tag-" + tag["ja"].lstrip("#")
+        links += f'<a href="{href}"{en}>{tag["ja"]}</a>'
+    return f'    <div class="post-tags" aria-label="ハッシュタグ">{links}</div>\n'
 
 
 def main():
@@ -35,6 +40,9 @@ def main():
     tags = {k: v for k, v in json.loads(TAGS.read_text(encoding="utf-8")).items() if not k.startswith("_")}
     changed = same = 0
     for slug, tag in tags.items():
+        tag = tag if isinstance(tag, list) else [tag]
+        if not 1 <= len(tag) <= MAX_TAGS:
+            sys.exit(f"[中止] タグは1〜{MAX_TAGS}個です: {slug} に {len(tag)}個")
         path = ROOT / slug / "index.html"
         if not path.exists():
             sys.exit(f"[中止] 記事が見つかりません: {slug}/index.html")
