@@ -30,6 +30,7 @@ body ファイルの書き方:
 """
 import argparse
 import datetime
+import json
 import re
 import shutil
 import sys
@@ -72,8 +73,7 @@ ARTICLE = """<!doctype html>
       <h1>vol{vol} {title}</h1>
     </header>
     <div class="wp-content">{body}</div>
-    <div class="post-tags" aria-label="ハッシュタグ"><span>#SeedsStay</span><span>#ToyoSeeds</span><span data-en="#CEODiary">#社長日記</span><span data-en="#Fukuoka">#福岡</span><span data-en="#Guesthouse">#民泊</span></div>
-    <div class="post-like">
+{tags}    <div class="post-like">
       <button type="button" class="like-btn" data-slug="{slug}" aria-pressed="false" aria-label="スキ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.3 4.8 6.6 4.5c2-.2 3.7.8 4.6 2.3 1-1.5 2.7-2.5 4.7-2.3 3.3.3 5.2 3.5 3.9 6.8-1.8 4.6-7.8 9.2-7.8 9.2z"/></svg><span data-en="Like">スキ</span></button>
       <span class="like-count" aria-live="polite"></span>
     </div>
@@ -216,6 +216,8 @@ def main():
     ap.add_argument("--image", help="記事に入れる画像ファイル。記事フォルダに取り込む")
     ap.add_argument("--image-name", default="photo.jpg", help="取り込み後のファイル名（既定 photo.jpg）")
     ap.add_argument("--max-width", type=int, default=700, help="画像の最大幅（既定 700px）")
+    ap.add_argument("--tag", required=True, help="記事末尾のハッシュタグ（1記事1つ。例 #角野隼斗）")
+    ap.add_argument("--tag-en", help="英語表示のときのハッシュタグ（既定: --tag と同じ）")
     ap.add_argument("--title-en", help="英語のタイトル（EN切り替え用）")
     ap.add_argument("--body-en", help="英訳した本文のテキストファイル（--title-en と一緒に指定）")
     ap.add_argument("--dry-run", action="store_true", help="書き込まずに変更予定だけ表示")
@@ -257,14 +259,27 @@ def main():
 
     # 1. 記事本体
     prev_en = article_title_en(prev_slug)
+    tag_en = args.tag_en or args.tag
+    span = (f'<span data-en="{esc(tag_en)}">{esc(args.tag)}</span>'
+            if tag_en != args.tag else f'<span>{esc(args.tag)}</span>')
+    tags_html = f'    <div class="post-tags" aria-label="ハッシュタグ">{span}</div>\n'
     article = ARTICLE.format(vol=vol, title=esc(title), desc=esc(desc), base=BASE, slug=slug,
-                             iso=iso, dot=dot, body=body_html, prev_slug=prev_slug,
+                             iso=iso, dot=dot, body=body_html, tags=tags_html, prev_slug=prev_slug,
                              prev_title=esc(article_title(prev_slug)),
                              prev_title_en=f' data-en="{prev_en}"' if prev_en else "")
     changes.append(f"{slug}/index.html")
     if not args.dry_run:
         (ROOT / slug).mkdir(exist_ok=True)
         (ROOT / slug / "index.html").write_text(article, encoding="utf-8")
+
+    # ハッシュタグの台帳（scripts/add_tags.py が使う）にも足す
+    changes.append("scripts/tags.json")
+    if not args.dry_run:
+        tags_path = ROOT / "scripts" / "tags.json"
+        ledger = json.loads(tags_path.read_text(encoding="utf-8"))
+        ledger[slug] = {"ja": args.tag, "en": tag_en}
+        tags_path.write_text(
+            json.dumps(ledger, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     # 2. news 一覧の先頭に追加
     replace_once("news/index.html", '<div class="news-list">',

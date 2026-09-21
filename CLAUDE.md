@@ -23,7 +23,7 @@
 **必ず `scripts/new_post.py` を使う。** 記事を1本足すには5か所の更新が必要で、手作業だと抜ける。
 
 ```bash
-python3 scripts/new_post.py --title "タイトル" --body draft.txt
+python3 scripts/new_post.py --title "タイトル" --body draft.txt --tag "#ハッシュタグ"
 python3 scripts/export_note.py 56    # note貼り付け用テキスト
 ```
 
@@ -35,8 +35,11 @@ python3 scripts/export_note.py 56    # note貼り付け用テキスト
 - 本文のリンクは下書きに `[表示テキスト](/shachonikki_day40/)` と書く（日本語版・英訳版とも）。
   **リンクのテキストには必ずリンク先の記事タイトルを入れる**（例 `（[vol56 ペルソナ](/shachonikki_day56/)）`）
 - 補足を囲みにしたいときは下書きで `[box]` と `[/box]` の行ではさむ（vol43〜45・66で使っている灰色の囲み）
-- 本文の下に `.post-tags`（末尾のハッシュタグ。`new_post.py` が自動で付ける。過去記事へは `python3 scripts/add_tags.py`）
-  タグは `#SeedsStay #ToyoSeeds #社長日記 #福岡 #民泊` の5つで全記事共通（社員日記は `#社員日記`）。英語は `data-en` で切り替え
+- 本文の下に `.post-tags`（末尾のハッシュタグ）。**1記事につき1つだけ**で、記事ごとに変える
+  （全記事に同じタグを並べると、タグから記事を探せなくなる）
+  どの記事にどのタグを付けたかは `scripts/tags.json`。直したら `python3 scripts/add_tags.py` で全記事に反映（何度流しても増えない）
+  新しい記事は `new_post.py --tag "#角野隼斗" [--tag-en "#HayatoSumino"]`（必須。`tags.json` にも自動で入る）
+  node版（`new_post.mjs --tag`）は `tags.json` に書かないので、そのときだけ1行足す
 - その下（`</article>` の直前）に `.post-like`（スキ♡。`new_post.py` が自動で付ける。過去記事は `node scripts/add-like-button.mjs`）
 - 記事カードの下に `.post-cta`（トップの事業紹介への導線）、その下に前後記事ナビ
 - 全ページの `</body>` 直前に Vercel Analytics のタグが入っている
@@ -58,7 +61,7 @@ python3 scripts/export_note.py 56    # note貼り付け用テキスト
 ### 新しい記事には必ず英訳を付ける
 
 ```bash
-python3 scripts/new_post.py --title "ベクトル" --body draft.txt --title-en "Vectors" --body-en draft_en.txt
+python3 scripts/new_post.py --title "ベクトル" --body draft.txt --tag "#勉強法" --tag-en "#HowIStudy" --title-en "Vectors" --body-en draft_en.txt
 python3 scripts/add_translation.py 66 --title "Vectors" --body draft_en.txt   # あとから足すとき
 ```
 
