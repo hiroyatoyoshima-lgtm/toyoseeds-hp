@@ -1,5 +1,6 @@
 // scripts/new_post.py の node 移植（トヨのマシンは python が Windows Store のスタブで動かないため）。処理・テンプレは py と同じ。
 // 使い方: node scripts/new_post.mjs --title "ペルソナ" --body draft.txt [--date 2026-09-10] [--desc "..."] [--vol 56] [--dry-run]
+//        ハッシュタグ（必須・1記事1つ）: --tag "#ペルソナ" [--tag-en "#Persona"]
 //        英語版も一緒に出すとき: --title-en "Persona" --body-en draft_en.txt
 //        --root は省略可（既定＝このリポジトリのルート）
 import fs from "node:fs";
@@ -16,6 +17,9 @@ const DRY = has("--dry-run");
 const TITLE_EN = opt("--title-en");
 const BODY_EN = opt("--body-en");
 if (!!TITLE_EN !== !!BODY_EN) { console.error("--title-en と --body-en は両方を指定してください"); process.exit(1); }
+const TAG = opt("--tag");
+const TAG_EN = opt("--tag-en") || TAG;
+if (!TAG) { console.error("--tag は必須です（記事末尾のハッシュタグ。1記事1つ）"); process.exit(1); }
 const BASE = "https://www.toyoseeds.com";
 const TOP_NEWS_ROWS = 4;
 if (!TITLE || !BODY) { console.error("--title --body は必須"); process.exit(1); }
@@ -118,6 +122,7 @@ const article = `<!doctype html>
       <h1${dataEn(titleEn)}>vol${vol} ${esc(title)}</h1>
     </header>
     <div class="wp-content"${dataEn(bodyEn)}>${bodyHtml}</div>
+    <div class="post-tags" aria-label="ハッシュタグ">${TAG_EN !== TAG ? `<span data-en="${esc(TAG_EN)}">${esc(TAG)}</span>` : `<span>${esc(TAG)}</span>`}</div>
     <div class="post-like">
       <button type="button" class="like-btn" data-slug="${slug}" aria-pressed="false" aria-label="スキ"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-9.3-9.2C1.4 8 3.3 4.8 6.6 4.5c2-.2 3.7.8 4.6 2.3 1-1.5 2.7-2.5 4.7-2.3 3.3.3 5.2 3.5 3.9 6.8-1.8 4.6-7.8 9.2-7.8 9.2z"/></svg><span data-en="Like">スキ</span></button>
       <span class="like-count" aria-live="polite"></span>
