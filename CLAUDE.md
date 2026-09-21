@@ -87,4 +87,6 @@ note に英語が混ざらないようにするのも兼ねている）。
 
 - 日付は日本時間で判断する（このセッションのシェルはUTCのことがある）
 - トップの News 欄は最新4件だけ。増やさない
+- 宿のブランド名は **`SEEDS STAY`**（全部大文字・スペースあり）。`SeedsStay` / `Seeds Stay` とは書かない
+  ただし URL（`seeds-stay.com`）・画像のファイル名・ハッシュタグ（`#SeedsStay`）はそのまま
 - `sitemap.xml` は `scripts/generate_sitemap.py` でも再生成できる
