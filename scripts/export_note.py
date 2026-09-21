@@ -80,7 +80,8 @@ def main():
     text = f"{title}\n\n{to_text(body)}\n\n{FOOTER.format(url=f'{BASE}/{slug}/', base=BASE)}\n"
     tags = re.findall(r'<div class="post-tags".*?</div>', s, re.S)
     if tags:
-        text += "\n" + " ".join(re.findall(r"<span[^>]*>(.*?)</span>", tags[0])) + "\n"
+        # タグは /tags/ へのリンクになっているので、文字だけ取り出す
+        text += "\n" + " ".join(re.findall(r"<(?:a|span)[^>]*>(.*?)</(?:a|span)>", tags[0])) + "\n"
     print(text)
 
     images = re.findall(r'<img [^>]*src="([^"]+)"', body)
