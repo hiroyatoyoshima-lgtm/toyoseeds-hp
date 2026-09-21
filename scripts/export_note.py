@@ -78,6 +78,9 @@ def main():
     body = re.search(r'<div class="wp-content"[^>]*>(.*?)</div>\s*</article>', s, re.S).group(1)
 
     text = f"{title}\n\n{to_text(body)}\n\n{FOOTER.format(url=f'{BASE}/{slug}/', base=BASE)}\n"
+    tags = re.findall(r'<div class="post-tags".*?</div>', s, re.S)
+    if tags:
+        text += "\n" + " ".join(re.findall(r"<span[^>]*>(.*?)</span>", tags[0])) + "\n"
     print(text)
 
     images = re.findall(r'<img [^>]*src="([^"]+)"', body)
