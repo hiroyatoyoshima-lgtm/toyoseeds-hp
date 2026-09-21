@@ -51,8 +51,7 @@ PAGE = """<!doctype html>
   <p class="eyebrow">TAGS</p>
   <h1 data-en="Tags">タグ一覧</h1>
   <p class="lead" data-en="Every tag on the diaries, and the posts under each one.">日記についているタグと、その記事の一覧です。</p>
-  <nav class="tag-cloud" aria-label="タグ" data-en-aria-label="Tags">{cloud}</nav>
-{groups}</main>
+{cloud}{groups}</main>
 <footer class="content-footer">
   <a class="brand brand--footer" href="/">Toyo<span>Seeds</span></a>
   <div><a href="/privacy-policy/" data-en="プライバシーポリシー">プライバシーポリシー</a><span>© ToyoSeeds LLC.</span></div>
@@ -102,10 +101,11 @@ def main():
     # 本数の多いタグから。同数なら新しい記事があるほうを先に
     ordered = sorted(groups, key=lambda t: (-len(groups[t]), order.index(groups[t][0])))
 
+    # タグが1つだけのときは、上のタグ並びは出さない（押す先が自分しかない）
     cloud = "".join(
         f'<a href="#{anchor(t)}"{en_attr(t, tags[groups[t][0]]["en"])}>{html.escape(t)}</a>'
         for t in ordered
-    )
+    ) if len(ordered) > 1 else ""
 
     out = []
     for t in ordered:
@@ -127,8 +127,10 @@ def main():
         )
 
     (ROOT / "tags").mkdir(exist_ok=True)
+    cloud_html = ('  <nav class="tag-cloud" aria-label="タグ" data-en-aria-label="Tags">'
+                  f"{cloud}</nav>\n" if cloud else "")
     (ROOT / "tags" / "index.html").write_text(
-        PAGE.format(base=BASE, cloud=cloud, groups="".join(out)), encoding="utf-8")
+        PAGE.format(base=BASE, cloud=cloud_html, groups="".join(out)), encoding="utf-8")
     print(f"tags/index.html を作りました（タグ {len(ordered)}／記事 {len(tags)}）")
 
 

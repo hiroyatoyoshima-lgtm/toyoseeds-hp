@@ -1,74 +1,287 @@
 {
   "_comment": "記事ごとのハッシュタグ。1記事1つ。ja が表示、en が英語表示のときの差し替え。scripts/add_tags.py が全記事に流し込む",
-  "sahchonikki_day1":  {"ja": "#起業",           "en": "#Startup"},
-  "sahchonikki_day2":  {"ja": "#場づくり",       "en": "#Placemaking"},
-  "sahchonikki_day3":  {"ja": "#継続",           "en": "#Consistency"},
-  "sahchonikki_day4":  {"ja": "#習慣化",         "en": "#BuildingHabits"},
-  "sahchonikki_day5":  {"ja": "#朝活",           "en": "#MorningRoutine"},
-  "sahchonikki_day6":  {"ja": "#即断即決",       "en": "#JustStart"},
-  "sahchonikki_day7":  {"ja": "#民泊",           "en": "#Guesthouse"},
-  "sahchonikki_day8":  {"ja": "#DIY",            "en": "#DIY"},
-  "sahchonikki_day9":  {"ja": "#接客",           "en": "#Hospitality"},
-  "sahchonikki_day10": {"ja": "#思考整理",       "en": "#ClearingYourHead"},
-  "sahchonikki_day11": {"ja": "#コミュニティ",   "en": "#Community"},
-  "sahchonikki_day12": {"ja": "#職場環境",       "en": "#Workplace"},
-  "sahchonikki_day13": {"ja": "#引き算",         "en": "#LessIsMore"},
-  "sahchonikki_day14": {"ja": "#Airbnb",         "en": "#Airbnb"},
-  "sahchonikki_day15": {"ja": "#コンセプト",     "en": "#Concept"},
-  "sahchonikki_day16": {"ja": "#挑戦",           "en": "#TakingRisks"},
-  "sahchonikki_day17": {"ja": "#ピアノ",         "en": "#Piano"},
-  "sahchonikki_day18": {"ja": "#インバウンド",   "en": "#Inbound"},
-  "sahchonikki_day19": {"ja": "#ランニング",     "en": "#Running"},
-  "sahchonikki_day20": {"ja": "#チーム",         "en": "#Team"},
-  "shachonikki_day21": {"ja": "#リーダーシップ", "en": "#Leadership"},
-  "shachonikki_day22": {"ja": "#社長ブログ",     "en": "#CEOBlog"},
-  "shachonikki_day23": {"ja": "#ルーティーン",   "en": "#Routine"},
-  "shachonikki_day24": {"ja": "#継続力",         "en": "#StickingWithIt"},
-  "shachonikki_day25": {"ja": "#原体験",         "en": "#WhereItStarted"},
-  "shachonikki_day26": {"ja": "#目標",           "en": "#Goals"},
-  "shachonikki_day27": {"ja": "#サッカー",       "en": "#Football"},
-  "shachonikki_day28": {"ja": "#行動",           "en": "#TakingAction"},
-  "shachonikki_day29": {"ja": "#藤田晋",         "en": "#SusumuFujita"},
-  "shachonikki_day30": {"ja": "#選択と集中",     "en": "#LettingGo"},
-  "shachonikki_day31": {"ja": "#合宿",           "en": "#TeamOffsite"},
-  "shachonikki_day32": {"ja": "#マネジメント",   "en": "#Management"},
-  "shachonikki_day33": {"ja": "#キングダム",     "en": "#Kingdom"},
-  "shachonikki_day34": {"ja": "#経営",           "en": "#RunningABusiness"},
-  "shachonikki_day35": {"ja": "#コワーキング",   "en": "#Coworking"},
-  "shachonikki_day36": {"ja": "#キングダム",     "en": "#Kingdom"},
-  "shachonikki_day37": {"ja": "#新規事業",       "en": "#NewVenture"},
-  "shachonikki_day38": {"ja": "#有言実行",       "en": "#SayItThenDoIt"},
-  "shachonikki_day39": {"ja": "#負けず嫌い",     "en": "#HateToLose"},
-  "shachonikki_day40": {"ja": "#マクドナルド",   "en": "#McDonalds"},
-  "shachonikki_day41": {"ja": "#健康",           "en": "#Health"},
-  "shachonikki_day42": {"ja": "#マイケルジャクソン", "en": "#MichaelJackson"},
-  "shachonikki_day43": {"ja": "#マーケティング", "en": "#Marketing"},
-  "shachonikki_day44": {"ja": "#営業",           "en": "#Sales"},
-  "shachonikki_day45": {"ja": "#組織",           "en": "#Teams"},
-  "shachonikki_day46": {"ja": "#振り返り",       "en": "#LookingBack"},
-  "shachonikki_day47": {"ja": "#毎日更新",       "en": "#DailyPosting"},
-  "shachonikki_day48": {"ja": "#成長",           "en": "#Growth"},
-  "shachonikki_day49": {"ja": "#つながるBAR",    "en": "#TsunagaruBAR"},
-  "shachonikki_day50": {"ja": "#メンタル",       "en": "#StayingSteady"},
-  "shachonikki_day51": {"ja": "#ブランディング", "en": "#Branding"},
-  "shachonikki_day52": {"ja": "#日記",           "en": "#Journaling"},
-  "shachonikki_day53": {"ja": "#食事",           "en": "#Food"},
-  "shachonikki_day54": {"ja": "#習慣",           "en": "#Habits"},
-  "shachonikki_day55": {"ja": "#勉強法",         "en": "#HowIStudy"},
-  "shachonikki_day56": {"ja": "#note",           "en": "#note"},
-  "shachonikki_day57": {"ja": "#沖縄",           "en": "#Okinawa"},
-  "shachonikki_day58": {"ja": "#出張",           "en": "#BusinessTrip"},
-  "shachonikki_day59": {"ja": "#YouTube",        "en": "#YouTube"},
-  "shachonikki_day60": {"ja": "#自己分析",       "en": "#KnowingYourself"},
-  "shachonikki_day61": {"ja": "#AI",             "en": "#AI"},
-  "shachonikki_day62": {"ja": "#問いを立てる",   "en": "#AskingQuestions"},
-  "shachonikki_day63": {"ja": "#人生設計",       "en": "#LifePlanning"},
-  "shachonikki_day64": {"ja": "#マクドナルド",   "en": "#McDonalds"},
-  "shachonikki_day65": {"ja": "#目標設定",       "en": "#SettingGoals"},
-  "shachonikki_day66": {"ja": "#毎日更新",       "en": "#DailyPosting"},
-  "shachonikki_day67": {"ja": "#角野隼斗",       "en": "#HayatoSumino"},
-  "goma-diary/day1":   {"ja": "#優先順位",       "en": "#Priorities"},
-  "goma-diary/vol2":   {"ja": "#1on1",           "en": "#OneOnOne"},
-  "goma-diary/vol3":   {"ja": "#ベンチャー",     "en": "#StartupLife"},
-  "goma-diary/vol4":   {"ja": "#キャリア",       "en": "#Career"}
+  "sahchonikki_day1": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day2": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day3": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day4": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day5": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day6": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day7": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day8": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day9": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day10": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day11": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day12": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day13": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day14": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day15": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day16": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day17": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day18": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day19": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "sahchonikki_day20": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day21": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day22": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day23": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day24": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day25": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day26": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day27": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day28": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day29": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day30": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day31": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day32": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day33": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day34": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day35": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day36": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day37": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day38": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day39": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day40": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day41": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day42": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day43": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day44": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day45": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day46": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day47": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day48": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day49": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day50": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day51": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day52": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day53": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day54": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day55": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day56": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day57": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day58": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day59": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day60": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day61": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day62": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day63": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day64": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day65": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day66": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "shachonikki_day67": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "goma-diary/day1": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "goma-diary/vol2": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "goma-diary/vol3": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  },
+  "goma-diary/vol4": {
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
+  }
 }
