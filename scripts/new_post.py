@@ -216,8 +216,10 @@ def main():
     ap.add_argument("--image", help="記事に入れる画像ファイル。記事フォルダに取り込む")
     ap.add_argument("--image-name", default="photo.jpg", help="取り込み後のファイル名（既定 photo.jpg）")
     ap.add_argument("--max-width", type=int, default=700, help="画像の最大幅（既定 700px）")
-    ap.add_argument("--tag", required=True, help="記事末尾のハッシュタグ（1記事1つ。例 #角野隼斗）")
-    ap.add_argument("--tag-en", help="英語表示のときのハッシュタグ（既定: --tag と同じ）")
+    ap.add_argument("--tag", required=True, action="append",
+                    help="記事末尾のハッシュタグ。1記事1〜2つ（2つ付けるなら --tag を2回）")
+    ap.add_argument("--tag-en", action="append",
+                    help="英語表示のときのハッシュタグ（--tag と同じ順。既定: --tag と同じ）")
     ap.add_argument("--title-en", help="英語のタイトル（EN切り替え用）")
     ap.add_argument("--body-en", help="英訳した本文のテキストファイル（--title-en と一緒に指定）")
     ap.add_argument("--dry-run", action="store_true", help="書き込まずに変更予定だけ表示")
@@ -259,11 +261,15 @@ def main():
 
     # 1. 記事本体
     prev_en = article_title_en(prev_slug)
-    tag_en = args.tag_en or args.tag
-    tag_attr = f' data-en="{esc(tag_en)}"' if tag_en != args.tag else ""
-    tag_href = "/tags/#tag-" + args.tag.lstrip("#")
-    tags_html = (f'    <div class="post-tags" aria-label="ハッシュタグ">'
-                 f'<a href="{esc(tag_href)}"{tag_attr}>{esc(args.tag)}</a></div>\n')
+    if len(args.tag) > 2:
+        sys.exit("[中止] タグは1記事1〜2つです")
+    tags_en = (args.tag_en or []) + args.tag[len(args.tag_en or []):]
+    tag_pairs = list(zip(args.tag, tags_en))
+    links = ""
+    for ja, en in tag_pairs:
+        attr = f' data-en="{esc(en)}"' if en != ja else ""
+        links += f'<a href="{esc("/tags/#tag-" + ja.lstrip("#"))}"{attr}>{esc(ja)}</a>'
+    tags_html = f'    <div class="post-tags" aria-label="ハッシュタグ">{links}</div>\n'
     article = ARTICLE.format(vol=vol, title=esc(title), desc=esc(desc), base=BASE, slug=slug,
                              iso=iso, dot=dot, body=body_html, tags=tags_html, prev_slug=prev_slug,
                              prev_title=esc(article_title(prev_slug)),
@@ -278,7 +284,7 @@ def main():
     if not args.dry_run:
         tags_path = ROOT / "scripts" / "tags.json"
         ledger = json.loads(tags_path.read_text(encoding="utf-8"))
-        ledger[slug] = {"ja": args.tag, "en": tag_en}
+        ledger[slug] = [{"ja": ja, "en": en} for ja, en in tag_pairs]
         tags_path.write_text(
             json.dumps(ledger, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 

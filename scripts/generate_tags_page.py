@@ -93,23 +93,24 @@ def main():
     if missing:
         sys.exit(f"[中止] news/index.html に見つからない記事: {', '.join(missing)}")
 
-    groups = {}
+    groups, en_of = {}, {}
     for slug in order:                      # news は新しい順。その順のまま各タグに入る
-        if slug in tags:
-            groups.setdefault(tags[slug]["ja"], []).append(slug)
+        for tag in tags.get(slug, []) if isinstance(tags.get(slug), list) else [tags[slug]] if slug in tags else []:
+            groups.setdefault(tag["ja"], []).append(slug)
+            en_of[tag["ja"]] = tag["en"]
 
     # 本数の多いタグから。同数なら新しい記事があるほうを先に
     ordered = sorted(groups, key=lambda t: (-len(groups[t]), order.index(groups[t][0])))
 
     # タグが1つだけのときは、上のタグ並びは出さない（押す先が自分しかない）
     cloud = "".join(
-        f'<a href="#{anchor(t)}"{en_attr(t, tags[groups[t][0]]["en"])}>{html.escape(t)}</a>'
+        f'<a href="#{anchor(t)}"{en_attr(t, en_of[t])}>{html.escape(t)}</a>'
         for t in ordered
     ) if len(ordered) > 1 else ""
 
     out = []
     for t in ordered:
-        en = tags[groups[t][0]]["en"]
+        en = en_of[t]
         items = "".join(
             '<a class="news-list-row" href="/{s}/"><time datetime="{iso}">{dot}</time>'
             '<span class="category{mod}"{cattr}>{cat}</span><strong{tattr}>{title}</strong></a>'.format(
