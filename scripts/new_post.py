@@ -260,9 +260,10 @@ def main():
     # 1. 記事本体
     prev_en = article_title_en(prev_slug)
     tag_en = args.tag_en or args.tag
-    span = (f'<span data-en="{esc(tag_en)}">{esc(args.tag)}</span>'
-            if tag_en != args.tag else f'<span>{esc(args.tag)}</span>')
-    tags_html = f'    <div class="post-tags" aria-label="ハッシュタグ">{span}</div>\n'
+    tag_attr = f' data-en="{esc(tag_en)}"' if tag_en != args.tag else ""
+    tag_href = "/tags/#tag-" + args.tag.lstrip("#")
+    tags_html = (f'    <div class="post-tags" aria-label="ハッシュタグ">'
+                 f'<a href="{esc(tag_href)}"{tag_attr}>{esc(args.tag)}</a></div>\n')
     article = ARTICLE.format(vol=vol, title=esc(title), desc=esc(desc), base=BASE, slug=slug,
                              iso=iso, dot=dot, body=body_html, tags=tags_html, prev_slug=prev_slug,
                              prev_title=esc(article_title(prev_slug)),

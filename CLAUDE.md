@@ -9,6 +9,7 @@
 |---|---|
 | `index.html` | トップページ（事業紹介・代表プロフィール・News欄・会社概要） |
 | `news/index.html` | 日記・お知らせの全記事一覧 |
+| `tags/index.html` | ハッシュタグ一覧。記事末尾のタグの飛び先（`scripts/generate_tags_page.py` が作る） |
 | `shachonikki_dayNN/` | 社長日記。`sahchonikki_`（綴り違い）はday1〜20の旧フォルダ |
 | `goma-diary/` | 社員日記 |
 | `assets/content-v2.css` | 記事ページ共通のスタイル（末尾に「スキ」ボタンのスタイル） |
@@ -38,6 +39,7 @@ python3 scripts/export_note.py 56    # note貼り付け用テキスト
 - 本文の下に `.post-tags`（末尾のハッシュタグ）。**1記事につき1つだけ**で、記事ごとに変える
   （全記事に同じタグを並べると、タグから記事を探せなくなる）
   どの記事にどのタグを付けたかは `scripts/tags.json`。直したら `python3 scripts/add_tags.py` で全記事に反映（何度流しても増えない）
+  タグは `/tags/#tag-角野隼斗` へのリンク。`add_tags.py` は最後に `generate_tags_page.py` を呼んで一覧ページも作り直す
   新しい記事は `new_post.py --tag "#角野隼斗" [--tag-en "#HayatoSumino"]`（必須。`tags.json` にも自動で入る）
   node版（`new_post.mjs --tag`）は `tags.json` に書かないので、そのときだけ1行足す
 - その下（`</article>` の直前）に `.post-like`（スキ♡。`new_post.py` が自動で付ける。過去記事は `node scripts/add-like-button.mjs`）

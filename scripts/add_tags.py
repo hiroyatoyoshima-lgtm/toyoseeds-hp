@@ -11,6 +11,7 @@ import argparse
 import json
 import pathlib
 import re
+import subprocess
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
@@ -19,12 +20,11 @@ BLOCK = re.compile(r'[ \t]*<div class="post-tags".*?</div>\n?', re.S)
 
 
 def block(tag):
-    span = (
-        f'<span data-en="{tag["en"]}">{tag["ja"]}</span>'
-        if tag["en"] != tag["ja"]
-        else f'<span>{tag["ja"]}</span>'
-    )
-    return f'    <div class="post-tags" aria-label="ハッシュタグ">{span}</div>\n'
+    """タグ1つ。押すと /tags/ のそのタグの場所に飛ぶ。"""
+    en = f' data-en="{tag["en"]}"' if tag["en"] != tag["ja"] else ""
+    href = "/tags/#tag-" + tag["ja"].lstrip("#")
+    return (f'    <div class="post-tags" aria-label="ハッシュタグ">'
+            f'<a href="{href}"{en}>{tag["ja"]}</a></div>\n')
 
 
 def main():
@@ -55,6 +55,8 @@ def main():
             path.write_text(out, encoding="utf-8")
     verb = "書き換える予定" if args.check else "書き換えた"
     print(f"{verb}記事: {changed}本（そのままでよかった: {same}本）")
+    if not args.check:
+        subprocess.run([sys.executable, str(ROOT / "scripts" / "generate_tags_page.py")], check=True)
 
 
 if __name__ == "__main__":
