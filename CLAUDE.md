@@ -35,7 +35,9 @@ python3 scripts/export_note.py 56    # note貼り付け用テキスト
 - 本文のリンクは下書きに `[表示テキスト](/shachonikki_day40/)` と書く（日本語版・英訳版とも）。
   **リンクのテキストには必ずリンク先の記事タイトルを入れる**（例 `（[vol56 ペルソナ](/shachonikki_day56/)）`）
 - 補足を囲みにしたいときは下書きで `[box]` と `[/box]` の行ではさむ（vol43〜45・66で使っている灰色の囲み）
-- 本文の下（`</article>` の直前）に `.post-like`（スキ♡。`new_post.py` が自動で付ける。過去記事は `node scripts/add-like-button.mjs`）
+- 本文の下に `.post-tags`（末尾のハッシュタグ。`new_post.py` が自動で付ける。過去記事へは `python3 scripts/add_tags.py`）
+  タグは `#SeedsStay #ToyoSeeds #社長日記 #福岡 #民泊` の5つで全記事共通（社員日記は `#社員日記`）。英語は `data-en` で切り替え
+- その下（`</article>` の直前）に `.post-like`（スキ♡。`new_post.py` が自動で付ける。過去記事は `node scripts/add-like-button.mjs`）
 - 記事カードの下に `.post-cta`（トップの事業紹介への導線）、その下に前後記事ナビ
 - 全ページの `</body>` 直前に Vercel Analytics のタグが入っている
 - 画像は記事フォルダに置いて `/shachonikki_dayNN/ファイル名` で参照する。横幅700px・JPEG・100KB前後が目安
