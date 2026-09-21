@@ -1,561 +1,561 @@
 {
-  "_comment": "記事ごとのハッシュタグ。1記事1〜2つ、下のカテゴリから選ぶ: #ピアノ #AI #日記 #SeedsStay #つながるBAR #経営 #習慣 #チーム #昔の話 #目標",
+  "_comment": "記事ごとのハッシュタグ。1記事1〜2つ、下のカテゴリから選ぶ（すべて小文字）: #ピアノ #ai #日記 #seedsstay #つながるbar #経営 #習慣 #チーム #昔の話 #目標",
   "sahchonikki_day1": [
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     },
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "sahchonikki_day2": [
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "sahchonikki_day3": [
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     },
     {
       "ja": "#ピアノ",
-      "en": "#Piano"
+      "en": "#piano"
     }
   ],
   "sahchonikki_day4": [
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     }
   ],
   "sahchonikki_day5": [
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     }
   ],
   "sahchonikki_day6": [
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     }
   ],
   "sahchonikki_day7": [
     {
-      "ja": "#SeedsStay",
-      "en": "#SeedsStay"
+      "ja": "#seedsstay",
+      "en": "#seedsstay"
     }
   ],
   "sahchonikki_day8": [
     {
-      "ja": "#SeedsStay",
-      "en": "#SeedsStay"
+      "ja": "#seedsstay",
+      "en": "#seedsstay"
     }
   ],
   "sahchonikki_day9": [
     {
-      "ja": "#つながるBAR",
-      "en": "#TsunagaruBAR"
+      "ja": "#つながるbar",
+      "en": "#tsunagarubar"
     },
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "sahchonikki_day10": [
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     }
   ],
   "sahchonikki_day11": [
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "sahchonikki_day12": [
     {
       "ja": "#チーム",
-      "en": "#Team"
+      "en": "#team"
     },
     {
-      "ja": "#つながるBAR",
-      "en": "#TsunagaruBAR"
+      "ja": "#つながるbar",
+      "en": "#tsunagarubar"
     }
   ],
   "sahchonikki_day13": [
     {
-      "ja": "#SeedsStay",
-      "en": "#SeedsStay"
+      "ja": "#seedsstay",
+      "en": "#seedsstay"
     }
   ],
   "sahchonikki_day14": [
     {
-      "ja": "#SeedsStay",
-      "en": "#SeedsStay"
+      "ja": "#seedsstay",
+      "en": "#seedsstay"
     },
     {
-      "ja": "#AI",
-      "en": "#AI"
+      "ja": "#ai",
+      "en": "#ai"
     }
   ],
   "sahchonikki_day15": [
     {
-      "ja": "#SeedsStay",
-      "en": "#SeedsStay"
+      "ja": "#seedsstay",
+      "en": "#seedsstay"
     },
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "sahchonikki_day16": [
     {
-      "ja": "#SeedsStay",
-      "en": "#SeedsStay"
+      "ja": "#seedsstay",
+      "en": "#seedsstay"
     },
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "sahchonikki_day17": [
     {
       "ja": "#ピアノ",
-      "en": "#Piano"
+      "en": "#piano"
     },
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     }
   ],
   "sahchonikki_day18": [
     {
-      "ja": "#SeedsStay",
-      "en": "#SeedsStay"
+      "ja": "#seedsstay",
+      "en": "#seedsstay"
     }
   ],
   "sahchonikki_day19": [
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     }
   ],
   "sahchonikki_day20": [
     {
       "ja": "#チーム",
-      "en": "#Team"
+      "en": "#team"
     },
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "shachonikki_day21": [
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     },
     {
       "ja": "#チーム",
-      "en": "#Team"
+      "en": "#team"
     }
   ],
   "shachonikki_day22": [
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     }
   ],
   "shachonikki_day23": [
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     },
     {
       "ja": "#ピアノ",
-      "en": "#Piano"
+      "en": "#piano"
     }
   ],
   "shachonikki_day24": [
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     }
   ],
   "shachonikki_day25": [
     {
       "ja": "#昔の話",
-      "en": "#LookingBack"
+      "en": "#lookingback"
     }
   ],
   "shachonikki_day26": [
     {
       "ja": "#目標",
-      "en": "#Goals"
+      "en": "#goals"
     },
     {
       "ja": "#チーム",
-      "en": "#Team"
+      "en": "#team"
     }
   ],
   "shachonikki_day27": [
     {
       "ja": "#昔の話",
-      "en": "#LookingBack"
+      "en": "#lookingback"
     }
   ],
   "shachonikki_day28": [
     {
-      "ja": "#AI",
-      "en": "#AI"
+      "ja": "#ai",
+      "en": "#ai"
     },
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     }
   ],
   "shachonikki_day29": [
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     }
   ],
   "shachonikki_day30": [
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "shachonikki_day31": [
     {
       "ja": "#チーム",
-      "en": "#Team"
+      "en": "#team"
     },
     {
-      "ja": "#AI",
-      "en": "#AI"
+      "ja": "#ai",
+      "en": "#ai"
     }
   ],
   "shachonikki_day32": [
     {
       "ja": "#チーム",
-      "en": "#Team"
+      "en": "#team"
     }
   ],
   "shachonikki_day33": [
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "shachonikki_day34": [
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "shachonikki_day35": [
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "shachonikki_day36": [
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "shachonikki_day37": [
     {
       "ja": "#目標",
-      "en": "#Goals"
+      "en": "#goals"
     },
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "shachonikki_day38": [
     {
       "ja": "#昔の話",
-      "en": "#LookingBack"
+      "en": "#lookingback"
     },
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     }
   ],
   "shachonikki_day39": [
     {
       "ja": "#昔の話",
-      "en": "#LookingBack"
+      "en": "#lookingback"
     }
   ],
   "shachonikki_day40": [
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     },
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     }
   ],
   "shachonikki_day41": [
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     }
   ],
   "shachonikki_day42": [
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "shachonikki_day43": [
     {
       "ja": "#昔の話",
-      "en": "#LookingBack"
+      "en": "#lookingback"
     },
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "shachonikki_day44": [
     {
       "ja": "#昔の話",
-      "en": "#LookingBack"
+      "en": "#lookingback"
     },
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "shachonikki_day45": [
     {
       "ja": "#昔の話",
-      "en": "#LookingBack"
+      "en": "#lookingback"
     },
     {
       "ja": "#チーム",
-      "en": "#Team"
+      "en": "#team"
     }
   ],
   "shachonikki_day46": [
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     }
   ],
   "shachonikki_day47": [
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     }
   ],
   "shachonikki_day48": [
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     },
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     }
   ],
   "shachonikki_day49": [
     {
-      "ja": "#つながるBAR",
-      "en": "#TsunagaruBAR"
+      "ja": "#つながるbar",
+      "en": "#tsunagarubar"
     },
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "shachonikki_day50": [
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     },
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     }
   ],
   "shachonikki_day51": [
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "shachonikki_day52": [
     {
       "ja": "#昔の話",
-      "en": "#LookingBack"
+      "en": "#lookingback"
     },
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     }
   ],
   "shachonikki_day53": [
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     }
   ],
   "shachonikki_day54": [
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     },
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     }
   ],
   "shachonikki_day55": [
     {
       "ja": "#昔の話",
-      "en": "#LookingBack"
+      "en": "#lookingback"
     }
   ],
   "shachonikki_day56": [
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     },
     {
       "ja": "#チーム",
-      "en": "#Team"
+      "en": "#team"
     }
   ],
   "shachonikki_day57": [
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "shachonikki_day58": [
     {
       "ja": "#チーム",
-      "en": "#Team"
+      "en": "#team"
     },
     {
       "ja": "#経営",
-      "en": "#Business"
+      "en": "#business"
     }
   ],
   "shachonikki_day59": [
     {
       "ja": "#ピアノ",
-      "en": "#Piano"
+      "en": "#piano"
     },
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     }
   ],
   "shachonikki_day60": [
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     }
   ],
   "shachonikki_day61": [
     {
-      "ja": "#AI",
-      "en": "#AI"
+      "ja": "#ai",
+      "en": "#ai"
     },
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     }
   ],
   "shachonikki_day62": [
     {
       "ja": "#昔の話",
-      "en": "#LookingBack"
+      "en": "#lookingback"
     }
   ],
   "shachonikki_day63": [
     {
       "ja": "#昔の話",
-      "en": "#LookingBack"
+      "en": "#lookingback"
     }
   ],
   "shachonikki_day64": [
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     }
   ],
   "shachonikki_day65": [
     {
       "ja": "#目標",
-      "en": "#Goals"
+      "en": "#goals"
     }
   ],
   "shachonikki_day66": [
     {
       "ja": "#日記",
-      "en": "#Journaling"
+      "en": "#journaling"
     },
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     }
   ],
   "shachonikki_day67": [
     {
-      "ja": "#SeedsStay",
-      "en": "#SeedsStay"
+      "ja": "#seedsstay",
+      "en": "#seedsstay"
     },
     {
       "ja": "#ピアノ",
-      "en": "#Piano"
+      "en": "#piano"
     }
   ],
   "goma-diary/day1": [
     {
       "ja": "#習慣",
-      "en": "#Habits"
+      "en": "#habits"
     },
     {
       "ja": "#チーム",
-      "en": "#Team"
+      "en": "#team"
     }
   ],
   "goma-diary/vol2": [
     {
       "ja": "#チーム",
-      "en": "#Team"
+      "en": "#team"
     }
   ],
   "goma-diary/vol3": [
     {
       "ja": "#チーム",
-      "en": "#Team"
+      "en": "#team"
     },
     {
       "ja": "#目標",
-      "en": "#Goals"
+      "en": "#goals"
     }
   ],
   "goma-diary/vol4": [
     {
       "ja": "#目標",
-      "en": "#Goals"
+      "en": "#goals"
     }
   ]
 }
