@@ -1,5 +1,5 @@
 {
-  "_comment": "記事ごとのハッシュタグ。1記事1つ、下のカテゴリから選ぶ: #ピアノ #AI #日記 #民泊 #つながるBAR #経営 #習慣 #チーム #昔の話 #目標",
+  "_comment": "記事ごとのハッシュタグ。1記事1つ、下のカテゴリから選ぶ: #ピアノ #AI #日記 #SeedsStay #つながるBAR #経営 #習慣 #チーム #昔の話 #目標",
   "sahchonikki_day1": {
     "ja": "#日記",
     "en": "#Journaling"
@@ -25,12 +25,12 @@
     "en": "#Habits"
   },
   "sahchonikki_day7": {
-    "ja": "#民泊",
-    "en": "#Guesthouse"
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
   },
   "sahchonikki_day8": {
-    "ja": "#民泊",
-    "en": "#Guesthouse"
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
   },
   "sahchonikki_day9": {
     "ja": "#つながるBAR",
@@ -49,28 +49,28 @@
     "en": "#Team"
   },
   "sahchonikki_day13": {
-    "ja": "#民泊",
-    "en": "#Guesthouse"
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
   },
   "sahchonikki_day14": {
-    "ja": "#民泊",
-    "en": "#Guesthouse"
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
   },
   "sahchonikki_day15": {
-    "ja": "#民泊",
-    "en": "#Guesthouse"
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
   },
   "sahchonikki_day16": {
-    "ja": "#民泊",
-    "en": "#Guesthouse"
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
   },
   "sahchonikki_day17": {
     "ja": "#ピアノ",
     "en": "#Piano"
   },
   "sahchonikki_day18": {
-    "ja": "#民泊",
-    "en": "#Guesthouse"
+    "ja": "#SeedsStay",
+    "en": "#SeedsStay"
   },
   "sahchonikki_day19": {
     "ja": "#習慣",
