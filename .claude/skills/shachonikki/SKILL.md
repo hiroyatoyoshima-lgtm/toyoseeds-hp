@@ -52,15 +52,16 @@ description: ToyoSeedsの社長日記を書いて公開する。音声の書き�
 本文をテキストファイルに書いてから、スクリプトで流し込む。
 
 ```bash
-python3 scripts/new_post.py --title "ベクトル" --body draft.txt --tag "#勉強法" --tag-en "#HowIStudy" --title-en "Vectors" --body-en draft_en.txt
-python3 scripts/new_post.py --title "ベクトル" --body draft.txt --tag "#勉強法" --tag-en "#HowIStudy" --title-en "Vectors" --body-en draft_en.txt --dry-run
+python3 scripts/new_post.py --title "ベクトル" --body draft.txt --tag "#ピアノ" --tag-en "#piano" --title-en "Vectors" --body-en draft_en.txt
+python3 scripts/new_post.py --title "ベクトル" --body draft.txt --tag "#ピアノ" --tag-en "#piano" --title-en "Vectors" --body-en draft_en.txt --dry-run
 ```
 
 `--tag` は記事末尾のハッシュタグ。**1記事につき1〜2つ**。毎回変える
 （全記事に同じタグが並ぶと、タグから記事を探せない）。**毎回新しいタグを作らず、次の10カテゴリから選ぶ**:
-`#ピアノ` `#AI` `#日記` `#SeedsStay` `#つながるBAR` `#経営` `#習慣` `#チーム` `#昔の話` `#目標`
+`#ピアノ` `#ai` `#日記` `#seedsstay` `#つながるbar` `#経営` `#習慣` `#チーム` `#昔の話` `#目標`
+（英字はすべて小文字）
 （どれにも入らない記事が続くようなら、そのときカテゴリを足す。1本のために増やさない）
-英語表示のときだけ変えたいなら `--tag-en "#HowIStudy"`。台帳は `scripts/tags.json`。
+英語表示のときだけ変えたいなら `--tag-en "#piano"`。台帳は `scripts/tags.json`。
 
 vol番号・日付（既定は今日）・前後記事のリンクは自動。
 これ1本で5か所（記事／news一覧／トップのNews欄／sitemap／前の記事のナビ）が揃う。
@@ -90,7 +91,7 @@ vol番号・日付（既定は今日）・前後記事のリンクは自動。
 写真を渡されたら取り込む。余白のトリミングは事前に済ませておくと見栄えがいい。
 
 ```bash
-python3 scripts/new_post.py --title "ベクトル" --body draft.txt --tag "#勉強法" --image ~/photo.jpg --image-name report-card.jpg
+python3 scripts/new_post.py --title "ベクトル" --body draft.txt --tag "#ピアノ" --image ~/photo.jpg --image-name report-card.jpg
 ```
 
 本文の中で、入れたい位置に次の1行を単独で置く:
