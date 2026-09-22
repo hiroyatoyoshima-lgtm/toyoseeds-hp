@@ -567,5 +567,15 @@
       "ja": "#経営",
       "en": "#business"
     }
+  ],
+  "shachonikki_day69": [
+    {
+      "ja": "#目標",
+      "en": "#goals"
+    },
+    {
+      "ja": "#昔の話",
+      "en": "#lookingback"
+    }
   ]
 }
