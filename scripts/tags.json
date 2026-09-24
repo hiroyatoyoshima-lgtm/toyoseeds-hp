@@ -587,5 +587,21 @@
       "ja": "#日記",
       "en": "#journaling"
     }
+  ],
+  "shachonikki_day71": [
+    {
+      "ja": "#日記",
+      "en": "#journaling"
+    },
+    {
+      "ja": "#習慣",
+      "en": "#habits"
+    }
+  ],
+  "goma-diary/vol5": [
+    {
+      "ja": "#目標",
+      "en": "#goals"
+    }
   ]
 }
