@@ -603,5 +603,15 @@
       "ja": "#目標",
       "en": "#goals"
     }
+  ],
+  "shachonikki_day72": [
+    {
+      "ja": "#seedsstay",
+      "en": "#seedsstay"
+    },
+    {
+      "ja": "#チーム",
+      "en": "#team"
+    }
   ]
 }
