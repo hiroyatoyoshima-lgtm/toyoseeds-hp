@@ -36,7 +36,7 @@ $slug = if ($Day -le 20) { "sahchonikki_day$Day" } else { "shachonikki_day$Day" 
 $articleDir = Join-Path $SiteRoot $slug
 if (-not (Test-Path -LiteralPath $articleDir)) { throw "Article folder not found: $articleDir" }
 $html = [System.IO.File]::ReadAllText((Join-Path $articleDir 'index.html'), [System.Text.Encoding]::UTF8)
-$h1 = [regex]::Match($html, '<h1>(.*?)</h1>').Groups[1].Value.Trim()
+$h1 = [regex]::Match($html, '<h1[^>]*>(.*?)</h1>').Groups[1].Value.Trim()
 $title = ($h1 -replace '^vol\d+\s*', '') -replace '&amp;', '&' -replace '&quot;', '"'
 $outJpg = Join-Path $articleDir 'thumb.jpg'
 New-Item -ItemType Directory -Force $WorkRoot | Out-Null
