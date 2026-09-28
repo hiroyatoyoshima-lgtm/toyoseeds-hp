@@ -619,5 +619,15 @@
       "ja": "#日記",
       "en": "#journaling"
     }
+  ],
+  "shachonikki_day74": [
+    {
+      "ja": "#日記",
+      "en": "#journaling"
+    },
+    {
+      "ja": "#目標",
+      "en": "#goals"
+    }
   ]
 }
