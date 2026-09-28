@@ -122,6 +122,7 @@ try {
   git add -- "$slug/thumb.jpg"
   git commit -q -m ("vol{0}: note 見出し画像 thumb.jpg（Codex 生成）" -f $Day)
   git push -q origin main
+  if ($LASTEXITCODE -ne 0) { throw "git push failed (thumb.jpg is committed locally; run 'git push origin main' again, then rerun with -FromPng for the Issue)" }
   Write-Host "pushed thumb.jpg"
 } finally { Pop-Location }
 
