@@ -2,6 +2,8 @@
 // 使い方: node scripts/new_post.mjs --title "ペルソナ" --body draft.txt [--date 2026-09-10] [--desc "..."] [--vol 56] [--dry-run]
 //        ハッシュタグ（必須・1記事1〜2つ）: --tag "#SeedsStay" [--tag "#ピアノ"] [--tag-en "#SeedsStay" --tag-en "#Piano"]
 //        英語版も一緒に出すとき: --title-en "Persona" --body-en draft_en.txt
+//        画像を入れるとき: --image photo.jpg [--image-name letter.jpg]（縮小はしない。幅700pxのJPEGにしてから渡す）
+//          本文の入れたい位置に単独行で [img letter.jpg | キャプション | alt文]
 //        --root は省略可（既定＝このリポジトリのルート）
 import fs from "node:fs";
 import path from "node:path";
@@ -23,6 +25,9 @@ const TAGS_EN = all("--tag-en");
 if (!TAGS.length) { console.error("--tag は必須です（記事末尾のハッシュタグ。1記事1〜2つ）"); process.exit(1); }
 if (TAGS.length > 2) { console.error("タグは1記事1〜2つです"); process.exit(1); }
 const TAG_PAIRS = TAGS.map((ja, i) => [ja, TAGS_EN[i] || ja]);
+const IMAGE = opt("--image");
+const IMAGE_NAME = opt("--image-name", "photo.jpg");
+if (IMAGE && !fs.existsSync(IMAGE)) { console.error(`[中止] 画像が見つかりません: ${IMAGE}`); process.exit(1); }
 const BASE = "https://www.toyoseeds.com";
 const TOP_NEWS_ROWS = 4;
 if (!TITLE || !BODY) { console.error("--title --body は必須"); process.exit(1); }
@@ -52,6 +57,24 @@ const titleEn = TITLE_EN ? (/^vol/i.test(TITLE_EN.trim()) ? TITLE_EN.trim() : `v
 const link = (t) => t.replace(/\[([^\]\n]+)\]\((\/[^)\s]*|https?:\/\/[^)\s]+)\)/g,
   (_, label, url) => `<a href="${url}">${label}</a>`);
 
+// PNG / JPEG のヘッダから幅・高さを読む（PIL の代わり）。読めなければ null
+function imageSize(p) {
+  try {
+    const b = fs.readFileSync(p);
+    if (b[0] === 0x89 && b.toString("ascii", 1, 4) === "PNG") return [b.readUInt32BE(16), b.readUInt32BE(20)];
+    if (b[0] === 0xff && b[1] === 0xd8) {
+      for (let i = 2; i + 9 < b.length;) {
+        if (b[i] !== 0xff) { i++; continue; }
+        const m = b[i + 1];
+        if (m >= 0xc0 && m <= 0xcf && ![0xc4, 0xc8, 0xcc].includes(m)) return [b.readUInt16BE(i + 7), b.readUInt16BE(i + 5)];
+        i += 2 + b.readUInt16BE(i + 2);
+      }
+    }
+  } catch {}
+  return null;
+}
+const IMG_RE = /^\[img\s+([^|\]]+?)\s*(?:\|\s*([^|\]]*?)\s*)?(?:\|\s*([^\]]*?)\s*)?\]$/;
+
 const BOX_OPEN = '<div style="margin:34px 0;padding:26px 28px;border-radius:16px;background:var(--soft)">';
 // [box] 〜 [/box] の中身を囲みにする。最後の段落は下の余白を詰める
 function wrapBox(inner) {
@@ -69,6 +92,16 @@ function buildBody(text) {
     if (!block) continue;
     if (block === "[box]") { box = []; continue; }
     if (block === "[/box]") { blocks.push(wrapBox(box || [])); box = null; continue; }
+    const im = IMG_RE.exec(block);
+    if (im) {
+      const name = im[1], caption = (im[2] || "").trim(), alt = (im[3] || "").trim();
+      // --dry-run ではまだコピーしていないので、--image で渡された元ファイルから寸法を読む
+      const size = imageSize(IMAGE && name === IMAGE_NAME ? IMAGE : path.join(ROOT, slug, name));
+      const dims = size ? ` width="${size[0]}" height="${size[1]}"` : "";
+      const cap = caption ? `<figcaption>${esc(caption)}</figcaption>` : "";
+      (box !== null ? box : blocks).push(`<figure class="wp-block-image size-full"><img src="/${slug}/${name}" alt="${esc(alt || caption)}"${dims} loading="lazy">${cap}</figure>`);
+      continue;
+    }
     const lines = block.split("\n").map((l) => l.trim()).filter(Boolean).map((l) =>
       // [表示テキスト](/リンク先/) を先にリンクにし、残った裸のURLだけをリンクにする
       link(esc(l)).split(/(<a [^>]*>[\s\S]*?<\/a>)/).map((part, i) =>
@@ -80,7 +113,7 @@ function buildBody(text) {
   if (box !== null) { console.error("[中止] [box] が [/box] で閉じられていません"); process.exit(1); }
   return blocks.join("\n\n");
 }
-const plain = (h) => h.replace(/<br>\s*/g, " ").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
+const plain = (h) => h.replace(/<figure[\s\S]*?<\/figure>/g, "").replace(/<br>\s*/g, " ").replace(/<[^>]+>/g, "").replace(/\s+/g, " ").trim();
 
 const bodyHtml = buildBody(fs.readFileSync(BODY, "utf8"));
 const desc = opt("--desc") || plain(bodyHtml).slice(0, 110) + "…";
@@ -165,9 +198,24 @@ function replaceOnce(rel, oldS, newS) {
   if (!DRY) writeEOL(p, text.replace(oldS, newS), crlf);
 }
 
+// 0. 画像の取り込み（記事フォルダへコピー）
+if (IMAGE) {
+  changes.push(`${slug}/${IMAGE_NAME}`);
+  if (!DRY) { fs.mkdirSync(path.join(ROOT, slug), { recursive: true }); fs.copyFileSync(IMAGE, path.join(ROOT, slug, IMAGE_NAME)); }
+}
+
 // 1. 記事本体（新規ファイルは LF）
 changes.push(`${slug}/index.html`);
 if (!DRY) { fs.mkdirSync(path.join(ROOT, slug), { recursive: true }); fs.writeFileSync(path.join(ROOT, slug, "index.html"), article, "utf8"); }
+
+// ハッシュタグの台帳（tags/index.html を作る generate_tags_page.mjs が使う）にも足す
+changes.push("scripts/tags.json");
+if (!DRY) {
+  const tagsPath = path.join(ROOT, "scripts", "tags.json");
+  const ledger = JSON.parse(fs.readFileSync(tagsPath, "utf8"));
+  ledger[slug] = TAG_PAIRS.map(([ja, en]) => ({ ja, en }));
+  fs.writeFileSync(tagsPath, JSON.stringify(ledger, null, 2) + "\n", "utf8");
+}
 
 // 2. news 一覧の先頭
 replaceOnce("news/index.html", '<div class="news-list">',
