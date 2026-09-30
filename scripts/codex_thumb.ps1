@@ -31,6 +31,9 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 $utf8 = [System.Text.UTF8Encoding]::new($false)
+# gh の JSON（日本語タイトル入り）を正しく読むため。バックグラウンドの powershell.exe は既定が CP932 で、
+# ConvertFrom-Json が「無効なオブジェクト」で落ちる（2026-09-30 vol76 で発生）
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 $slug = if ($Day -le 20) { "sahchonikki_day$Day" } else { "shachonikki_day$Day" }
 $articleDir = Join-Path $SiteRoot $slug
