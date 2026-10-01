@@ -649,5 +649,15 @@
       "ja": "#seedsstay",
       "en": "#seedsstay"
     }
+  ],
+  "shachonikki_day77": [
+    {
+      "ja": "#経営",
+      "en": "#business"
+    },
+    {
+      "ja": "#日記",
+      "en": "#journaling"
+    }
   ]
 }
