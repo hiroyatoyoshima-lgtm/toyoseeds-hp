@@ -669,5 +669,15 @@
       "ja": "#seedsstay",
       "en": "#seedsstay"
     }
+  ],
+  "shachonikki_day79": [
+    {
+      "ja": "#習慣",
+      "en": "#habits"
+    },
+    {
+      "ja": "#経営",
+      "en": "#business"
+    }
   ]
 }
