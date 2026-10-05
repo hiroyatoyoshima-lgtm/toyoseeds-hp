@@ -679,5 +679,15 @@
       "ja": "#経営",
       "en": "#business"
     }
+  ],
+  "shachonikki_day80": [
+    {
+      "ja": "#日記",
+      "en": "#journaling"
+    },
+    {
+      "ja": "#習慣",
+      "en": "#habits"
+    }
   ]
 }
