@@ -749,5 +749,15 @@
       "ja": "#seedsstay",
       "en": "#seedsstay"
     }
+  ],
+  "shachonikki_day89": [
+    {
+      "ja": "#目標",
+      "en": "#goals"
+    },
+    {
+      "ja": "#ピアノ",
+      "en": "#piano"
+    }
   ]
 }
