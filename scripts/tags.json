@@ -759,5 +759,11 @@
       "ja": "#ピアノ",
       "en": "#piano"
     }
+  ],
+  "shachonikki_day90": [
+    {
+      "ja": "#日記",
+      "en": "#journaling"
+    }
   ]
 }
