@@ -1,6 +1,7 @@
 {
   "cleanUrls": true,
   "trailingSlash": true,
+  "git": {"deploymentEnabled": {"claude/**": false}},
   "headers": [
     {
       "source": "/(.*)",
