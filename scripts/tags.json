@@ -853,5 +853,11 @@
       "ja": "#チーム",
       "en": "#team"
     }
+  ],
+  "shachonikki_day105": [
+    {
+      "ja": "#日記",
+      "en": "#journaling"
+    }
   ]
 }
