@@ -859,5 +859,15 @@
       "ja": "#日記",
       "en": "#journaling"
     }
+  ],
+  "shachonikki_day106": [
+    {
+      "ja": "#つながるbar",
+      "en": "#tsunagarubar"
+    },
+    {
+      "ja": "#経営",
+      "en": "#business"
+    }
   ]
 }
