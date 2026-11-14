@@ -879,5 +879,11 @@
       "ja": "#seedsstay",
       "en": "#seedsstay"
     }
+  ],
+  "shachonikki_day108": [
+    {
+      "ja": "#日記",
+      "en": "#journaling"
+    }
   ]
 }
