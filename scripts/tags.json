@@ -891,5 +891,11 @@
       "ja": "#習慣",
       "en": "#habits"
     }
+  ],
+  "shachonikki_day110": [
+    {
+      "ja": "#日記",
+      "en": "#journaling"
+    }
   ]
 }
