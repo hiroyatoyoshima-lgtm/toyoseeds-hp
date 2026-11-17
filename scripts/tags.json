@@ -903,5 +903,11 @@
       "ja": "#経営",
       "en": "#business"
     }
+  ],
+  "shachonikki_day112": [
+    {
+      "ja": "#日記",
+      "en": "#journaling"
+    }
   ]
 }
