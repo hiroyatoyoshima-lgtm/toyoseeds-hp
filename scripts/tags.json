@@ -915,5 +915,15 @@
       "ja": "#習慣",
       "en": "#habits"
     }
+  ],
+  "shachonikki_day114": [
+    {
+      "ja": "#目標",
+      "en": "#goals"
+    },
+    {
+      "ja": "#経営",
+      "en": "#business"
+    }
   ]
 }
